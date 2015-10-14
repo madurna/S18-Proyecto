@@ -1,0 +1,27 @@
+a:21:{s:7:"attribs";a:6:{s:15:"packagerversion";s:5:"1.9.1";s:7:"version";s:3:"2.0";s:5:"xmlns";s:35:"http://pear.php.net/dtd/package-2.0";s:11:"xmlns:tasks";s:33:"http://pear.php.net/dtd/tasks-1.0";s:9:"xmlns:xsi";s:41:"http://www.w3.org/2001/XMLSchema-instance";s:18:"xsi:schemaLocation";s:147:"http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd";}s:4:"name";s:35:"Structures_DataGrid_Renderer_Smarty";s:7:"channel";s:12:"pear.php.net";s:7:"summary";s:28:"Renderer driver using Smarty";s:11:"description";s:205:"This is a Rendering driver for Structures_DataGrid using Smarty. 
+ It adds the necessary variables and functions to a Smarty instance, in order 
+ to build a full-featured DataGrid within a Smarty template.";s:4:"lead";a:3:{i:0;a:4:{s:4:"name";s:14:"Andrew S. Nagy";s:4:"user";s:6:"asnagy";s:5:"email";s:22:"asnagy@webitecture.org";s:6:"active";s:2:"no";}i:1;a:4:{s:4:"name";s:17:"Olivier Guilyardi";s:4:"user";s:8:"olivierg";s:5:"email";s:20:"olivier@samalyse.com";s:6:"active";s:3:"yes";}i:2;a:4:{s:4:"name";s:14:"Mark Wiesemann";s:4:"user";s:9:"wiesemann";s:5:"email";s:17:"wiesemann@php.net";s:6:"active";s:3:"yes";}}s:4:"date";s:10:"2010-10-10";s:4:"time";s:8:"22:47:03";s:7:"version";a:2:{s:7:"release";s:5:"0.1.5";s:3:"api";s:5:"0.1.1";}s:9:"stability";a:2:{s:7:"release";s:4:"beta";s:3:"api";s:4:"beta";}s:7:"license";a:2:{s:7:"attribs";a:1:{s:3:"uri";s:46:"http://opensource.org/licenses/bsd-license.php";}s:8:"_content";s:7:"New BSD";}s:5:"notes";s:559:"QA release
+Directory layout
+
+- Request #8237: support multiple grids on a single page
+- add support for the onMove option
+- new columnSet item members: direction and onclick
+- Request #9994: add support for URL mapping, by Sascha Grossenbacher
+- add "Object Preserving" feature
+- fix a bug which prevented smarty {debug} function from working because of a 
+  recursive reference
+- new 'associative' option to get the column set and records as associative
+  arrays, instead of numerically indexed ones
+- new smarty variables assigned: previousPage and nextPage";s:8:"contents";a:1:{s:3:"dir";a:2:{s:7:"attribs";a:2:{s:14:"baseinstalldir";s:1:"/";s:4:"name";s:1:"/";}s:4:"file";a:1:{s:7:"attribs";a:4:{s:14:"baseinstalldir";s:1:"/";s:6:"md5sum";s:32:"76e4494fc6deb3d1fc8078e8124b9e38";s:4:"name";s:39:"Structures/DataGrid/Renderer/Smarty.php";s:4:"role";s:3:"php";}}}}s:12:"dependencies";a:1:{s:8:"required";a:3:{s:3:"php";a:1:{s:3:"min";s:3:"4.3";}s:13:"pearinstaller";a:1:{s:3:"min";s:5:"1.4.9";}s:7:"package";a:2:{i:0;a:3:{s:4:"name";s:19:"Structures_DataGrid";s:7:"channel";s:12:"pear.php.net";s:3:"min";s:5:"0.9.0";}i:1;a:3:{s:4:"name";s:34:"Structures_DataGrid_Renderer_Pager";s:7:"channel";s:12:"pear.php.net";s:3:"min";s:5:"0.1.0";}}}}s:10:"phprelease";s:0:"";s:8:"filelist";a:1:{s:39:"Structures/DataGrid/Renderer/Smarty.php";a:5:{s:14:"baseinstalldir";s:1:"/";s:6:"md5sum";s:32:"76e4494fc6deb3d1fc8078e8124b9e38";s:4:"name";s:39:"Structures/DataGrid/Renderer/Smarty.php";s:4:"role";s:3:"php";s:12:"installed_as";s:57:"C:\xampp\php\pear\Structures\DataGrid\Renderer\Smarty.php";}}s:12:"_lastversion";N;s:7:"dirtree";a:3:{s:46:"C:\xampp\php\pear\Structures\DataGrid\Renderer";b:1;s:37:"C:\xampp\php\pear\Structures\DataGrid";b:1;s:28:"C:\xampp\php\pear\Structures";b:1;}s:3:"old";a:7:{s:7:"version";s:5:"0.1.5";s:12:"release_date";s:10:"2010-10-10";s:13:"release_state";s:4:"beta";s:15:"release_license";s:7:"New BSD";s:13:"release_notes";s:559:"QA release
+Directory layout
+
+- Request #8237: support multiple grids on a single page
+- add support for the onMove option
+- new columnSet item members: direction and onclick
+- Request #9994: add support for URL mapping, by Sascha Grossenbacher
+- add "Object Preserving" feature
+- fix a bug which prevented smarty {debug} function from working because of a 
+  recursive reference
+- new 'associative' option to get the column set and records as associative
+  arrays, instead of numerically indexed ones
+- new smarty variables assigned: previousPage and nextPage";s:12:"release_deps";a:4:{i:0;a:4:{s:4:"type";s:3:"php";s:3:"rel";s:2:"ge";s:7:"version";s:3:"4.3";s:8:"optional";s:2:"no";}i:1;a:6:{s:4:"type";s:3:"pkg";s:7:"channel";s:12:"pear.php.net";s:4:"name";s:4:"PEAR";s:3:"rel";s:2:"ge";s:7:"version";s:5:"1.4.9";s:8:"optional";s:2:"no";}i:2;a:6:{s:4:"type";s:3:"pkg";s:7:"channel";s:12:"pear.php.net";s:4:"name";s:19:"Structures_DataGrid";s:3:"rel";s:2:"ge";s:7:"version";s:5:"0.9.0";s:8:"optional";s:2:"no";}i:3;a:6:{s:4:"type";s:3:"pkg";s:7:"channel";s:12:"pear.php.net";s:4:"name";s:34:"Structures_DataGrid_Renderer_Pager";s:3:"rel";s:2:"ge";s:7:"version";s:5:"0.1.0";s:8:"optional";s:2:"no";}}s:11:"maintainers";a:3:{i:0;a:5:{s:4:"name";s:14:"Andrew S. Nagy";s:5:"email";s:22:"asnagy@webitecture.org";s:6:"active";s:2:"no";s:6:"handle";s:6:"asnagy";s:4:"role";s:4:"lead";}i:1;a:5:{s:4:"name";s:17:"Olivier Guilyardi";s:5:"email";s:20:"olivier@samalyse.com";s:6:"active";s:3:"yes";s:6:"handle";s:8:"olivierg";s:4:"role";s:4:"lead";}i:2;a:5:{s:4:"name";s:14:"Mark Wiesemann";s:5:"email";s:17:"wiesemann@php.net";s:6:"active";s:3:"yes";s:6:"handle";s:9:"wiesemann";s:4:"role";s:4:"lead";}}}s:10:"xsdversion";s:3:"2.0";s:13:"_lastmodified";i:1334849804;}

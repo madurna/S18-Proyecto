@@ -1,0 +1,21 @@
+<td align="center" bgcolor="#666666">
+	<table width="96%" height="24" border="0" cellspacing="0" cellpadding="0">     	
+	<tr align="center" valign="middle"> 
+       {section name=nav loop=$lnav} 
+		{if $lnav[nav] != null } 				
+        	<td width="128" align="center" valign="middle"> 
+			  <div align="left">{if $smarty.server.SCRIPT_NAME|replace:$lnav[nav].pgn:""|cat:$lnav[nav].pgn == $smarty.server.SCRIPT_NAME} <span class="texto_negro">{$lnav[nav].item}</span>
+				{else}
+					<a class="link1" title="{$lnav[nav].alt}" href="{$lnav[nav].pgn}">{$lnav[nav].item}</a> 
+			{/if}
+		    </div>
+			</td>
+		{/if}
+      {/section}
+	  <td width="120">&nbsp;</td>
+      <td width="120">&nbsp;</td>
+      <td width="120">&nbsp;</td>
+      <td width="120"><a class="link1" href="./logout.php">Salir</a></td>
+	</tr>
+	</table>
+</td>

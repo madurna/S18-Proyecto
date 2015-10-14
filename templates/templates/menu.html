@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title></title>
+<script type='text/javascript' src='../js/jquery-1.2.3.min.js'></script>
+<script type='text/javascript' src='../js/menu.js'></script>
+<link rel="stylesheet" href="../css/style.css" type="text/css" media="screen" />
+</head>
+
+<body >
+<table style="background-repeat: repeat-x;" background="../img/fondosileg.png" width="778" border="0" align="center" cellpadding="0" cellspacing="0" >
+  <!--DWLayoutTable-->
+  <tr align="left" valign="middle"> 
+    <td align="center"><img src="../img/logo_top.png" border="0" usemap="#Map"></td>
+  </tr>
+  <tr valign="left">
+    <td align="left">
+	 <table width="96%" border="0" cellspacing="0" cellpadding="0">
+	   <tr align="left"> 
+       <!--DWLayoutTable-->
+		<ul id="nav">
+    
+		<li><a href="#">Consulta R&aacute;pida</a><ul>
+            <li><a href="#">Por Profesor</a></li>
+            <li><a href="#">Por Asignatura</a></li>
+           </ul>
+    </li>
+    		  
+    
+    <li><a href="#">Listas</a>
+				<ul>
+				  
+  <li><a href="listas1.php">Profesores</a></li>
+  <a href="listas2.php">Asignaturas</a></li>
+  <a href="listaCursosCompletos.php">Cursos</a></li>
+	<a href="listashistorico1.php">Hist&oacute;rico de Profesores</a></li>
+  <a href="#">Cargos Acad&eacute;micos</a></li>
+  <a href="consulpersprof.php" target="_self">Otras</a> </li>
+  
+		</ul>
+		
+		
+		</li>
+    <li><a href="#">Consultas Personalizadas</a>
+    <li><a href="#">Administraci&oacute;n de datos</a>
+    	  <ul>
+            <li><a href="#">Altas</a>
+              <ul>
+                    <li><a href="#">Profesor</a></li>
+                    <li><a href="#">Carrera</a></li>
+                    <li><a href="#">Departamento</a></li>
+                    <li><a href="#">Asignatura</a></li>
+                    <li><a href="#">Cargo</a></li>
+                    <li><a href="#">T&iacute;tulo</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Bajas</a><ul>
+                    <li><a href="#">Profesor</a></li>
+                    <li><a href="#">Carrera</a></li>
+                    <li><a href="#">Departamento</a></li>
+                    <li><a href="#">Asignatura</a></li>
+                    <li><a href="#">Cargo</a></li>
+                    <li><a href="#">T&iacute;tulo</a></li>
+              </ul></li>
+            <li><a href="#">Licencias</a></li>
+            <li><a href="#">Pr&oacute;rrogas</a></li>
+            <li><a href="#">Extensiones</a></li>
+            <li><a href="#">Modificaciones</a><ul>
+                    <li><a href="#">Profesor</a></li>
+                    <li><a href="#">Carrera</a></li>
+                    <li><a href="#">Departamento</a></li>
+                    <li><a href="#">Asignatura</a></li>
+                    <li><a href="#">Cargo</a></li>
+                    <li><a href="#">T&iacute;tulo</a></li>
+              </ul></li>
+
+  
+      </ul>
+    </li>
+</ul>
+	</tr>
+</table>
+	</td>
+  </tr>
+  <tr> 
+    <td height="372" align="center" valign="top">{$head}{include file=$includeFile2}{$body}<BR>
+      <p>{include file=$includeFile}</p>
+      <p>&nbsp;</p>
+		
+
+    </td>
+  </tr>
+  <tr> 
+    <td><div align="center">{include file="pie.htm"}</div></td>
+  </tr>
+</table>
+<map name="Map">
+  <area shape="rect" coords="14,2,302,67" href="../home/home.php">
+</map>
+</body>
+</html>

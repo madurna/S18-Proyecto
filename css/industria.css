@@ -1,0 +1,172 @@
+body{
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	background-color: #FFFFFF;
+	margin: 0;
+	font-size: 10px; 
+}
+
+a:link { 
+    FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #666666;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+
+a:active {
+    FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #009933;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+
+a:visited {
+    FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #666666;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+a:hover {
+    FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #009933;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+
+td{
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 10px; 
+	text-decoration: none; 
+	font-weight: normal; 
+	font-style: normal; 
+	font-variant: normal; 
+	text-transform: none;
+}
+
+img{
+	border: 0;
+}
+
+input, select{
+	color:#000; 
+	background:#f8f3f6; 
+	border:1px #b7dde0 solid; 
+	font-weight: normal; 
+}
+input:focus {
+	background:#fff
+}
+
+.textorojo {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	font-style: normal;
+	line-height: normal;
+	font-weight: normal;
+	font-variant: normal;
+	color: #990000;
+	text-decoration: none;
+}
+
+.login {
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	font-size: 10px; 
+	font-weight: bold; 
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.disabled {
+	FONT-SIZE: 10px;
+	COLOR: #666666;
+	FONT-WEIGHT: bold;
+}
+
+.lngrilla:link {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #000000;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.lngrilla:active {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #666666;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.lngrilla:visited {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #666666;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.lngrilla:hover {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #666666;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+
+.linkUtn:link {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #333399;
+	FONT-STYLE: italic;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.linkUtn:active {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #333399;
+	FONT-STYLE: italic;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.linkUtn:visited {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #333399;
+	FONT-STYLE: italic;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.linkUtn:hover {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 10px;
+	COLOR: #333399;
+	FONT-STYLE: italic;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.tituloGrilla {
+   	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #ffffff;
+	FONT-STYLE: normal;
+	align: center;
+	text-align: center;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+
+}
+.tituloLinkGrilla a {
+	color: #FFFFFF;
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	text-align: center;
+	align: center;
+	font-weight: bold;
+}
+<!-- Link sacados de intranet.css -->
+

@@ -1,0 +1,102 @@
+body{
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	color: white; 
+	background: URL('./fondo.jpg') no-repeat;	
+	background-color: #034EA2;
+	color: #FFFFFF;
+	margin: 0;
+}
+td{
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 10px; 
+	color: white; 
+	text-decoration: none; 
+	font-weight: normal; 
+	font-style: normal; 
+	font-variant: normal; 
+	text-transform: none;
+	
+}
+img{
+	border: 0;
+}
+input, select{
+	color:#000; 
+	background:#f8f3f6; 
+	border:1px #b7dde0 solid; 
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 12px;
+	font-weight: normal; 
+}
+input:focus {
+	background:#fff
+}
+.menu{
+	width: 100%;
+	background: URL('./menu_fondo.gif') repeat-x;
+}
+.menu a, .menu a:visited{
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 10px; 
+	font-weight: bold; 
+	color: black; 
+	text-decoration: none; 
+	font-style: normal; 
+	line-height: normal; 
+	font-variant: normal; 
+	text-transform: none;
+}
+.menu a:hover{
+	color: darkgray;
+}
+a, a:visited{
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 10px; 
+	font-weight: bold; 
+	color: black; 
+	text-decoration: none; 
+	font-style: normal; 
+	line-height: normal; 
+	font-variant: normal; 
+	text-transform: none;
+}
+a:hover{
+	color: darkgray;
+}
+.botonera_blanca a, a:visited{
+	font-family: Verdana, Arial, Helvetica, sans-serif; 
+	font-size: 10px; 
+	font-weight: bold; 
+	color: white; 
+	text-decoration: none; 
+	font-style: normal; 
+	line-height: normal; 
+	font-variant: normal; 
+	text-transform: none;
+}
+.botonera a:hover{
+	color: darkgray;
+}
+.login {
+	border-bottom: 1px solid black;
+	border-top: 1px solid black;
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	font-size: 10px; 
+	font-weight: bold; 
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.lngrilla:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #000000; FONT-STYLE: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.lngrilla:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #666666; FONT-STYLE: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.lngrilla:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #666666; FONT-STYLE: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.lngrilla:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; COLOR: #666666; FONT-STYLE: normal; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
