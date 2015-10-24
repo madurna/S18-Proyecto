@@ -38,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data.ini" pinned="false" current-in-tab="false">
+      <file leaf-file-name="data.ini" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/data.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-              <caret line="2" column="44" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.12035398" vertical-offset="0" max-vertical-offset="565">
+              <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -61,8 +61,8 @@
       <file leaf-file-name="web.config" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/web.config">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.1333333" vertical-offset="102" max-vertical-offset="1360">
-              <caret line="8" column="28" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="28" />
+            <state vertical-scroll-proportion="12.466666" vertical-offset="816" max-vertical-offset="1360">
+              <caret line="26" column="69" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -159,11 +159,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CREATETABLES.BAT" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CREATETABLES.BAT" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataObjects/CREATETABLES.BAT">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.030797102" vertical-offset="0" max-vertical-offset="552">
-              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+              <caret line="0" column="126" selection-start-line="0" selection-start-column="126" selection-end-line="0" selection-end-column="126" />
               <folding />
             </state>
           </provider>
@@ -507,6 +507,14 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/dataObjects/CREATETABLES.BAT">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+          <caret line="0" column="126" selection-start-line="0" selection-start-column="126" selection-end-line="0" selection-end-column="126" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/menu.config">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1751">
@@ -517,8 +525,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/web.config">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1333333" vertical-offset="102" max-vertical-offset="1360">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="28" />
+        <state vertical-scroll-proportion="12.466666" vertical-offset="816" max-vertical-offset="1360">
+          <caret line="26" column="69" selection-start-line="26" selection-start-column="69" selection-end-line="26" selection-end-column="69" />
           <folding />
         </state>
       </provider>
@@ -528,16 +536,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/data.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-          <caret line="2" column="44" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dataObjects/CREATETABLES.BAT">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.030797102" vertical-offset="0" max-vertical-offset="552">
-          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.12035398" vertical-offset="0" max-vertical-offset="565">
+          <caret line="4" column="54" selection-start-line="4" selection-start-column="54" selection-end-line="4" selection-end-column="54" />
           <folding />
         </state>
       </provider>
