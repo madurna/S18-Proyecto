@@ -27,14 +27,14 @@
     <leaf>
       <file leaf-file-name="data.config" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/data.config">
-          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-5.6666665" vertical-offset="0" max-vertical-offset="391">
               <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+            <state />
           </provider>
         </entry>
       </file>
@@ -42,7 +42,7 @@
         <entry file="file://$PROJECT_DIR$/config/data.ini">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="2" column="44" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="44" />
               <folding />
             </state>
           </provider>
@@ -60,14 +60,14 @@
       </file>
       <file leaf-file-name="web.config" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/web.config">
-          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-            <state />
-          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="1360">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-1.1333333" vertical-offset="102" max-vertical-offset="1360">
+              <caret line="8" column="28" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="28" />
               <folding />
             </state>
+          </provider>
+          <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+            <state />
           </provider>
         </entry>
       </file>
@@ -84,7 +84,7 @@
       <file leaf-file-name="mbh.links.ini" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataObjects/mbh.links.ini">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.5862069" vertical-offset="0" max-vertical-offset="1564">
+            <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1564">
               <caret line="1" column="24" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="24" />
               <folding />
             </state>
@@ -94,7 +94,7 @@
       <file leaf-file-name="Usuario.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataObjects/Usuario.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="116.19231" vertical-offset="3021" max-vertical-offset="3825">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3021" max-vertical-offset="3825">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -104,7 +104,7 @@
       <file leaf-file-name="Obra_civil.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataObjects/Obra_civil.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.923077" vertical-offset="2483" max-vertical-offset="3213">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2483" max-vertical-offset="3213">
               <caret line="175" column="24" selection-start-line="175" selection-start-column="24" selection-end-line="175" selection-end-column="24" />
               <folding>
                 <marker date="1430347236000" expanded="true" signature="3769:5587" placeholder="..." />
@@ -124,26 +124,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Obrero.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Obrero.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dataObjects/Obrero.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.6178708" vertical-offset="1377" max-vertical-offset="4488">
+            <state vertical-scroll-proportion="52.96154" vertical-offset="1377" max-vertical-offset="4488">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <marker date="1430347236000" expanded="true" signature="6670:8985" placeholder="..." />
-                <marker date="1430347236000" expanded="true" signature="6707:6783" placeholder="{...}" />
-                <marker date="1430347236000" expanded="true" signature="6827:8345" placeholder="{...}" />
-                <marker date="1430347236000" expanded="true" signature="6879:8250" placeholder="{&quot;closeText&quot;: &quot;Cerrar&quot;...}" />
-                <marker date="1430347236000" expanded="true" signature="7100:7239" placeholder="[...]" />
-                <marker date="1430347236000" expanded="true" signature="7282:7380" placeholder="[...]" />
-                <marker date="1430347236000" expanded="true" signature="8394:8464" placeholder="{...}" />
-                <marker date="1430347236000" expanded="true" signature="8526:8707" placeholder="{...}" />
-                <marker date="1430347236000" expanded="true" signature="8769:8964" placeholder="{...}" />
-                <marker date="1430347236000" expanded="true" signature="9463:9983" placeholder="..." />
-                <marker date="1430347236000" expanded="true" signature="9546:9927" placeholder="{...}" />
-                <marker date="1430347236000" expanded="true" signature="10387:10752" placeholder="..." />
-                <marker date="1430347236000" expanded="true" signature="10478:10688" placeholder="{...}" />
-                <marker date="1430347236000" expanded="true" signature="11229:11245" placeholder="..." />
+                <marker date="1445656750444" expanded="true" signature="6670:8985" placeholder="..." />
+                <marker date="1445656750444" expanded="true" signature="6707:6783" placeholder="{...}" />
+                <marker date="1445656750444" expanded="true" signature="6827:8345" placeholder="{...}" />
+                <marker date="1445656750444" expanded="true" signature="6879:8250" placeholder="{&quot;closeText&quot;: &quot;Cerrar&quot;...}" />
+                <marker date="1445656750444" expanded="true" signature="7100:7239" placeholder="[...]" />
+                <marker date="1445656750444" expanded="true" signature="7282:7380" placeholder="[...]" />
+                <marker date="1445656750444" expanded="true" signature="8394:8464" placeholder="{...}" />
+                <marker date="1445656750444" expanded="true" signature="8526:8707" placeholder="{...}" />
+                <marker date="1445656750444" expanded="true" signature="8769:8964" placeholder="{...}" />
+                <marker date="1445656750444" expanded="true" signature="9463:9983" placeholder="..." />
+                <marker date="1445656750444" expanded="true" signature="9546:9927" placeholder="{...}" />
+                <marker date="1445656750444" expanded="true" signature="10387:10752" placeholder="..." />
+                <marker date="1445656750444" expanded="true" signature="10478:10688" placeholder="{...}" />
+                <marker date="1445656750444" expanded="true" signature="11229:11245" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -152,24 +152,33 @@
       <file leaf-file-name="modificar_cliente.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/clientes/modificar_cliente.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="2431">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2431">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CREATETABLES.BAT" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CREATETABLES.BAT" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dataObjects/CREATETABLES.BAT">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.030797102" vertical-offset="0" max-vertical-offset="552">
+              <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/dataObjects/CREATETABLES.BAT" />
+        <option value="$PROJECT_DIR$/config/web.config" />
+        <option value="$PROJECT_DIR$/config/data.ini" />
+      </list>
+    </option>
   </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
@@ -204,6 +213,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -212,33 +222,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mbhsistema" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mbhsistema" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mbhsistema" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="mbhsistema" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="clientes" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -266,27 +251,27 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24962178" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25340393" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="UnknownFeatures">
@@ -313,6 +298,25 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/config/data.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="170" max-vertical-offset="391">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/data.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/menu.config">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1751">
@@ -322,11 +326,95 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/web.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataObjects/mbh.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1360">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10098">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataObjects/mbh.links.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1564">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataObjects/Usuario.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3021" max-vertical-offset="3825">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataObjects/Obra_civil.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2483" max-vertical-offset="3213">
+          <caret line="175" column="24" selection-start-line="175" selection-start-column="24" selection-end-line="175" selection-end-column="24" />
+          <folding>
+            <marker date="1430347236000" expanded="true" signature="3769:5587" placeholder="..." />
+            <marker date="1430347236000" expanded="true" signature="3806:3882" placeholder="{...}" />
+            <marker date="1430347236000" expanded="true" signature="3926:5444" placeholder="{...}" />
+            <marker date="1430347236000" expanded="true" signature="3978:5349" placeholder="{&quot;closeText&quot;: &quot;Cerrar&quot;...}" />
+            <marker date="1430347236000" expanded="true" signature="4199:4338" placeholder="[...]" />
+            <marker date="1430347236000" expanded="true" signature="4381:4479" placeholder="[...]" />
+            <marker date="1430347236000" expanded="true" signature="5493:5563" placeholder="{...}" />
+            <marker date="1430347236000" expanded="true" signature="6063:6563" placeholder="..." />
+            <marker date="1430347236000" expanded="true" signature="6146:6507" placeholder="{...}" />
+            <marker date="1430347236000" expanded="true" signature="6917:7283" placeholder="..." />
+            <marker date="1430347236000" expanded="true" signature="7008:7219" placeholder="{...}" />
+            <marker date="1430347236000" expanded="true" signature="7804:7820" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataObjects/Obrero.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4488">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1445656750444" expanded="true" signature="6670:8985" placeholder="..." />
+            <marker date="1445656750444" expanded="true" signature="6707:6783" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="6827:8345" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="6879:8250" placeholder="{&quot;closeText&quot;: &quot;Cerrar&quot;...}" />
+            <marker date="1445656750444" expanded="true" signature="7100:7239" placeholder="[...]" />
+            <marker date="1445656750444" expanded="true" signature="7282:7380" placeholder="[...]" />
+            <marker date="1445656750444" expanded="true" signature="8394:8464" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="8526:8707" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="8769:8964" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="9463:9983" placeholder="..." />
+            <marker date="1445656750444" expanded="true" signature="9546:9927" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="10387:10752" placeholder="..." />
+            <marker date="1445656750444" expanded="true" signature="10478:10688" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="11229:11245" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clientes/modificar_cliente.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2431">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataObjects/CREATETABLES.BAT">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -340,36 +428,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dataObjects/CREATETABLES.BAT">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="588">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/data.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="588">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/data.config">
-      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.6666665" vertical-offset="0" max-vertical-offset="391">
-          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dataObjects/mbh.links.ini">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5862069" vertical-offset="0" max-vertical-offset="1564">
+        <state vertical-scroll-proportion="0.0" vertical-offset="17" max-vertical-offset="1564">
           <caret line="1" column="24" selection-start-line="1" selection-start-column="17" selection-end-line="1" selection-end-column="24" />
           <folding />
         </state>
@@ -377,7 +438,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dataObjects/Usuario.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="116.19231" vertical-offset="3021" max-vertical-offset="3825">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3021" max-vertical-offset="3825">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -385,7 +446,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dataObjects/Obra_civil.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.923077" vertical-offset="2483" max-vertical-offset="3213">
+        <state vertical-scroll-proportion="0.0" vertical-offset="2483" max-vertical-offset="3213">
           <caret line="175" column="24" selection-start-line="175" selection-start-column="24" selection-end-line="175" selection-end-column="24" />
           <folding>
             <marker date="1430347236000" expanded="true" signature="3769:5587" placeholder="..." />
@@ -414,24 +475,70 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/dataObjects/Obrero.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.6178708" vertical-offset="1377" max-vertical-offset="4488">
+        <state vertical-scroll-proportion="52.96154" vertical-offset="1377" max-vertical-offset="4488">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1430347236000" expanded="true" signature="6670:8985" placeholder="..." />
-            <marker date="1430347236000" expanded="true" signature="6707:6783" placeholder="{...}" />
-            <marker date="1430347236000" expanded="true" signature="6827:8345" placeholder="{...}" />
-            <marker date="1430347236000" expanded="true" signature="6879:8250" placeholder="{&quot;closeText&quot;: &quot;Cerrar&quot;...}" />
-            <marker date="1430347236000" expanded="true" signature="7100:7239" placeholder="[...]" />
-            <marker date="1430347236000" expanded="true" signature="7282:7380" placeholder="[...]" />
-            <marker date="1430347236000" expanded="true" signature="8394:8464" placeholder="{...}" />
-            <marker date="1430347236000" expanded="true" signature="8526:8707" placeholder="{...}" />
-            <marker date="1430347236000" expanded="true" signature="8769:8964" placeholder="{...}" />
-            <marker date="1430347236000" expanded="true" signature="9463:9983" placeholder="..." />
-            <marker date="1430347236000" expanded="true" signature="9546:9927" placeholder="{...}" />
-            <marker date="1430347236000" expanded="true" signature="10387:10752" placeholder="..." />
-            <marker date="1430347236000" expanded="true" signature="10478:10688" placeholder="{...}" />
-            <marker date="1430347236000" expanded="true" signature="11229:11245" placeholder="..." />
+            <marker date="1445656750444" expanded="true" signature="6670:8985" placeholder="..." />
+            <marker date="1445656750444" expanded="true" signature="6707:6783" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="6827:8345" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="6879:8250" placeholder="{&quot;closeText&quot;: &quot;Cerrar&quot;...}" />
+            <marker date="1445656750444" expanded="true" signature="7100:7239" placeholder="[...]" />
+            <marker date="1445656750444" expanded="true" signature="7282:7380" placeholder="[...]" />
+            <marker date="1445656750444" expanded="true" signature="8394:8464" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="8526:8707" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="8769:8964" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="9463:9983" placeholder="..." />
+            <marker date="1445656750444" expanded="true" signature="9546:9927" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="10387:10752" placeholder="..." />
+            <marker date="1445656750444" expanded="true" signature="10478:10688" placeholder="{...}" />
+            <marker date="1445656750444" expanded="true" signature="11229:11245" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/data.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.6666665" vertical-offset="0" max-vertical-offset="391">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/menu.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1751">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/web.config">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.1333333" vertical-offset="102" max-vertical-offset="1360">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.CsvTableFileEditorProvider">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/data.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="357">
+          <caret line="2" column="44" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dataObjects/CREATETABLES.BAT">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.030797102" vertical-offset="0" max-vertical-offset="552">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+          <folding />
         </state>
       </provider>
     </entry>
