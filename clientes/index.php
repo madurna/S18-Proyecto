@@ -3,7 +3,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	
-	//require_once('clientes.config');
+	require_once('clientes.config');
 	
 	// PEAR
 	require_once ('DB.php');
@@ -139,7 +139,7 @@
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla"></span>',null,null,array('width' => '5%', 'align' => "left"),null,'get_eliminar_comercializador',array('id' => 'comercializador_id')));
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla"></span>',null,null,array('width' => '5%', 'align' => "left"),null,'get_modificar_cliente',array('id' => 'cliente_id')));	
 	//link para agregar una actividad
-    $agregar = '<br><a href="alta_cliente.php">[Agregar cliente]</a>';
+    //$agregar = '<br><a href="alta_cliente.php">[Agregar cliente]</a>';
 	
     //armo template
 	$tpl = new tpl();
@@ -158,11 +158,11 @@
 		}
 	}
 	$tpl->assign('body', '<div align=center><b>Clientes</b></div>
-	<div align="center"><br/>'.$frm->toHTML().'</div><div><br/>'.$agregar.'</div><div><br/>'.$salida_grilla.'</div><br/><b>Se encontraron '.$dg->getRecordCount().' Clientes<b/><br/><br/>');
+	<div align="center"><br/>'.$frm->toHTML().'</div><div><br/>'.$salida_grilla.'</div><br/><b>Se encontraron '.$dg->getRecordCount().' Clientes<b/><br/><br/>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo','Clientes');
 	$tpl->assign('menu', "menu_oceba.htm");	
-	//$tpl->assign('links',$links1);
+	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');	    
     exit;
