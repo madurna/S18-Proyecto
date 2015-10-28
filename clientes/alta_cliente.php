@@ -20,7 +20,7 @@
 	//DB_DataObject::debugLevel(5); 
 	$do_cliente = DB_DataObject::factory('clientes');
 	
-	$do_cliente -> fb_fieldsToRender = array (
+	/*$do_cliente -> fb_fieldsToRender = array (
     	'cliente_apellido',
 		'cliente_nombre',
 		'cliente_tipo_doc_id',
@@ -40,13 +40,32 @@
 		'cliente_referido1',
 		'cliente_referido2',
 		'cliente_estado_id',		
-    );
+    );*/
+
+    $frm = new HTML_QuickForm('frm','post',$_SERVER['REQUEST_URI'],'');
+    $frm -> addElement('text', 'razon_social', 'Raz&oacute;n Social: ',array('size' => '50', 'style' => 'resize:none;'));
+	$frm -> addElement('text', 'nombre', 'Nombre: ',array('size' => '30', 'style' => 'resize:none;'));
+	$frm -> addElement('text', 'apellido', 'Apellido: ',array('size' => '30', 'style' => 'resize:none;'));
 	
+	// Direccion
+	$groupNum[1] =& HTML_QuickForm::createElement('text', 'calle', 'Calle: ',array('id'=>'Calle','onblur'=>'$(this).val($.trim($(this).val()))','size'=>'15','placeholder'=>utf8_encode('Calle'),'title'=>utf8_encode('Calle'), 'class' => 'soloLetras', 'maxlength' => '25'));
+	$groupNum[2] =& HTML_QuickForm::createElement('static','',null,'-');
+	$groupNum[3] =& HTML_QuickForm::createElement('text', 'numero', 'N&uacute;mero: ',array('id'=>'numero','onblur'=>'$(this).val($.trim($(this).val()))','size'=>'6','placeholder'=>'Número','title'=>'Número', 'class' => 'soloNumeros', 'maxlength' => '6'));
+	$frm -> addGroup($groupNum, 'direccion', 'Direcci&oacute;n: ', ' ',false);
+	// FIN Direccion
+
+
+	
+	$frm -> addElement('text', 'dni', 'DNI o Cuil: ',array('size' => '24', 'style' => 'resize:none;'));
+	$frm -> addElement('text', 'telefono', 'Telefono: ',array('size' => '24', 'style' => 'resize:none;'));
+	$frm -> addElement('text', 'email', 'Correo Electr&oacute;nico: ',array('size' => '30', 'style' => 'resize:none;','maxlength' => '50'));
+	$frm -> addElement('textarea','observacion','Observacion: ',array('cols'=>'50','rows'=>'5','style'=>'resize:none;' ));
+		
 	//Creo el formulario en base a la solicitud
-	$fb =& DB_DataObject_FormBuilder::create($do_cliente);
+	/*$fb =& DB_DataObject_FormBuilder::create($do_cliente);
 	$frm =& $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
 	$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
-	$frm->setRequiredNote(FRM_NOTA);
+	$frm->setRequiredNote(FRM_NOTA);*/
 
 	//$frm->addFormRule('encuentraRol');
 	//
@@ -59,7 +78,7 @@
 	$frm->addGroup($botones);
 	
 	$error = '';
-	if($frm->validate()) {
+	/*if($frm->validate()) {
 		$post = $frm->exportValues();
 		$do_cliente->setFrom($post);
 		
@@ -98,7 +117,7 @@
 		}
 		header('location:index.php');
 		exit;
-	}		
+	}	*/	
 
 	$tpl = new tpl();
 	$titulo_grilla = 'Alta Cliente';
