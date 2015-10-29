@@ -7,15 +7,13 @@
 <link href="../css/industria.css" rel="stylesheet" type="text/css">
 <link href="../css/wforms.css" rel="stylesheet" type="text/css">
 <link id="page_favicon" href="../templates/templates/mbh.ico" rel="icon" type="image/x-icon" />
-<script src="../js/jquery-1.8.3.js"></script>
 <link href="../css/ui-lightness/jquery-ui-1.9.2.custom.css" rel="stylesheet" type="text/css">
-<script src="../js/jquery-ui-1.9.2.custom.min.js"></script>
+
 <!--boostrap-->
 <link href="../css/assets/stylesheets/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="../css/assets/stylesheets/pixel-admin.css" rel="stylesheet" type="text/css">
 
-<!-- Pixel Admin's javascripts -->
-<script src="../css/assets/javascripts/bootstrap.js"></script>
+
 <!-- Fin -->
 {literal}
 <script>
@@ -37,10 +35,11 @@
 <body leftmargin="0" topmargin="0" onLoad="cargado()">
 <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0" background="../img/fp-blanco.jpg">
   <!--DWLayoutTable-->
-  <tr align="left" valign="middle"> 
-    <td align="center">
-		<div>
-			<img src="../img/header_mbh.png" width="100%" border="0" usemap="#Map">
+  <tr align="center" valign="middle"> 
+    <td class="pull-left col-md-5  col-sm-12">
+		<div class="navbar-header pull-left">
+			<img src="../img/logo_header.png" width="50%" border="0" usemap="#Map">
+			
 			<!--<div id="radio">
 				<input type="radio" id="radio1" name="radio" onClick="location.href = '/mercados/remoteAuthCli.php'" /><label for="radio1">Calidad</label>
 				<input type="radio" id="radio2" name="radio" checked="checked" /><label for="radio2">Mercados</label>
@@ -113,11 +112,17 @@
   </tr>
   <br />
   <tr> 
-    <td><div align="center">{include file="pie.htm"}</div></td>
+    <td>{include file="pie.htm"}</td>
   </tr>
 </table>
 <map name="Map">
   <area shape="rect" coords="14,2,302,150" href="../home/home.php">
 </map>
+
+<!-- carga de archivos javascripts -->
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.min.js"></script>
+<!-- Pixel Admin's javascripts -->
+<script src="../css/assets/javascripts/bootstrap.js"></script>
 </body>
 </html>

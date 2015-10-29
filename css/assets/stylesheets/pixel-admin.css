@@ -12,6 +12,8 @@
   font-weight: normal;
   font-style: normal;
 }
+
+
 .fa {
   display: inline-block;
   font-family: FontAwesome;
@@ -13622,3 +13624,83 @@ div.dataTables_scrollFoot table {
 .slimScrollRail {
   width: 6px !important;
 }
+
+.btn-admin, .btn-admin:focus {
+    border-color: #94E2F9 #94E2F9 #94E2F9;
+    background: #94E2F9 linear-gradient(to bottom, #B5AB92 0%, #7F7359 100%) repeat-x scroll 0% 0%;
+}
+.btn-admin {
+    color: #7F7359;
+}
+
+
+.btn-admin:hover {
+  color: #94E2F9;
+  border-color: #94E2F9;
+  border-bottom-color: #94E2F9;
+  background: #94E2F9 !important;
+  background-image: -webkit-linear-gradient(top, #7F7359 0%, #B5AB92 100%) !important;
+  background-image: linear-gradient(to bottom, #7F7359 0%, #B5AB92 100%) !important;
+  background-repeat: repeat-x;
+}
+
+.btn-admin:active,
+.btn-admin.active,
+.open .btn-admin.dropdown-toggle {
+  background: none;
+  background: #B5AB92 !important;
+  border-color: #7F7359;
+  border-bottom-color: #7F7359 !important;
+  color: #ffffff;
+  -webkit-box-shadow: #7F7359;
+  box-shadow: #7F7359;
+}
+
+.btn-admin.btn-flat {
+  background: #66c656;
+}
+.btn-admin.btn-flat:hover,
+.btn-admin.btn-flat:active,
+.btn-admin.btn-flat.active,
+.open .btn-admin.btn-flat.dropdown-toggle {
+  background: #66c656 !important;
+  color: #7F7359;
+}
+.btn-admin.btn-outline:hover,
+.btn-admin.btn-outline.btn-flat:hover {
+  color: #66c656;
+  border-color: #7F7359;
+  border-bottom-color: #7F7359;
+}
+.btn-admin.btn-outline:active,
+.btn-admin.btn-outline.btn-flat:active {
+  border-color: #7F7359;
+}
+.btn-group .btn-admin,
+.btn-group .btn-admin:focus,
+.input-group-btn .btn-admin,
+.input-group-btn .btn-admin:focus {
+  border-left-color: #66c656;
+  border-right-color: #66c656;
+}
+.btn-group .btn-admin:hover,
+.btn-group.open .btn-admin.dropdown-toggle,
+.input-group-btn .btn-admin:hover,
+.input-group-btn.open .btn-admin.dropdown-toggle {
+  border-color: #66c656;
+  border-bottom-color: #66c656;
+}
+.btn-group .btn-admin:active,
+.btn-group .btn-admin.active,
+.input-group-btn .btn-admin:active,
+.input-group-btn .btn-admin.active {
+  border-left-color: #7F7359;
+  border-right-color: #7F7359
+
+/*Codigo de colores de la empresa
+Verde claro 	#66c656
+Marron claro 	#B5AB92
+Marron oscuro 	#7F7359
+Celeste 		#94E2F9
+
+*/
