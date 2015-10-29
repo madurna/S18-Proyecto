@@ -1,11 +1,25 @@
+/*Codigo de colores de la empresa
+Verde claro 	#66c656
+Marron claro 	#B5AB92
+Marron oscuro 	#7F7359
+Celeste 		#94E2F9
+
+*/
+.header_menu_principal {
+	background-color:#7F7359;
+}
+
 .menu_td:active {
-	background-color:#df3823;
+	background-color:#66c656;
 }
 .menu_td:visited {
-	background-color:#df3823;
+	background-color:#85AB92;
 }
 .menu_td:hover {
-	background-color:#df3823;
+	background-color:#B5AB92;
+}
+
+
 }
 .a:link {
 	FONT-SIZE: 10px;
@@ -87,6 +101,17 @@ FORM {
 	FONT-STYLE: normal;
 	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
 }
+
+.blanco-bk-verde{
+	background-color:#66c656;
+	FONT-SIZE: 13px;
+	COLOR:#ffffff;
+}
+.text_footer {
+	background:#000;
+	
+}
+
 
 .titulo_azul_claro {
 	FONT-WEIGHT: normal;
@@ -304,6 +329,52 @@ a.titulodist:link, a.titulodist:visited {
 
 .compras_fila_gris {
 	background-color: gray;
+}
+
+/*Codigo de colores de la empresa
+Verde claro 	#66c656
+Marron claro 	#B5AB92
+Marron oscuro 	#7F7359
+Celeste 		#94E2F9
+
+*/
+.bg-admin-menu {
+  background: #7F7359 !important;
+}
+.bg-admin-menu[href]:hover {
+  background: #94E2F9 !important;
+}
+.bg-admin-menu.darken {
+  background: #B5AB92 !important;
+}
+.bg-admin-menu.darken[href]:hover {
+  background: #B5AB92 !important;
+}
+.bg-admin-menu.darker {
+  background: #B5AB92 !important;
+}
+.bg-admin-menu.darker[href]:hover {
+  background: #B5AB92 !important;
+}
+.bg-admin-menu,
+.bg-admin-menu:hover,
+.bg-admin-menu:focus,
+.bg-admin-menu a,
+.bg-admin-menu a:focus {
+  color: #7F7359;
+  
+}
+.bg-admin-menu a:hover,
+.bg-admin-menu a:active {
+  color: #B5AB92;
+  background: #7F7359;
+}
+.bg-admin-menu[href]:hover,
+.bg-admin-menu [href]:hover {
+  color: #B5AB92;
+}
+.bg-admin-menu * {
+  border-color: #94E2F9;
 }
 	
 /* fin de estilo de cuadros */

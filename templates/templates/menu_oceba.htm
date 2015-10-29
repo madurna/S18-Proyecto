@@ -1,6 +1,6 @@
 <!--DWLayoutTable-->
-<td bgcolor="#b6192a">
-	<table class="table-bordered" width="100%" height="35" cellspacing="2" cellpadding="2" >
+<td class="header_menu_principal">
+	<table width="100%" height="35" cellspacing="2" cellpadding="2" >
 	<tr valign="middle" align="center" > 
 		
 	  {section name=menu loop=$linksMenu} 
@@ -9,12 +9,12 @@
 		  {/if}
 	  {/section}
 				 
-		<td width="18%" align="right" class="dropdown-right btn btn-labeled btn-danger text-left" id="menu30">
+		<td width="18%" align="right" class="dropdown-right btn btn-labeled btn-admin text-left" id="menu30">
 			<a href="#" id="menua12" class="dropdown-toggle user-menu link3" data-toggle="dropdown">
 				<span class="btn-label icon fa fa-align-justify"></span>
 				<span > &nbsp;&nbsp;Bienvenido&nbsp;<b>{$usuario}</b>!</span>
 			</a>
-			<ul class="dropdown-menu bg-danger text-bold no-margin-vr">
+			<ul class="dropdown-menu bg-admin-menu text-bold no-margin-vr">
 				<li><a id="menua12" href="../home/edicion.php"><i class="dropdown-icon fa fa-user"></i>&nbsp;&nbsp;Perfil</a></li>
 				<li class="divider"></li>
 				<li id="menu13"><a id="menua13" onClick="javascript: return confirm('¿Desea salir?')" href="../home/logout.php"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;<b>Cerrar sesi&oacute;n</b></a></li>
@@ -25,7 +25,8 @@
 	</table>
 	<script>
 		var idmenu = {$smarty.session.menu_principal};
-		document.getElementById("menu"+idmenu).style.backgroundColor="#df3823";
+		<!--Color de Fondo del Menu correspondiente a la URI actual
+		document.getElementById("menu"+idmenu).style.backgroundColor="#66c656";
 		document.getElementById("menua"+idmenu).style.fontWeight="bold";
 	</script>
 </td>
