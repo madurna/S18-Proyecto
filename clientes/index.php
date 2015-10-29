@@ -3,7 +3,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	
-	//require_once('clientes.config');
+	require_once('clientes.config');
 	
 	// PEAR
 	require_once ('DB.php');
@@ -162,7 +162,7 @@
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo','Clientes');
 	$tpl->assign('menu', "menu_oceba.htm");	
-	//$tpl->assign('links',$links1);
+	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');	    
     exit;
