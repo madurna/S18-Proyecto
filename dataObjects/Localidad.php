@@ -55,10 +55,10 @@ class DataObjects_Localidad extends DB_DataObject
 		$this -> orderBy('localidad_nombre ASC');
 		//$this -> groupBy('localidad_nombre');
 		$this ->find();
-		$localidad['Todas'] = 'TODAS';
+		$localidad['Todas'] = 'Seleccione una localidad';
 		while($this->fetch()){
 			if($this-> localidad_nombre)
-				$localidad[$this->localidad_id] = $this-> localidad_nombre;
+				$localidad[$this->localidad_id] = utf8_encode($this-> localidad_nombre);
 		}
 	return $localidad;
 	}

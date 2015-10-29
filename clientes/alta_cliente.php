@@ -19,29 +19,20 @@
 		
 	//DB_DataObject::debugLevel(5); 
 	$do_cliente = DB_DataObject::factory('clientes');
-	
-	/*$do_cliente -> fb_fieldsToRender = array (
-    	'cliente_apellido',
-		'cliente_nombre',
-		'cliente_tipo_doc_id',
-		'cliente_nro_doc',
-		'cliente_fecha_nacimiento',
-		'cliente_direccion',
-		'cliente_localidad_id',
-		'cliente_CP',
-		'cliente_CUIL',
-		'cliente_cuenta_bancaria',
-		'cliente_CBU',
-		'cliente_fecha_inicio',
-		'cliente_telefono',
-		'cliente_tel_fijo_celular',
-		'cliente_tel_laboral1',
-		'cliente_tel_laboral2',
-		'cliente_referido1',
-		'cliente_referido2',
-		'cliente_estado_id',		
-    );*/
 
+	//POST
+	$razon_social = $_POST[razon_social];
+	$nombre = $_POST[nombre];
+	$apellido = $_POST[apellido];
+	$domicilio = $_POST[calle].' '.$_POST[numero];
+	$localidad = $_POST[localidad];
+	$dni = $_POST[dni];
+	$telefono = $_POST[telefono];
+	$email = $_POST[email];
+	$observacion = $_POST[observacion];
+
+	
+	
     $frm = new HTML_QuickForm('frm','post',$_SERVER['REQUEST_URI'],'');
     $frm -> addElement('text', 'razon_social', 'Raz&oacute;n Social: ',array('size' => '50', 'style' => 'resize:none;'));
 	$frm -> addElement('text', 'nombre', 'Nombre: ',array('size' => '30', 'style' => 'resize:none;'));
@@ -51,62 +42,41 @@
 	$groupNum[1] =& HTML_QuickForm::createElement('text', 'calle', 'Calle: ',array('id'=>'Calle','onblur'=>'$(this).val($.trim($(this).val()))','size'=>'15','placeholder'=>utf8_encode('Calle'),'title'=>utf8_encode('Calle'), 'class' => 'soloLetras', 'maxlength' => '25'));
 	$groupNum[2] =& HTML_QuickForm::createElement('static','',null,'-');
 	$groupNum[3] =& HTML_QuickForm::createElement('text', 'numero', 'N&uacute;mero: ',array('id'=>'numero','onblur'=>'$(this).val($.trim($(this).val()))','size'=>'6','placeholder'=>'Número','title'=>'Número', 'class' => 'soloNumeros', 'maxlength' => '6'));
-	$frm -> addGroup($groupNum, 'direccion', 'Direcci&oacute;n: ', ' ',false);
+	$frm -> addGroup($groupNum, 'domicilio', 'Domicilio: ', ' ',false);
 	// FIN Direccion
-
-
+print_r($domicilio);
+	//Localidad
+	$do_localidad = DB_DataObject::factory('localidad');
+	$v_localidad = $do_localidad -> get_localidades_todas();
+	$frm ->addElement('select','localidad','Localidad: ',$v_localidad,array('id' => 'localidad'));
 	
 	$frm -> addElement('text', 'dni', 'DNI o Cuil: ',array('size' => '24', 'style' => 'resize:none;'));
 	$frm -> addElement('text', 'telefono', 'Telefono: ',array('size' => '24', 'style' => 'resize:none;'));
 	$frm -> addElement('text', 'email', 'Correo Electr&oacute;nico: ',array('size' => '30', 'style' => 'resize:none;','maxlength' => '50'));
 	$frm -> addElement('textarea','observacion','Observacion: ',array('cols'=>'50','rows'=>'5','style'=>'resize:none;' ));
-		
-	//Creo el formulario en base a la solicitud
-	/*$fb =& DB_DataObject_FormBuilder::create($do_cliente);
-	$frm =& $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
-	$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
-	$frm->setRequiredNote(FRM_NOTA);*/
-
-	//$frm->addFormRule('encuentraRol');
-	//
 	
 	//botones de aceptar , cancelar , limpiar
 	$botones = array();
-	$botones[] = $frm->createElement('submit','aceptar','Guardar');
+	$botones[] = $frm->createElement('submit','aceptar','Cargar');
 	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.location.href='index.php';"));
 	$botones[] = $frm->createElement('reset','restaurar','Limpiar');
 	$frm->addGroup($botones);
 	
 	$error = '';
-	/*if($frm->validate()) {
-		$post = $frm->exportValues();
-		$do_cliente->setFrom($post);
-		
-		$ape=utf8_decode($post['cliente_apellido']);
-		$do_cliente->cliente_apellido=$ape;
-		
-		$nom=utf8_decode($post['cliente_nombre']);
-		$do_cliente->cliente_nombre=$nom;
-		
-		$dir=utf8_decode($post['cliente_direccion']);
-		$do_cliente->cliente_direccion=$dir;
-		
-		$do_cliente->cliente_usuario_id=$_SESSION['usuario']['id'];
-		
-		$fecha = $post['cliente_fecha_inicio'];
-		list($dia,$mes,$anio) = explode("-",$fecha);
-		$fecha_db = $anio.'-'.$mes.'-'.$dia;
-		$do_cliente->cliente_fecha_inicio = $fecha_db;
-		
-		$fecha = $post['cliente_fecha_nacimiento'];
-		list($dia,$mes,$anio) = explode("-",$fecha);
-		$fecha_db = $anio.'-'.$mes.'-'.$dia;
-		$do_cliente->cliente_fecha_nacimiento = $fecha_db;
-		
+	if($frm->validate()) {
+		$do_cliente->cliente_razon_social=$razon_social;
+		$do_cliente->cliente_nombre=$nombre;
+		$do_cliente->cliente_apellido=$apellido;
+		$do_cliente->cliente_domicilio=$domicilio;
+		$do_cliente->cliente_localidad=$localidad;
+		$do_cliente->cliente_dni=$dni;
+		$do_cliente->cliente_telefono=$telefono;
+		$do_cliente->cliente_email=$email;
+		$do_cliente->cliente_observacion=$observacion;
+
 		$do_cliente->query('BEGIN');
-		$id = $do_cliente->insert(); 
+		//$id = $do_cliente->insert(); 
 		
-		//print_r($post);
 		// si se inserto se redirije a index.php, de lo contrario se muestra el error
 		if ($id){
 			$do_cliente->query('COMMIT');	
@@ -115,9 +85,9 @@
 			$do_cliente->query('ROLLBACK');			
 			$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
 		}
-		header('location:index.php');
+		//header('location:index.php');
 		exit;
-	}	*/	
+	}		
 
 	$tpl = new tpl();
 	$titulo_grilla = 'Alta Cliente';
