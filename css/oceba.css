@@ -9,18 +9,20 @@ Celeste 		#94E2F9
 	background-color:#7F7359;
 }
 
-.menu_td:active {
-	background-color:#66c656;
+.menu_td:visited {
+    background-color:#85AB92;
 }
+
 .menu_td:visited {
 	background-color:#85AB92;
 }
-.menu_td:hover {
+.menu_td li:focus {
 	background-color:#B5AB92;
 }
+.menu_td:active {
+     background-color:#66c656;
+ }
 
-
-}
 .a:link {
 	FONT-SIZE: 10px;
 	COLOR: #E47819;
@@ -64,7 +66,7 @@ Celeste 		#94E2F9
 	COLOR: #000000; 
 	TEXT-DECORATION: none
 }
-actvefazul {
+.actvefazul {
 	FONT: bold 10px Verdana, Tahoma, Arial, SansSerif;
 	TEXT-TRANSFORM: none;
 	COLOR: #cccccc;
@@ -107,6 +109,7 @@ FORM {
 	FONT-SIZE: 13px;
 	COLOR:#ffffff;
 }
+
 .text_footer {
 	background:#000;
 	
@@ -120,6 +123,35 @@ FORM {
 	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
 }
 
+.link-menu-btn:link {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    COLOR: #66c656;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.link-menu-btn:active {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    COLOR: #ffffff;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.link-menu-btn:visited {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    COLOR: #ffffff;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.link-menu-btn:hover {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    COLOR: #ffffff;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+
 .link1:link {
 	FONT-WEIGHT: normal;
 	FONT-SIZE: 11px;
@@ -130,7 +162,7 @@ FORM {
 .link1:active {
 	FONT-WEIGHT: normal;
 	FONT-SIZE: 11px;
-	COLOR: #ffffff;
+	COLOR: #7F7359;
 	FONT-STYLE: normal;
 	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
 }
@@ -144,9 +176,16 @@ FORM {
 .link1:hover {
 	FONT-WEIGHT: normal;
 	FONT-SIZE: 11px;
-	COLOR: #ffffff;
+	COLOR: #7F7359;
 	FONT-STYLE: normal;
 	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.link1:focus {
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 11px;
+    COLOR: #7F7359;
+    FONT-STYLE: normal;
+    FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
 }
 
 .link2:link {

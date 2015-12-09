@@ -1,4 +1,4 @@
-<!--DWLayoutTable-->
+<!--DWLayoutTable
 <td class="header_menu_principal">
 	<table width="100%" height="35" cellspacing="2" cellpadding="2" >
 	<tr valign="middle" align="center" > 
@@ -29,4 +29,56 @@
 		document.getElementById("menu"+idmenu).style.backgroundColor="#66c656";
 		document.getElementById("menua"+idmenu).style.fontWeight="bold";
 	</script>
+</td>
+-->
+<td class="header_menu_principal">
+
+        <nav class="navbar " style="margin-bottom:0px"  role="navigation">
+            <!-- El logotipo y el icono que despliega el menú se agrupan
+                 para mostrarlos mejor en los dispositivos móviles -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                    <span class="sr-only"></span>
+                    <span class="icon-bar blanco-bk-verde"></span>
+                    <span class="icon-bar blanco-bk-verde"></span>
+                    <span class="icon-bar blanco-bk-verde"></span>
+                </button>
+                <a class="navbar-brand visible-xs link-menu-btn" style="height: 0px" href="#">Menu</a>
+            </div>
+            <!-- Agrupar los enlaces de navegación, los formularios y cualquier
+               otro elemento que se pueda ocultar al minimizar la barra -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                    <ul class="nav navbar-nav ">
+                        {section name=menu loop=$linksMenu}
+                        {if $linksMenu[menu] != null}
+                        <li width="7%" style="cursor:hand; cursor:pointer;" id="menu{$linksMenu[menu].id}" onClick="javascript:location.href='../{$linksMenu[menu].link}'" title="{$linksMenu[menu].alt}" class="menu_td"><a id="menua{$linksMenu[menu].id}" class="link1" title="{$linksMenu[menu].alt}" href="../{$linksMenu[menu].link}">&nbsp;{$linksMenu[menu].item}&nbsp;</a></li>
+                        {/if}
+                        {/section}
+                    </ul>
+
+                    <ul class="nav navbar-nav">
+                        <li width="18%" align="right" class="dropdown-right btn btn-labeled btn-admin text-left" style="padding:0px" id="menu30">
+                            <a href="#" id="menua12" class="dropdown-toggle user-menu link1" data-toggle="dropdown">
+                                <span class="btn-label icon fa fa-align-justify"></span>
+                                <span > &nbsp;&nbsp;Bienvenido&nbsp;<b>{$usuario}</b>!</span>
+                            </a>
+                            <ul class="dropdown-menu bg-admin-menu text-bold no-margin-vr">
+                                <li><a id="menua12" href="../home/edicion.php"><i class="dropdown-icon fa fa-user"></i>&nbsp;&nbsp;Perfil</a></li>
+                                <li class="divider"></li>
+                                <li id="menu13"><a id="menua13" onClick="javascript: return confirm('¿Desea salir?')" href="../home/logout.php"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;<b>Cerrar sesi&oacute;n</b></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+
+
+                </div>
+        </nav>
+
+    <script>
+        var idmenu = {$smarty.session.menu_principal};
+        <!--Color de Fondo del Menu correspondiente a la URI actual
+        document.getElementById("menu"+idmenu).style.backgroundColor="#66c656";
+        document.getElementById("menua"+idmenu).style.fontWeight="bold";
+    </script>
 </td>
