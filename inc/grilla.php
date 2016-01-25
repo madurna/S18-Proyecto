@@ -7,7 +7,7 @@ class grilla extends Structures_DataGrid {
     {   	
         parent::Structures_DataGrid($limit, $page);
 		
-		$this->renderer->setTableHeaderAttributes(array('align' => 'center', 'text-align' => 'center' ,'bgcolor' => '#b6192a', 'class'=>'tituloLinkGrilla','style'=> '-webkit-border-radius: 3px; border-radius: 3px; '));
+		$this->renderer->setTableHeaderAttributes(array('align' => 'center', 'text-align' => 'center' ,'bgcolor' => '#8F7359', 'class'=>'tituloLinkGrilla','style'=> '-webkit-border-radius: 3px; border-radius: 3px; '));
 
 		$this->renderer->setTableEvenRowAttributes(array('align' => 'center','text-align' => 'center', 'bgcolor' => '#FFFFFF'));
 		$this->renderer->setTableOddRowAttributes(array('align' => 'center', 'text-align' => 'center','bgcolor' => '#EEEEEE')); // 'class'=>'link1

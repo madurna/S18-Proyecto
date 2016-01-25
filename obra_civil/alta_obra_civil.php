@@ -60,7 +60,7 @@
 	}		
 
 	$tpl = new tpl();
-	$titulo_grilla = 'Alta Obra Civil';
+	$titulo_grilla = 'Alta de Planta';
 	$body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
             <div id="contenido"><p>'.$frm->toHtml().'</p></div>';

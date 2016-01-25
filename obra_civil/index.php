@@ -14,7 +14,7 @@
 	require_once(INC_PATH.'/rutinas.php');	
 	require_once(INC_PATH.'/grilla.php');	
 	require_once(AUTHFILE);
-	//$_SESSION['menu_principal'] = 2;
+	$_SESSION['menu_principal'] = 2;
 	//DB_DataObject::debugLevel(5); 
 
 	//creo template
@@ -366,7 +366,7 @@
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION);
 	$tpl->assign('menu', "menu_oceba.htm");	
-	//$tpl->assign('links',$links1);
+	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');	    
 	ob_end_flush();
