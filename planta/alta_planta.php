@@ -4,7 +4,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	// links
-	require_once('../obra_civil/obra_civil.config');
+	require_once('../planta/planta.config');
 	// PEAR
 	require_once ('DB.php');
 	require_once('DB/DataObject/FormBuilder.php');
@@ -13,12 +13,11 @@
 	require_once(INC_PATH.'/comun.php');	
 	require_once(INC_PATH.'/rutinas.php');	
 	require_once(INC_PATH.'/grilla.php');	
-	//require_once(AUTHFILE);
+	require_once(AUTHFILE);
 	$_SESSION['menu_principal'] = 2;
 		
 	//DB_DataObject::debugLevel(5); 
 	$do_planta = DB_DataObject::factory('planta');
-	//$do_obra_civil ->fb_fieldsToRender = array('app_nombre');
 	
 	//Creo el formulario en base a la solicitud
 	$fb =& DB_DataObject_FormBuilder::create($do_planta);
