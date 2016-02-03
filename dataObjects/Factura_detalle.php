@@ -18,9 +18,6 @@ class DataObjects_Factura_detalle extends DB_DataObject
     public $factura_detalle_factura_proveedor_id;    // int(11)  not_null multiple_key group_by
     public $factura_detalle_movimiento_id;    // int(11)  not_null multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Factura_detalle',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

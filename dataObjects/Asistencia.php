@@ -15,9 +15,6 @@ class DataObjects_Asistencia extends DB_DataObject
     public $asistencia_fecha;                // date(10)  not_null
     public $asistencia_obrero_id;            // int(11)  not_null multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Asistencia',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

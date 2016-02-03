@@ -16,9 +16,6 @@ class DataObjects_Obra_civil_hito_tarea extends DB_DataObject
     public $obra_civil_hito_tarea_estado;    // tinyint(1)  not_null group_by
     public $obra_civil_hito_tarea_fecha_finalizacion;    // date(10)  
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Obra_civil_hito_tarea',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

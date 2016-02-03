@@ -14,9 +14,6 @@ class DataObjects_Estado_pedido_compra extends DB_DataObject
     public $estado_pedido_compra_descripcion;    // varchar(50)  not_null
     public $estado_pedido_compra_baja;       // tinyint(1)  not_null group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Estado_pedido_compra',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

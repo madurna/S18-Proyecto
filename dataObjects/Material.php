@@ -15,9 +15,6 @@ class DataObjects_Material extends DB_DataObject
     public $material_descripcion;            // varchar(200)  not_null
     public $material_codigo;                 // int(11)  not_null group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Material',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

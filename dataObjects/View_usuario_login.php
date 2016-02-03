@@ -27,9 +27,6 @@ class DataObjects_View_usuario_login extends DB_DataObject
     public $modpag_id;                       // int(11)  not_null primary_key auto_increment group_by
     public $modpag_scriptname;               // varchar(60)  not_null
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_View_usuario_login',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

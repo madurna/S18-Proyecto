@@ -32,9 +32,6 @@ class DataObjects_Obrero extends DB_DataObject
     public $obrero_sexo_id;                  // int(11)  multiple_key group_by
     public $obrero_estado_civil_id;          // int(11)  multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Obrero',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 

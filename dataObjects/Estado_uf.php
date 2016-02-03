@@ -14,9 +14,6 @@ class DataObjects_Estado_uf extends DB_DataObject
     public $estado_uf_descripcion;           // varchar(50)  not_null
     public $estado_uf_baja;                  // tinyint(4)  not_null group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Estado_uf',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
     public $fb_linkDisplayFields = array('estado_uf_descripcion');

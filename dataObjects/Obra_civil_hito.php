@@ -16,9 +16,6 @@ class DataObjects_Obra_civil_hito extends DB_DataObject
     public $obra_civil_hito_hito_id;         // int(11)  not_null multiple_key group_by
     public $obra_civil_hito_estado;          // tinyint(4)  not_null group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Obra_civil_hito',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

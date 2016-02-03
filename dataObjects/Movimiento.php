@@ -15,9 +15,6 @@ class DataObjects_Movimiento extends DB_DataObject
     public $material_fecha;                  // datetime(19)  not_null
     public $material_monto;                  // float(12)  not_null group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Movimiento',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

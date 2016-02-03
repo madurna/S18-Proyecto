@@ -21,9 +21,6 @@ class DataObjects_Obra_yeseria extends DB_DataObject
     public $obra_yeseria_cliente_id;         // int(11)  multiple_key group_by
     public $obra_yeseria_contrato_id;        // int(11)  group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Obra_yeseria',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

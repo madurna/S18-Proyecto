@@ -19,9 +19,6 @@ class DataObjects_Cuota extends DB_DataObject
     public $cuota_unidad_funcional_id;       // int(11)  not_null multiple_key group_by
     public $cuota_movimiento_id;             // int(11)  not_null multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Cuota',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

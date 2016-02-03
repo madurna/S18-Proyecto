@@ -20,9 +20,6 @@ class DataObjects_Presupuesto extends DB_DataObject
     public $presupuesto_obra_yeseria_id;     // int(11)  not_null multiple_key group_by
     public $presupuesto_cliente_id;          // int(11)  not_null multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Presupuesto',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

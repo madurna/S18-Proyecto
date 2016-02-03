@@ -20,9 +20,6 @@ class DataObjects_Herramienta extends DB_DataObject
     public $herramienta_fecha_ultima_reparacion;    // date(10)  not_null
     public $herramienta_codigo;              // varchar(30)  not_null
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Herramienta',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

@@ -14,9 +14,6 @@ class DataObjects_Tipo_acceso extends DB_DataObject
     public $tipoacc_nombre;                  // varchar(45)  unique_key
     public $tipoacc_baja;                    // tinyint(4)  not_null group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Tipo_acceso',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

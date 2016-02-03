@@ -14,9 +14,6 @@ class DataObjects_Aplicacion extends DB_DataObject
     public $app_nombre;                      // varchar(45)  not_null
     public $app_baja;                        // tinyint(4)  not_null group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Aplicacion',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
     

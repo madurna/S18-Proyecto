@@ -16,9 +16,6 @@ class DataObjects_Pedido_herramienta extends DB_DataObject
     public $pedido_herramienta_herramienta_id;    // int(11)  not_null multiple_key group_by
     public $pedido_herramienta_pedido_id;    // int(11)  not_null multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Pedido_herramienta',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

@@ -18,9 +18,6 @@ class DataObjects_Licencia extends DB_DataObject
     public $licencia_tipo_licencia;          // int(11)  not_null group_by
     public $licencia_obrero_id;              // int(11)  not_null multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Licencia',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

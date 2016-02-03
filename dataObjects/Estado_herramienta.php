@@ -14,9 +14,6 @@ class DataObjects_Estado_herramienta extends DB_DataObject
     public $estado_herramienta_descripcion;    // varchar(200)  not_null
     public $estado_herramienta_nombre;       // varchar(45)  not_null
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Estado_herramienta',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

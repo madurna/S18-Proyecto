@@ -16,9 +16,6 @@ class DataObjects_Factura extends DB_DataObject
     public $factura_numero;                  // int(11)  not_null group_by
     public $factura_cliente_id;              // int(11)  not_null multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Factura',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

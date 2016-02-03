@@ -15,9 +15,6 @@ class DataObjects_Usuario_rol extends DB_DataObject
     public $usrrol_rol_id;                   // int(11)  not_null multiple_key group_by
     public $usrrol_app_id;                   // int(11)  not_null multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Usuario_rol',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
     

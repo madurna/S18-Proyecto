@@ -16,9 +16,6 @@ class DataObjects_Obrero_obra_yeseria extends DB_DataObject
     public $obrero_obra_yeseria_obrero_id;    // int(11)  not_null multiple_key group_by
     public $obrero_obra_yeseria_obra_yeseria_id;    // int(11)  not_null multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Obrero_obra_yeseria',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

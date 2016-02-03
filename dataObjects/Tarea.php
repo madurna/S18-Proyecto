@@ -15,9 +15,6 @@ class DataObjects_Tarea extends DB_DataObject
     public $tarea_peso;                      // int(5)  not_null group_by
     public $tarea_baja;                      // tinyint(1)  not_null group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Tarea',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 

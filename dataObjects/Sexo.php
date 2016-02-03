@@ -13,9 +13,6 @@ class DataObjects_Sexo extends DB_DataObject
     public $sexo_id;                         // int(11)  not_null primary_key auto_increment group_by
     public $sexo_nombre;                     // varchar(200)  not_null
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Sexo',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 	

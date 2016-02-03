@@ -19,9 +19,6 @@ class DataObjects_Usuario extends DB_DataObject
     public $usua_tel2;                       // varchar(45)  
     public $usua_baja;                       // tinyint(1)  not_null group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Usuario',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
     

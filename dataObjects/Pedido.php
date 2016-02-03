@@ -14,9 +14,6 @@ class DataObjects_Pedido extends DB_DataObject
     public $pedido_estado;                   // varchar(45)  not_null
     public $pedido_fecha;                    // datetime(19)  not_null
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Pedido',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

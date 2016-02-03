@@ -17,9 +17,6 @@ class DataObjects_Adjuntos_cliente extends DB_DataObject
     public $adjuntos_cliente_descripcion;    // varchar(300)  not_null
     public $adjuntos_cliente_nombre;         // varchar(300)  not_null
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Adjuntos_cliente',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

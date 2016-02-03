@@ -31,9 +31,6 @@ class DataObjects_Proveedor extends DB_DataObject
     public $proveedor_fecha_nacimiento;      // date(10)  
     public $proveedor_especialidad_proveedor_id;    // int(11)  multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Proveedor',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

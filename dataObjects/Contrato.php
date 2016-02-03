@@ -18,9 +18,6 @@ class DataObjects_Contrato extends DB_DataObject
     public $contrato_monto;                  // double(20)  not_null group_by
     public $contrato_path;                   // varchar(100)  
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Contrato',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

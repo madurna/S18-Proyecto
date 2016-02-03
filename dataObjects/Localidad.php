@@ -13,9 +13,6 @@ class DataObjects_Localidad extends DB_DataObject
     public $localidad_id;                    // int(11)  not_null primary_key group_by
     public $localidad_nombre;                // varchar(255)  
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Localidad',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 	

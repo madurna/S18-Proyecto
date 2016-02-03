@@ -14,9 +14,6 @@ class DataObjects_Orden_compra_herramienta extends DB_DataObject
     public $orden_compra_herramienta_herramineta_id;    // int(11)  not_null multiple_key group_by
     public $orden_compra_herramienta_orden_compra_id;    // int(11)  not_null multiple_key group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Orden_compra_herramienta',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 }

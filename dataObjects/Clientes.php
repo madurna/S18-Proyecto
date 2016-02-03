@@ -25,9 +25,6 @@ class DataObjects_Clientes extends DB_DataObject
     public $cliente_fecha_nacimiento;        // date(10)  
     public $cliente_usuario_id;              // int(11)  group_by
 
-    /* Static get */
-    function staticGet($k,$v=NULL) { return DB_DataObject::staticGet('DataObjects_Clientes',$k,$v); }
-
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 	// Strips the UTF-8 mark: (hex value: EF BB BF)
