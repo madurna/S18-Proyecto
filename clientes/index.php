@@ -50,9 +50,9 @@
 	//documento
 	$frm ->addElement('text','cliente_nro_doc','Documento: ',array('id' => 'cliente_nro_doc', 'value'=>''));
 	//CUIL
-	$frm ->addElement('text','cliente_CUIL','CUIL: ',array('id' => 'cliente_CUIL', 'value'=>''));
+	//$frm ->addElement('text','cliente_CUIL','CUIL: ',array('id' => 'cliente_CUIL', 'value'=>''));
 	//Cuenta Bancaria
-	$frm ->addElement('text','cliente_cuenta_bancaria','Cuenta Bancaria: ',array('id' => 'cliente_cuenta_bancaria', 'value'=>''));
+	//$frm ->addElement('text','cliente_cuenta_bancaria','Cuenta Bancaria: ',array('id' => 'cliente_cuenta_bancaria', 'value'=>''));
 	
 	//provincia y localidad
 	//$frm ->addElement('text','comercializador_nombre','Provincia/Localidad: ',array('id' => 'comercializador_prov_loc', 'value'=>''));
@@ -66,7 +66,7 @@
 	$do_estado->find();
 	$res=$do_estado->getDatabaseResult();
 
-	$element->loadDbResult($res,'descripcion','id');
+	$element->loadDbResult($res,'descripcion','id');print_r($element);
 	
 	//$frm ->addElement('select','cliente_estado_id','Estado: ',$estados,array('id' => 'cliente_estado_id', 'value'=>''));
 	//fecha inicio
@@ -79,12 +79,11 @@
 	$nombre = $_GET['cliente_nombre'];
 	$apellido = utf8_decode($_GET['cliente_apellido']);
 	$documento = $_GET['cliente_nro_doc'];
-	$cuil = $_GET['cliente_CUIL'];
-	$cuenta = $_GET['cliente_cuenta_bancaria'];
-	$reparticion = $_GET['reparticion'];
+	//$cuil = $_GET['cliente_CUIL'];
+	//$cuenta = $_GET['cliente_cuenta_bancaria'];
+	//$reparticion = $_GET['reparticion'];
 	//$prov_loc = $_GET['cliente_prov_loc'];
 	$estado = $_GET['estado'];
-
 	
 	$aceptar = $_GET['aceptar'];
 	
@@ -99,18 +98,18 @@
 			$do_cliente -> whereAdd("cliente_apellido like '%$apellido%'");
 		if ($nombre != '')
 			$do_cliente -> whereAdd("cliente_nombre like '%$nombre%'");
-		if ($cuil != '')
+		/*if ($cuil != '')
 			$do_cliente -> whereAdd("cliente_CUIL like '%$cuil%'");
 		if ($cuenta != '')
 			$do_cliente -> whereAdd("cliente_cuenta_bancaria like '%$cuenta%'"); 
-		/*if ($prov_loc[0] != '')
+		if ($prov_loc[0] != '')
 			$do_cliente -> whereAdd("cliente_provincia like '%$prov_loc[0]%'"); 	
 		if ($prov_loc[1] != '')
 			$do_cliente -> whereAdd("cliente_localidad like '%$prov_loc[1]%'"); */
 		if ($estado != '')
 			$do_cliente -> whereAdd("cliente_estado_id like '%$estado%'");
-		if ($reparticion != '')
-			$do_cliente -> whereAdd("cliente_reparticion_id like '%$reparticion%'"); 
+		/*if ($reparticion != '')
+			$do_cliente -> whereAdd("cliente_reparticion_id like '%$reparticion%'"); */
 			
 	}	
 	$do_cliente -> orderBy('cliente_apellido, cliente_nombre');
@@ -120,14 +119,14 @@
 	$dg->bind($do_cliente);
 	
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">N&uacute;mero</span>','cliente_id',null,array('width' => '10px', 'align' => "center")));
-	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Apellido</span>','cliente_apellido',null,array('width' => '30px', 'align' => "center"), null, 'get_ape()'));
-	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Nombre</span>','cliente_nombre',null,array('width' => '60px', 'align' => "center"), null, 'get_nom()'));
+	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">&nbsp;&nbsp;&nbsp;Apellido&nbsp;&nbsp;&nbsp;</span>','cliente_apellido',null,array('width' => '30px', 'align' => "center"), null, 'get_ape()'));
+	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">&nbsp;&nbsp;&nbsp;Nombre&nbsp;&nbsp;&nbsp;</span>','cliente_nombre',null,array('width' => '60px', 'align' => "center"), null, 'get_nom()'));
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">DNI</span>','cliente_doc_nro',null,array('width' => '20px', 'align' => "center")));
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Provincia</span>','cliente_provincia',null,array('width' => '20px', 'align' => "center")));
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Direcci&oacute;n</span>','cliente_direccion',null,array('width' => '20px', 'align' => "center"), null, 'get_dire()'));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Localidad</span>','cliente_localidad_id',null,array('width' => '20px', 'align' => "center"),null,'get_loca()'));
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Documento</span>','cliente_nro_doc',null,array('width' => '20px', 'align' => "center"),null,'get_doc()'));
-	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">CUIL</span>','cliente_CUIL',null,array('width' => '20px', 'align' => "center")));
+	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">CUIL</span>','cliente_CUIL',null,array('width' => '20px', 'align' => "center")));
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Estado</span>','cliente_estado_id',null,array('width' => '20px', 'align' => "center"),null,'get_estado()'));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Estado</span>','cliente_estado_id',null,array('width' => '20px', 'align' => "center"),null,'get_estado_cliente',array('id' => 'cliente_id')));
 	//FALTAN FECHAS!!

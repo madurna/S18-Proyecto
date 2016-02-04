@@ -11,7 +11,7 @@ class DataObjects_Planta extends DB_DataObject
 
     public $__table = 'planta';              // table name
     public $planta_id;                       // int(11)  not_null primary_key auto_increment group_by
-    public $planta_color;                    // varchar(45)  not_null
+    public $planta_color;                    // varchar(45)  
     public $planta_direccion;                // varchar(45)  not_null
     public $planta_fecha_fin;                // date(10)  not_null
     public $planta_fecha_inicio;             // date(10)  not_null

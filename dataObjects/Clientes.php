@@ -17,63 +17,51 @@ class DataObjects_Clientes extends DB_DataObject
     public $cliente_nro_doc;                 // int(11)  not_null group_by
     public $cliente_direccion;               // varchar(255)  
     public $cliente_localidad_id;            // int(11)  multiple_key group_by
-    public $cliente_CUIL;                    // varchar(255)  
-    public $cliente_CBU;                     // varchar(255)  
     public $cliente_fecha_inicio;            // date(10)  
     public $cliente_telefono;                // varchar(255)  
     public $cliente_estado_id;               // int(11)  multiple_key group_by
     public $cliente_fecha_nacimiento;        // date(10)  
-    public $cliente_usuario_id;              // int(11)  group_by
+    public $cliente_razon_social;            // varchar(45)  
+    public $cliente_observacion;             // varchar(255)  
+    public $cliente_cuenta_corriente;        // int(45)  group_by
+    public $nro_contrato_id;                 // int(11)  group_by
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
 	// Strips the UTF-8 mark: (hex value: EF BB BF)
 	
-	public $fb_linkDisplayFields = array('cliente_apellido');
+	//public $fb_linkDisplayFields = array('cliente_apellido');
 	
 	var $fb_preDefOrder = array(
     	'cliente_apellido',
 		'cliente_nombre',
-		'cliente_CUIL',
+		'cliente_razon_social',
 		'cliente_tipo_doc_id',
 		'cliente_nro_doc',
 		'cliente_fecha_nacimiento',
 		'cliente_direccion',
 		'cliente_localidad_id',
-		'cliente_CP',
-		'cliente_CBU',
-		'cliente_cuenta_bancaria',
 		'cliente_fecha_inicio',
 		'cliente_telefono',
-		'cliente_tel_fijo_celular',
-		'cliente_tel_laboral1',
-		'cliente_tel_laboral2',
-		'cliente_referido1',
-		'cliente_referido2',
-		'cliente_estado_id',		
+		'cliente_cuenta_corriente',
+		'cliente_estado_id',
+		'cliente_observacion'		
     );
 	
 	public $fb_fieldLabels = array (
 		'cliente_apellido' => 'Apellido: ',
 		'cliente_nombre' => 'Nombre: ',
+		'cliente_razon_social' => 'Razon Social: ',
 		'cliente_tipo_doc_id' => 'Tipo Documento: ',
 		'cliente_nro_doc' => 'N&uacute;mero de Documento: ',
 		'cliente_direccion' => 'Domicilio: ',
 		'cliente_localidad_id' => 'Localidad: ',
-		'cliente_CP' => 'C&oacute;digo Postal: ',
-		'cliente_CUIL' => 'CUIL: ',
-		'cliente_cuenta_bancaria' => 'Cuenta Bancaria: ',
-		'cliente_CBU' => 'CBU: ',
+		'cliente_cuenta_corriente' => 'Cuenta Corriente: ',
 		'cliente_fecha_inicio' => 'Fecha de Inicio: ',
 		'cliente_telefono' => 'Telefono: ',
-		'cliente_tel_fijo_celular' => 'Celular: ',
-		'cliente_tel_laboral1' => 'Tel. Laboral 1: ',
-		'cliente_tel_laboral2' => 'Tel. Laboral 2: ',
-		'cliente_referido1' => 'Referido 1: ',
-		'cliente_referido2' => 'Referido 2: ',
 		'cliente_estado_id' => 'Estado: ',
 		'cliente_fecha_nacimiento' => 'Fecha de Nacimiento: ',
-		'cliente_usuario_id' => 'Usuario',
+		'cliente_observacion' => 'Obsevaci&oacute;n: '
     );
 	
 	function preGenerateForm(&$fb) {
@@ -93,25 +81,20 @@ class DataObjects_Clientes extends DB_DataObject
 		$this -> cliente_tipo_doc_id = utf8_encode($this->cliente_tipo_doc_id);
 		//
 		
-		//CUIL
-		$aux =  HTML_QuickForm::createElement('text', 'cliente_CUIL', 'CUIL: ', array('id' => 'cliente_CUIL', 'value' => '', 'size' => '11', 'maxlength' => '11', 'onChange' => 'cargar_dni(this.value)'));
-		$this -> fb_preDefElements['cliente_CUIL'] = $aux;
-		//
-		
 		//numero de documento
-		$aux =  HTML_QuickForm::createElement('text', 'cliente_nro_doc', 'N&uacute;mero de Documento: ', array('id' => 'cliente_nro_doc', 'value' => '', 'size' => '8', 'readonly' => 'readonly'));
+		$aux =  HTML_QuickForm::createElement('text', 'cliente_nro_doc', 'N&uacute;mero de Documento: ', array('id' => 'cliente_nro_doc', 'value' => '', 'size' => '8'));
 		$this -> fb_preDefElements['cliente_nro_doc'] = $aux;
 		//
 		
-		//CBU
-		$aux =  HTML_QuickForm::createElement('text', 'cliente_CBU', 'CBU: ', array('id' => 'cliente_CBU', 'value' => '', 'size' => '25', 'maxlength' => '22', 'onChange' => 'cargar_cuenta(this.value)'));
-		$this -> fb_preDefElements['cliente_CBU'] = $aux;
+		//cuenta corriente
+		$aux =  HTML_QuickForm::createElement('text', 'cliente_cuenta_corriente', 'Cuenta Corriente: ', array('id' => 'cliente_cuenta_corriente', 'value' => '', 'size' => '11', 'maxlength' => '11'));
+		$this -> fb_preDefElements['cliente_cuenta_corriente'] = $aux;
 		//
-		
-		//cuenta bancaria
-		$aux =  HTML_QuickForm::createElement('text', 'cliente_cuenta_bancaria', 'Cuenta Bancaria: ', array('id' => 'cliente_cuenta_bancaria', 'value' => '', 'size' => '11', 'maxlength' => '11', 'readonly' => 'readonly'));
-		$this -> fb_preDefElements['cliente_cuenta_bancaria'] = $aux;
-		//
+
+		//descripcion
+        $aux = HTML_QuickForm::createElement('textarea','cliente_observacion','Obsevaci&oacute;n: ',array('cols'=>'50','rows'=>'5','style'=>'resize:none;' ));
+        $this -> fb_preDefElements['cliente_observacion'] = $aux;
+        //
 		
 		if ($_GET['accion']){
 			$this -> cliente_apellido = utf8_encode($this->cliente_apellido);
@@ -124,10 +107,8 @@ class DataObjects_Clientes extends DB_DataObject
 		
 		$frm-> addElement('html','
 			
-			<link type="text/css" rel="stylesheet" href="css/autocomplete_cliente/jquery-ui-1.8.4.custom.css" />
-			<link type="text/css" rel="stylesheet" href="css/autocomplete_cliente/estilo.css" />
-			<script type="text/javascript" src="js/autocomplete_cliente/jquery-1.4.2.min.js"></script>
-			<script type="text/javascript" src="js/autocomplete_cliente/jquery-ui-1.8.4.custom.min.js"></script>
+			<script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
+            <script type="text/javascript" src="../js/jqueryui/js/jquery-ui-1.8.11.custom.min.js"></script>
 
 			<script type="text/javascript">
 				function trim(str) {
@@ -234,9 +215,9 @@ class DataObjects_Clientes extends DB_DataObject
 			$frm->insertElementBefore($frm-> createElement('html','<tr><td style="text-align:right"><b>N&uacute;mero: </b></td><td>'.$num.'</td></tr>'), 'cliente_apellido');
 			
 			//Agrega Reglas
-			$frm->addRule('cliente_CUIL', 'El CUIL debe tener 11 dígitos', 'minlength', 11, 'client');
-			$frm->addRule('cliente_CBU', 'El CBU debe tener 22 dígitos', 'minlength', 22, 'client');
-			$frm->addRule('cliente_cuenta_bancaria', 'El Nro. de Cuenta debe tener 11 dígitos', 'minlength', 11, 'client');
+			//$frm->addRule('cliente_CUIL', 'El CUIL debe tener 11 dígitos', 'minlength', 11, 'client');
+			//$frm->addRule('cliente_CBU', 'El CBU debe tener 22 dígitos', 'minlength', 22, 'client');
+			$frm->addRule('cliente_cuenta_corriente', 'El Nro. de Cuenta debe tener 11 dígitos', 'minlength', 11, 'client');
 	
 	}
 	

@@ -35,28 +35,20 @@
 	$do_cliente -> fb_fieldsToRender = array (
     	'cliente_apellido',
 		'cliente_nombre',
+		'cliente_razon_social',
 		'cliente_tipo_doc_id',
 		'cliente_nro_doc',
 		'cliente_fecha_nacimiento',
 		'cliente_direccion',
 		'cliente_localidad_id',
-		'cliente_CP',
-		'cliente_CUIL',
-		'cliente_cuenta_bancaria',
-		'cliente_CBU',
 		'cliente_fecha_inicio',
 		'cliente_telefono',
-		'cliente_tel_fijo_celular',
-		'cliente_tel_laboral1',
-		'cliente_tel_laboral2',
-		'cliente_referido1',
-		'cliente_referido2',
-		'cliente_reparticion_id',
-		'cliente_estado_id',		
+		'cliente_cuenta_corriente',
+		'cliente_estado_id',
+		'cliente_observacion'		
     );
 	
-	$do_cliente -> find(true);
-	
+	$do_cliente -> find(true);	
 
 
 	if (!$do_cliente->find(true)) {
@@ -78,7 +70,7 @@
 	
 	$botones = array();
 	//$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	if(!($_GET['obra_civil']))
+	if(!($_GET['planta']))
 		$botones[] = $frm->createElement('button','volver','Volver',array('onClick'=> "javascript: window.location.href='index.php';"));
 	else
 		$botones[] = $frm->createElement('button','volver','Volver',array('onClick'=> "javascript: cerrarDialogo();mostrarDialogo('../unidad_funcional/index.php?contenido=".$_GET['obra_civil']."',750,570)"));

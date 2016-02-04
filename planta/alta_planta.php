@@ -24,8 +24,8 @@
 	$frm =& $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
 	$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
 	$frm->setRequiredNote(FRM_NOTA);
+	$frm -> addElement('text', 'cliente', 'Cliente: ',array('size' => '50', 'style' => 'resize:none;'));
 
-	//$frm->addFormRule('encuentraobra_civil');
 	
 	//botones de aceptar , cancelar , limpiar
 	$botones = array();
