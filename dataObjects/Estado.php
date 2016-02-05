@@ -17,4 +17,16 @@ class DataObjects_Estado extends DB_DataObject
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
     public $fb_linkDisplayFields = array('estado_descripcion');
+
+    function get_estados_todos(){
+		$this -> orderBy('estado_id ASC');
+		$this ->find();
+		$estado['Todos'] = 'Todos';
+		while($this->fetch()){
+			if($this-> estado_descripcion)
+				$estado[$this->estado_id] = utf8_encode($this-> estado_descripcion);
+		}
+	return $estado;
+	}
+
 }

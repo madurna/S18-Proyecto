@@ -1049,15 +1049,15 @@ function get_ejecutar_cliente($vals,$args){
 	extract($args);
 	
 	//ver adjuntos
-	$mostrar = "<a href=adjuntos_cliente.php?contenido={$record[$id]}><i class='fa fa-paperclip text-bg text-danger'></i></a>";
+	$mostrar = "<a title='Adjuntar' href=adjuntos_cliente.php?contenido={$record[$id]}><i class='fa fa-paperclip text-bg'></i></a>";
 	//
 	
 	//ver
-	$mostrar = "&nbsp;&nbsp;<a href=ver_cliente.php?contenido={$record[$id]}&ver=v><i class='fa fa-search text-bg text-danger'></i></a>";
+	$mostrar = $mostrar."&nbsp;&nbsp;<a title='Ver Cliente' href=ver_cliente.php?contenido={$record[$id]}&ver=v><i class='fa fa-search text-bg'></i></a>";
 	//
 	
 	//modificar
-	$mostrar = $mostrar."&nbsp;&nbsp;<a href=modificar_cliente.php?contenido={$record[$id]}&accion=m><i class='fa fa-edit text-bg text-danger'></i></a>";
+	$mostrar = $mostrar."&nbsp;&nbsp;<a title='Modificar Cliente' href=modificar_cliente.php?contenido={$record[$id]}&accion=m><i class='fa fa-edit text-bg'></i></a>";
 	//
 	
 	return $mostrar;
@@ -1068,6 +1068,14 @@ function get_adjuntos_cliente($vals,$args){
 	extract($args);
 	
 	return "<a href=#><i class='fa fa-paperclip text-bg text-danger'></i></a>";
+	
+}
+
+function get_plantas_cliente($vals,$args){
+	extract($vals);
+	extract($args);
+	
+	return "<a href=contratos_plantas.php?contenido={$record[$id]}>Ver<i class='fa fa-industry text-bg'></i></a>";
 	
 }
 /**
