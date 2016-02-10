@@ -1979,9 +1979,44 @@ function get_estado_localidad($vals,$args){
 		return '<img title="Localidad eliminada" src="../img/spirit20_icons/system-red.png">';
 }
 
-	// Dada una fecha en formato DD/MM/AAAA ó DD-MM-AAAA, la retorna en formato ISO AAAAMMDD
-	function fechaISO ($fecha,$separador) {
+// Dada una fecha en formato DD/MM/AAAA ó DD-MM-AAAA, la retorna en formato ISO AAAAMMDD
+function fechaISO ($fecha,$separador) {
+	list($dia, $mes, $anio) = split('[/,-]', $fecha);
+	return $anio.$separador.$mes.$separador.$dia;
+}
+
+function get_contrato_fecha($vals,$args){
+	extract($vals);
+	extract($args);
+	
+	$do_contrato = DB_DataObject::factory('contrato');
+	$do_contrato->get($record['contrato_id']);
+	if ($record['contrato_id']!=null){
+		$fecha = $do_contrato -> contrato_fecha;
 		list($dia, $mes, $anio) = split('[/,-]', $fecha);
-		return $anio.$separador.$mes.$separador.$dia;
-	}
+		return $anio.'/'.$mes.'/'.$dia;
+		
+	}else{
+		return '-';
+	}	
+}
+
+function get_contrato_alta_planta($vals,$args){
+	extract($vals);
+	extract($args);
+	
+	$do_planta = DB_DataObject::factory('planta');
+	$do_planta->get($record['contrato_id']);
+	if ($record['contrato_id']!=null){
+		$fecha = $do_planta -> planta_fecha_alta;
+		list($dia, $mes, $anio) = split('[/,-]', $fecha);
+		if($dia != ''){
+			return $anio.'/'.$mes.'/'.$dia;
+		}
+		
+	}else{
+		return '-';
+	}	
+}
+
 ?>
