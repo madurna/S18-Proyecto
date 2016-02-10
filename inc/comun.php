@@ -1075,7 +1075,7 @@ function get_plantas_cliente($vals,$args){
 	extract($vals);
 	extract($args);
 	
-	return "<a href=contratos_plantas.php?contenido={$record[$id]}>Ver<i class='fa fa-industry text-bg'></i></a>";
+	return "<a href=contratos_plantas.php?contenido={$record[$id]}><i class='fa fa-industry text-bg'></i></a>";
 	
 }
 /**
