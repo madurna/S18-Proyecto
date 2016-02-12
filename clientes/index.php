@@ -105,7 +105,8 @@
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Valor cuota</span>','comercializador_valor_cuota',null,array('width' => '20px', 'align' => "center")));
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Acci&oacute;n</span>',null,null,array('width' => '5%', 'align' => "center"),null,'get_modificar_cliente',array('id' => 'cliente_id')));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">&nbsp;&nbsp;Acci&oacute;n&nbsp;&nbsp;</span>',null,null,array('width' => '20px', 'align' => "center"),null,'get_ejecutar_cliente',array('id' => 'cliente_id')));
-	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Planta</span>',null,null,array('width' => '20px', 'align' => "center"),null,'get_plantas_cliente',array('id' => 'cliente_id')));
+	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Contratos</span>',null,null,array('width' => '20px', 'align' => "center"),null,'get_contratos_cliente',array('id' => 'cliente_id')));
+	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Plantas</span>',null,null,array('width' => '20px', 'align' => "center"),null,'get_plantas_cliente',array('id' => 'cliente_id')));
 	
     //armo template
 	$tpl = new tpl();

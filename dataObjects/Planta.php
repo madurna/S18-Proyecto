@@ -172,4 +172,67 @@ class DataObjects_Planta extends DB_DataObject
             $frm->insertElementBefore($frm-> createElement('html','<tr><td style="text-align:right"><b>N&uacute;mero: </b></td><td>'.$num.'</td></tr>'), 'planta_direccion');
 
     }
+
+    function calcularPorcentaje($obra_civil)
+    {   
+        $do_obra_civil = DB_DataObject::factory('obra_civil');
+    //  $do_obra_civil -> find(true);
+        $do_obra_civil -> whereAdd("obra_civil_id = $obra_civil");
+
+        $do_obra_civil_hito = DB_DataObject::factory('obra_civil_hito');
+
+        //join obra civil
+        $do_obra_civil_hito -> joinAdd($do_obra_civil);
+        $do_obra_civil_hito -> find();
+
+        $i=0;
+        $j=0;
+        while ( $do_obra_civil_hito -> fetch())
+        {
+            if ($do_obra_civil_hito -> obra_civil_hito_estado){
+                $acumulador_hito_final += $do_obra_civil_hito -> obra_civil_hito_peso;
+                $i++;
+            }else{
+                $j++;
+                if (($obra_civil_hito_ant_id != $do_obra_civil_hito -> obra_civil_hito_id)and($j<=1))
+                {
+    
+                    $obra_civil_hito_id =  $do_obra_civil_hito -> obra_civil_hito_id;
+                    $peso_hito = $do_obra_civil_hito -> obra_civil_hito_peso;
+                }
+            }
+            $obra_civil_hito_ant_id = $do_obra_civil_hito -> obra_civil_hito_id;
+            $acumulador_hito_completo += $do_obra_civil_hito -> obra_civil_hito_peso; 
+        }
+
+        $acumulador_hito = $acumulador_hito_final/$acumulador_hito_completo;
+
+        //traigo obra_civil_hito_tarea
+        $do_obra_civil_hito_tarea = DB_DataObject::factory('obra_civil_hito_tarea');
+        $do_obra_civil_hito_tarea -> obra_civil_hito_tarea_obra_civil_hito_id = $obra_civil_hito_id;
+        $do_tarea = DB_DataObject::factory('tarea');
+        $do_obra_civil_hito_tarea -> joinAdd($do_tarea);
+        $do_obra_civil_hito_tarea -> find();
+
+        while ( $do_obra_civil_hito_tarea -> fetch())
+        {
+            if ($do_obra_civil_hito_tarea -> obra_civil_hito_tarea_estado){
+                $acumulador_tarea_final += $do_obra_civil_hito_tarea -> tarea_peso; 
+            }
+
+            $acumulador_tarea_completo += $do_obra_civil_hito_tarea -> tarea_peso; 
+        }
+        $acumulador_tarea = $acumulador_tarea_final/$acumulador_tarea_completo;
+
+        $hito_parcial = $peso_hito / $acumulador_hito_completo;
+
+        $acumulador_hito_parcial = $acumulador_tarea * $hito_parcial;
+
+        $acumulador = $acumulador_hito+$acumulador_hito_parcial;
+
+        $porcentaje =  $acumulador*100;
+        $porcentaje = number_format($porcentaje, 2, ",", ".");
+        $text = $porcentaje.' % ';
+        return $text;
+    }
 }

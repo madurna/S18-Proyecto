@@ -1057,7 +1057,7 @@ function get_ejecutar_cliente($vals,$args){
 	//
 	
 	//modificar
-	$mostrar = $mostrar."&nbsp;&nbsp;<a title='Modificar Cliente' href=modificar_cliente.php?contenido={$record[$id]}&accion=m><i class='fa fa-edit text-bg'></i></a>";
+	$mostrar = $mostrar."&nbsp;&nbsp;<a title='Modificar Cliente' href=modificar_cliente.php?contenido={$record[$id]}&accion=m><i class='fa fa-pencil text-bg'></i></a>";
 	//
 	
 	return $mostrar;
@@ -1071,11 +1071,19 @@ function get_adjuntos_cliente($vals,$args){
 	
 }
 
+function get_contratos_cliente($vals,$args){
+	extract($vals);
+	extract($args);
+	
+	return "<a href=../contratos/contrato.php?contenido={$record[$id]}><i class='fa fa-edit text-bg'></i></a>";
+	
+}
+
 function get_plantas_cliente($vals,$args){
 	extract($vals);
 	extract($args);
 	
-	return "<a href=contratos_plantas.php?contenido={$record[$id]}><i class='fa fa-industry text-bg'></i></a>";
+	return "<a href=../planta/planta.php?contenido={$record[$id]}><i class='fa fa-industry text-bg'></i></a>";
 	
 }
 /**
@@ -2001,7 +2009,7 @@ function get_contrato_fecha($vals,$args){
 	}	
 }
 
-function get_contrato_alta_planta($vals,$args){
+function get_fecha_alta_planta($vals,$args){
 	extract($vals);
 	extract($args);
 	
@@ -2017,6 +2025,16 @@ function get_contrato_alta_planta($vals,$args){
 	}else{
 		return '-';
 	}	
+}
+
+function redireccion_planta($vals,$args){
+	extract($vals);
+	extract($args);
+	
+	$do_planta = DB_DataObject::factory('planta');
+	$prue = $do_planta->get($record['contrato_id']);
+	//print($prue); exit;
+	return "<a href=../planta/alta_planta.php?contenido={$record['contrato_cliente_id']}&contenido1={$record['contrato_id']}&accion=a><i class='fa fa-edit text-bg text-danger'></i></a>";
 }
 
 ?>
