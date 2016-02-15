@@ -1075,7 +1075,15 @@ function get_contratos_cliente($vals,$args){
 	extract($vals);
 	extract($args);
 	
-	return "<a href=../contratos/contrato.php?contenido={$record[$id]}><i class='fa fa-edit text-bg'></i></a>";
+	$do_contrato = DB_DataObject::factory('contrato');
+	$do_contrato -> contrato_cliente_id = $record[$id];
+
+	if($do_contrato->find()){
+		return "<a title='Ver' href=../contratos/contrato.php?contenido={$record[$id]}><i class='fa fa-edit text-bg'></i></a>";
+	}else{
+		return "<i title='Sin Contratos' class='fa fa-edit text-bg text-danger'>";
+	}
+	
 	
 }
 
@@ -1083,8 +1091,14 @@ function get_plantas_cliente($vals,$args){
 	extract($vals);
 	extract($args);
 	
-	return "<a href=../planta/planta.php?contenido={$record[$id]}><i class='fa fa-industry text-bg'></i></a>";
-	
+	$do_planta = DB_DataObject::factory('planta');
+	$do_planta -> planta_cliente_id = $record[$id];
+
+	if($do_planta->find()){
+		return "<a title='Ver' href=../planta/planta.php?contenido={$record[$id]}><i class='fa fa-industry text-bg'></i></a>";
+	}else{
+		return "<i title='Sin Planta' class='fa fa-industry text-bg text-danger'>";
+	}
 }
 /**
  * Retorna el estado del cliente con iconos, indicando si esta activo o no

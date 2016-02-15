@@ -43,6 +43,9 @@
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Planta</span>','contrato_cliente_id',null,array('width' => '330px', 'align' => "center" ),null,'redireccion_planta()'));
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla"></span>',null,null,array('width' => '5%', 'align' => "center"),null,'get_eliminar_pagina',array('id' => 'modpag_id')));
 	
+	//link para agregar una actividad
+    $agregar = '<br><a href="alta_contrato.php?contenido='.$cliente_id.'">[Agregar Contrato]</a>';
+
     //armo template
 	$tpl = new tpl();
 	if ($dg->getRecordCount() > 0 ) {		
@@ -57,7 +60,7 @@
 		$tpl->assign('msg', 'No hay p&aacute;ginas para mostrar.');
 	}
 	
-	$tpl->assign('body', '<h2>Contratos de '.$apellido.' '.$nombre.'</h2><div><br/>'.$salida_grilla.'</div>');
+	$tpl->assign('body', '<h2>Contratos de '.$apellido.' '.$nombre.'</h2><div><br/>'.$agregar.'</div><div><br/>'.$salida_grilla.'</div>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION . ' - P&aacute;ginas');
 	$tpl->assign('menu', "menu_oceba.htm");	
