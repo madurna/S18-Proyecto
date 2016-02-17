@@ -19,6 +19,9 @@ class DataObjects_Planta extends DB_DataObject
     public $planta_estado_id;                // int(11)  not_null multiple_key group_by
     public $planta_localidad_id;             // int(11)  not_null multiple_key group_by
     public $planta_descripcion;              // varchar(200)  
+    public $planta_contrato_id;              // int(11)  group_by
+    public $planta_cliente_id;               // int(11)  group_by
+    public $planta_fecha_alta;               // date(10)  not_null
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE

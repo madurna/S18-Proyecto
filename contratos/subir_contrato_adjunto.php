@@ -109,7 +109,7 @@
 	
 	// Posible cantidad de adjuntos
 	$cantidad_adjuntos = $_POST['hidden_cantidad_adjuntos'];
-	//$cliente_post_id = $_POST['hidden_cliente'];
+	$cliente_post_id = $_POST['hidden_cliente'];
 	
 	//
 	$frm ->addElement('html', '<tr><td colspan=2><br/></td></tr>');
@@ -117,7 +117,7 @@
 	//botones de aceptar , cancelar , limpiar
 	$botones = array();
 	$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.history.back();"));
+	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.location.href='index.php';"));
 	$botones[] = $frm->createElement('reset','restaurar','Limpiar');
 	$frm->addGroup($botones);
 	
@@ -141,7 +141,7 @@
 			if ($file->isValid()) { //print_r('holas');exit;
 				// Creo una carpeta para los adjuntos, si existe al menos uno
 				if ($campo_adjunto == 'adjunto_1'){
-					$carpeta = WWW_PATH.'/contratos/cliente/'.$cliente_id;
+					$carpeta = WWW_PATH.'/contratos/cliente/'.$cliente_post_id;
 					mkdir($carpeta, 0777);
 				}
 				
@@ -152,7 +152,7 @@
 				$nom = str_replace(' ', '_', $nombre);
 	
 				// Ruta del archivo
-				$ruta='../contratos/cliente/'.$cliente_id.'/'.$nom;
+				$ruta='../contratos/cliente/'.$cliente_post_id.'/'.$nom;
 				
 				// Muevo el archivo a la carpeta correspondiente
 				$file->moveTo($carpeta);
@@ -180,7 +180,7 @@
 				$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
 			}
 		}
-		header('Location:contrato.php?contenido='.$cliente_id);
+		header('Location:contrato.php?contenido='.$cliente_post_id);
 		exit;
 	}
 	

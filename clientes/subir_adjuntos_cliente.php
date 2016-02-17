@@ -3,9 +3,6 @@
 	require_once('../config/web.config');
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
-	// Links
-	require_once('clientes.config');
-	//require_once('../configuraciones/configuraciones.config');
 	// PEAR
 	require_once ('DB.php');
 	require_once('DB/DataObject/FormBuilder.php');

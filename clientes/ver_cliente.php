@@ -4,7 +4,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	
-	require_once('clientes.config');
+	//require_once('clientes.config');
 	
 	// PEAR
 	require_once ('DB.php');
@@ -41,14 +41,14 @@
 		'cliente_fecha_nacimiento',
 		'cliente_direccion',
 		'cliente_localidad_id',
+		'cliente_cuenta_corriente',
 		'cliente_fecha_inicio',
 		'cliente_telefono',
-		'cliente_cuenta_corriente',
 		'cliente_estado_id',
 		'cliente_observacion'		
     );
 	
-	$do_cliente -> find(true);	
+	$do_cliente -> find();	
 
 
 	if (!$do_cliente->find(true)) {
@@ -77,7 +77,7 @@
 	//$botones[] = $frm->createElement('reset','restaurar','Restaurar');
 	$frm->addGroup($botones);
 	
-	$frm->freeze();
+	//$frm->freeze();
 	
 	// Si el formulado fue enviado y validado realizo la modificacion
 	/*if($frm->validate()){
@@ -131,7 +131,7 @@
 	    $tpl->assign('menu','menu_oceba.htm');
 		$tpl->assign('webTitulo', WEB_TITULO);
 		$tpl->assign('secTitulo', WEB_SECCION . ' - Ver cliente');
-		$tpl->assign('links',$links1);
+		//$tpl->assign('links',$links1);
 		$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 		$tpl->display('index.htm');
 	}else{

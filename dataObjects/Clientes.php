@@ -136,7 +136,7 @@ class DataObjects_Clientes extends DB_DataObject
 						yearSuffix: "",
 						changeMonth: true,
 						changeYear: true,
-						yearRange:"1920:+2",
+						yearRange:"1920:2015",
 						showOn: "button",
 						buttonImageOnly: true,
 						buttonImage: "../img/spirit20_icons/calendar.png"
@@ -165,7 +165,7 @@ class DataObjects_Clientes extends DB_DataObject
 			
 			//$frm->addRule('cliente_cuil', 'El CUIL debe tener 11 digitos', 'minlength', 11, 'client');
 			//modificacion-eliminacion
-			if ($_GET['accion']){
+			if ($_GET['accion']){ print_r($_GET['ver']);
 				$fecha_inicio = fechaAntiISO($this -> cliente_fecha_inicio);
 				$fecha_nacimiento = fechaAntiISO($this -> cliente_fecha_nacimiento);
 				

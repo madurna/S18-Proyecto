@@ -1081,7 +1081,7 @@ function get_contratos_cliente($vals,$args){
 	if($do_contrato->find()){
 		return "<a title='Ver' href=../contratos/contrato.php?contenido={$record[$id]}><i class='fa fa-edit text-bg'></i></a>";
 	}else{
-		return "<i title='Sin Contratos' class='fa fa-edit text-bg text-danger'>";
+		return "<a title='Ver' href=../contratos/alta_contrato.php?contenido={$record[$id]}><i title='Sin Contratos' class='fa fa-edit text-bg text-danger'></i></a>";
 	}
 	
 	
@@ -1343,6 +1343,7 @@ function fechaAntiISO($date) {
 		$date2 = DB_DataObject_FormBuilder::_date2array($date);
 		if (strlen($date2['d']) == 1) $date2['d'] = '0'.$date2['d'];
 		if (strlen($date2['m']) == 1) $date2['m'] = '0'.$date2['m'];
+		if (strlen($date2['Y']) == 1) $date2['Y'] = '0'.$date2['Y'];
 		if ($date2['d'])
 			return "{$date2['d']}-{$date2['m']}-{$date2['Y']}";
 		else

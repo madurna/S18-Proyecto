@@ -4,7 +4,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	
-	require_once('clientes.config');
+	//require_once('clientes.config');
 	
 	// PEAR
 	require_once ('DB.php');
@@ -20,8 +20,6 @@
 	
 	$_SESSION['menu_principal'] = 8;
 	
-	//print_r($_SESSION['usuario']['id']);
-	
 	//DB_DataObject::debugLevel(5); 
 	
 	//recupero el id del cliente a modificar
@@ -30,29 +28,21 @@
 	//recupero el nombre que tenia originalmente en la base
 	$do_cliente = DB_DataObject::factory('clientes');
 	$do_cliente -> cliente_id = $cliente_id;
-	//$do_cliente -> fb_fieldsToRender = array('cliente_apellido, cliente_nombre, cliente_documento');	
 	
 	$do_cliente -> fb_fieldsToRender = array (
     	'cliente_apellido',
 		'cliente_nombre',
+		'cliente_razon_social',
 		'cliente_tipo_doc_id',
 		'cliente_nro_doc',
 		'cliente_fecha_nacimiento',
+		'cliente_fecha_inicio',
 		'cliente_direccion',
 		'cliente_localidad_id',
-		'cliente_CP',
-		'cliente_CUIL',
-		'cliente_cuenta_bancaria',
-		'cliente_CBU',
-		'cliente_fecha_inicio',
+		'cliente_cuenta_corriente',
 		'cliente_telefono',
-		'cliente_tel_fijo_celular',
-		'cliente_tel_laboral1',
-		'cliente_tel_laboral2',
-		'cliente_referido1',
-		'cliente_referido2',
-		'cliente_reparticion_id',
-		'cliente_estado_id',		
+		'cliente_estado_id',
+		'cliente_observacion'
     );
 	
 	$do_cliente -> find(true);
@@ -131,7 +121,7 @@
     $tpl->assign('menu','menu_oceba.htm');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION . ' - Modificar cliente');
-	$tpl->assign('links',$links1);
+	//$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');
 	ob_end_flush();
