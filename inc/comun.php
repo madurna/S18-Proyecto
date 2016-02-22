@@ -1081,7 +1081,7 @@ function get_contratos_cliente($vals,$args){
 	if($do_contrato->find()){
 		return "<a title='Ver' href=../contratos/contrato.php?contenido={$record[$id]}><i class='fa fa-edit text-bg'></i></a>";
 	}else{
-		return "<a title='Ver' href=../contratos/alta_contrato.php?contenido={$record[$id]}><i title='Sin Contratos' class='fa fa-edit text-bg text-danger'></i></a>";
+		return "<a title='Ver' href=../contratos/alta_contrato.php?contenido={$record[$id]}><i title='Agregar' class='fa fa-edit text-bg text-danger'></i></a>";
 	}
 	
 	
@@ -1098,6 +1098,20 @@ function get_plantas_cliente($vals,$args){
 		return "<a title='Ver' href=../planta/planta.php?contenido={$record[$id]}><i class='fa fa-industry text-bg'></i></a>";
 	}else{
 		return "<i title='Sin Planta' class='fa fa-industry text-bg text-danger'>";
+	}
+}
+
+function get_contrato_planta($vals,$args){
+	extract($vals);
+	extract($args);
+	
+	$do_planta = DB_DataObject::factory('planta');
+	$do_planta -> planta_contrato_id = $record[contrato_id];
+
+	if($do_planta->find()){
+		return "<a title='Ver' href=../planta/ver_planta.php?contenido={$record[contrato_id]}><i class='fa fa-industry text-bg'></i></a>";
+	}else{
+		return "<a title='Crear' href=../planta/alta_planta.php?contenido={$record[$id]}&cliente={$record[$cliente]}><i class='fa fa-industry text-bg text-primary'></i></a>";
 	}
 }
 /**

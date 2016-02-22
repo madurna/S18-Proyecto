@@ -10,16 +10,16 @@ class DataObjects_Obra_civil extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'obra_civil';          // table name
-    public $obra_civil_id;                   // int(11)  not_null primary_key auto_increment group_by
-    public $obra_civil_cantidad_pisos;       // int(11)  not_null group_by
-    public $obra_civil_direccion;            // varchar(45)  not_null
-    public $obra_civil_fecha_fin;            // date(10)  not_null
-    public $obra_civil_fecha_inicio;         // date(10)  not_null
-    public $obra_civil_dimensiones_terreno;    // varchar(45)  not_null
-    public $obra_civil_valor_compra;         // float(12)  not_null group_by
-    public $obra_civil_estado_id;            // int(11)  not_null multiple_key group_by
-    public $obra_civil_localidad_id;         // int(11)  not_null multiple_key group_by
-    public $obra_civil_descripcion;          // varchar(200)  not_null
+    public $obra_civil_id;                  // int(11) not_null primary_key auto_increment group_by
+    public $obra_civil_cantidad_pisos;      // int(11) not_null group_by
+    public $obra_civil_direccion;           // varchar(45) not_null
+    public $obra_civil_fecha_fin;           // date(10) not_null
+    public $obra_civil_fecha_inicio;        // date(10) not_null
+    public $obra_civil_dimensiones_terreno;   // varchar(45) not_null
+    public $obra_civil_valor_compra;        // float(12) not_null group_by
+    public $obra_civil_estado_id;           // int(11) not_null multiple_key group_by
+    public $obra_civil_localidad_id;        // int(11) not_null multiple_key group_by
+    public $obra_civil_descripcion;         // varchar(200) not_null
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE

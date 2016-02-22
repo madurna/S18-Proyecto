@@ -10,11 +10,11 @@ class DataObjects_Pedido_herramienta extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'pedido_herramienta';    // table name
-    public $pedido_herramienta_id;           // int(11)  not_null primary_key auto_increment group_by
-    public $pedido_herramienta_cantidad;     // int(11)  not_null group_by
-    public $pedido_herramienta_descripcion;    // varchar(200)  not_null
-    public $pedido_herramienta_herramienta_id;    // int(11)  not_null multiple_key group_by
-    public $pedido_herramienta_pedido_id;    // int(11)  not_null multiple_key group_by
+    public $pedido_herramienta_id;          // int(11) not_null primary_key auto_increment group_by
+    public $pedido_herramienta_cantidad;    // int(11) not_null group_by
+    public $pedido_herramienta_descripcion;   // varchar(200) not_null
+    public $pedido_herramienta_herramienta_id;   // int(11) not_null multiple_key group_by
+    public $pedido_herramienta_pedido_id;   // int(11) not_null multiple_key group_by
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE

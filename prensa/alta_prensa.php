@@ -4,7 +4,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	// links
-	require_once('../planta/planta.config');
+	//require_once('../planta/planta.config');
 	// PEAR
 	require_once ('DB.php');
 	require_once('DB/DataObject/FormBuilder.php');
@@ -17,45 +17,30 @@
 	$_SESSION['menu_principal'] = 2;
 
 	//traido id del modulo pasado por GET
-	$contrato_get = $_GET['contenido'];
-	$cliente_get = $_GET['cliente'];
+	$planta_id = $_GET['contenido'];
+	//$cliente_get = $_GET['cliente'];
 		
 	//DB_DataObject::debugLevel(5); 
-	$do_planta = DB_DataObject::factory('planta');
+	$do_prensa = DB_DataObject::factory('prensa');
 
-	$do_planta -> fb_fieldsToRender = array (
-    	'planta_direccion',
-        'planta_fecha_inicio',
-        'planta_fecha_fin',
-        'planta_precio_estimado',
-        'planta_color',
-        'planta_estado_id',
-        'planta_localidad_id',
-        'planta_descripcion'		
+	$do_prensa -> fb_fieldsToRender = array (
+    	'prensa_motor',
+        'prensa_plano',
+        'prensa_alto',
+        'prensa_ancho',
+        'prensa_bomba',
+        'prensa_cilindro',
+        'prensa_comando',
+        'prensa_fondo',
+        'prensa_kilajeMax'
     );
 	
 	//Creo el formulario en base a la solicitud
-	$fb =& DB_DataObject_FormBuilder::create($do_planta);
+	$fb =& DB_DataObject_FormBuilder::create($do_prensa);
 	$frm =& $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
 	$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
 	$frm->setRequiredNote(FRM_NOTA);
 
-	
-	$do_cliente = DB_DataObject::factory('clientes');
-	$do_cliente -> orderBy('cliente_apellido');
-	$do_cliente -> find();
-
-	$clientes_v = [];
- 	while($do_cliente -> fetch()){
- 		$clientes_v[ $do_cliente->cliente_id ] = utf8_encode($do_cliente -> cliente_apellido).' '. utf8_encode($do_cliente -> cliente_nombre);
-	}
-
-	if($cliente_get == ''){
-		$frm -> addElement('select', 'cliente', 'Cliente: ',$clientes_v, array('id' => 'cliente'));
-	}else{
-		$frm -> addElement('text', 'cliente', 'Cliente: ',array('id'=>'cliente','size'=>'30','value'=>$clientes_v[ $cliente_get ],'readonly'=>'readonly'));
-	}
-	
 	//botones de aceptar , cancelar , limpiar
 	$botones = array();
 	$botones[] = $frm->createElement('submit','aceptar','Guardar');
@@ -66,34 +51,25 @@
 	$error = '';
 	if($frm->validate()) {
 		$post = $frm->exportValues();
-		$do_planta->setFrom($post);
-		$fecha_fin = $post['planta_fecha_fin']; //print_r($fecha_fin);exit;
-		$fecha_inicio =$post['planta_fecha_inicio'];
-		$do_planta-> planta_fecha_fin = $fecha_fin;
-		$do_planta-> planta_fecha_inicio = $fecha_inicio;
-		$do_planta-> planta_contrato_id = $contrato_get;
-		$do_planta-> planta_cliente_id = $cliente_get; 
-		$do_planta->query('BEGIN');
-		$id = $do_planta->insert(); 
+		$do_prensa->setFrom($post);
+		$do_prensa->query('BEGIN');
+		$id = $do_prensa->insert(); 
 		
 		// si se inserto se redirije a index.php, de lo contrario se muestra el error
 		if ($id){
-			$do_planta->query('COMMIT');
-			header('location:alta_planta_pieza.php?contenido='.$contrato_get.'&cliente='.$cliente_get);
-			ob_end_flush();
-			exit;	
+			$do_prensa->query('COMMIT');	
 		}
 		else{
-			$do_planta->query('ROLLBACK');			
+			$do_prensa->query('ROLLBACK');			
 			$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
 		}
-		/*header('location:index.php');
+		header('location:index.php');
 		ob_end_flush();
-		exit;*/
+		exit;
 	}		
 
 	$tpl = new tpl();
-	$titulo_grilla = 'Alta de Planta';
+	$titulo_grilla = 'Alta Prensa';
 	$body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
             <div id="contenido"><p>'.$frm->toHtml().'</p></div>';
@@ -101,7 +77,7 @@
     $tpl->assign('menu','menu_oceba.htm');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION);
-	$tpl->assign('links',$links1);
+	//$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');
 	ob_end_flush();

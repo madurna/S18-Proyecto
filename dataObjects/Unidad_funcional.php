@@ -10,17 +10,17 @@ class DataObjects_Unidad_funcional extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'unidad_funcional';    // table name
-    public $unidad_funcional_id;             // int(11)  not_null primary_key auto_increment group_by
-    public $unidad_funcional_obra_civil_id;    // int(11)  not_null multiple_key group_by
-    public $unidad_funcional_cantidad_ambientes;    // int(11)  not_null group_by
-    public $unidad_funcional_coeficiente;    // double(5)  not_null group_by
-    public $unidad_funcional_departamento;    // varchar(50)  not_null
-    public $unidad_funcional_estado_uf_id;    // int(11)  not_null multiple_key group_by
-    public $unidad_funcional_dimensiones;    // varchar(100)  not_null
-    public $unidad_funcional_monto;          // double(20)  not_null group_by
-    public $unidad_funcional_observacion;    // varchar(255)  not_null
-    public $unidad_funcional_piso;           // varchar(50)  not_null
-    public $unidad_funcional_cliente_id;     // int(11)  multiple_key group_by
+    public $unidad_funcional_id;            // int(11) not_null primary_key auto_increment group_by
+    public $unidad_funcional_obra_civil_id;   // int(11) not_null multiple_key group_by
+    public $unidad_funcional_cantidad_ambientes;   // int(11) not_null group_by
+    public $unidad_funcional_coeficiente;   // double(5) not_null group_by
+    public $unidad_funcional_departamento;   // varchar(50) not_null
+    public $unidad_funcional_estado_uf_id;   // int(11) not_null multiple_key group_by
+    public $unidad_funcional_dimensiones;   // varchar(100) not_null
+    public $unidad_funcional_monto;         // double(20) not_null group_by
+    public $unidad_funcional_observacion;   // varchar(255) not_null
+    public $unidad_funcional_piso;          // varchar(50) not_null
+    public $unidad_funcional_cliente_id;    // int(11) multiple_key group_by
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE

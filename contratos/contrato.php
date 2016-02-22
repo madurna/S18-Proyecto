@@ -4,7 +4,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	// links
-	require_once('../seguridad/seguridad.config');
+	//require_once('../seguridad/seguridad.config');
 	// PEAR
 	require_once ('DB.php');
 	require_once('DB/DataObject/FormBuilder.php');
@@ -38,6 +38,8 @@
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Bibliorato</span>','contrato_bibliorato',null,array('width' => '330px%', 'align' => "center")));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">N&uacute;mero Caja</span>','contrato_caja_numero',null,array('width' => '330px%', 'align' => "center")));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Contrato Monto</span>','contrato_monto',null,array('width' => '330px', 'align' => "center" )));
+	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Planta</span>','',null,array('width' => '20px', 'align' => "center"),null,'get_contrato_planta',array('id' => 'contrato_id', 'cliente' => 'contrato_cliente_id')));
+	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Acci&oacute;n</span>','',null,array('width' => '330px', 'align' => "center" ),null,'get_editar_pagina',array('id' => 'modpag_id')));
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla"></span>','',null,array('width' => '330px', 'align' => "center" ),null));
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Fecha Alta Planta</span>','contrato_id',null,array('width' => '20px', 'align' => "center"),null,'get_fecha_alta_planta()'));
 	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Planta</span>','contrato_cliente_id',null,array('width' => '330px', 'align' => "center" ),null,'redireccion_planta()'));
@@ -62,7 +64,7 @@
 	
 	$tpl->assign('body', '<h2>Contratos de '.$apellido.' '.$nombre.'</h2><div><br/>'.$agregar.'</div><div><br/>'.$salida_grilla.'</div>');
 	$tpl->assign('webTitulo', WEB_TITULO);
-	$tpl->assign('secTitulo', WEB_SECCION . ' - P&aacute;ginas');
+	$tpl->assign('secTitulo', WEB_SECCION . ' - Contratos');
 	$tpl->assign('menu', "menu_oceba.htm");	
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');

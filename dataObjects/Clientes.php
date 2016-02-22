@@ -10,21 +10,21 @@ class DataObjects_Clientes extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'clientes';            // table name
-    public $cliente_id;                      // int(11)  not_null primary_key auto_increment group_by
-    public $cliente_apellido;                // varchar(255)  not_null
-    public $cliente_nombre;                  // varchar(255)  not_null
-    public $cliente_tipo_doc_id;             // int(11)  not_null multiple_key group_by
-    public $cliente_nro_doc;                 // int(11)  not_null group_by
-    public $cliente_direccion;               // varchar(255)  
-    public $cliente_localidad_id;            // int(11)  multiple_key group_by
-    public $cliente_fecha_inicio;            // date(10)  
-    public $cliente_telefono;                // varchar(255)  
-    public $cliente_estado_id;               // int(11)  multiple_key group_by
-    public $cliente_fecha_nacimiento;        // date(10)  
-    public $cliente_razon_social;            // varchar(45)  
-    public $cliente_observacion;             // varchar(255)  
-    public $cliente_cuenta_corriente;        // int(45)  group_by
-    public $nro_contrato_id;                 // int(11)  group_by
+    public $cliente_id;                     // int(11) not_null primary_key auto_increment group_by
+    public $cliente_apellido;               // varchar(255) not_null
+    public $cliente_nombre;                 // varchar(255) not_null
+    public $cliente_tipo_doc_id;            // int(11) not_null multiple_key group_by
+    public $cliente_nro_doc;                // int(11) not_null group_by
+    public $cliente_direccion;              // varchar(255)
+    public $cliente_localidad_id;           // int(11) multiple_key group_by
+    public $cliente_fecha_inicio;           // date(10)
+    public $cliente_telefono;               // varchar(255)
+    public $cliente_estado_id;              // int(11) multiple_key group_by
+    public $cliente_fecha_nacimiento;       // date(10)
+    public $cliente_razon_social;           // varchar(45)
+    public $cliente_observacion;            // varchar(255)
+    public $cliente_cuenta_corriente;       // int(45) group_by
+    public $nro_contrato_id;                // int(11) group_by
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE

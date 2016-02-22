@@ -10,8 +10,8 @@ class DataObjects_Tipo_adjunto extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'tipo_adjunto';        // table name
-    public $tipo_adjunto_id;                 // int(11)  not_null primary_key auto_increment group_by
-    public $tipo_adjunto_nombre;             // varchar(45)  not_null
+    public $tipo_adjunto_id;                // int(11) not_null primary_key auto_increment group_by
+    public $tipo_adjunto_nombre;            // varchar(45) not_null
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE

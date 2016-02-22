@@ -10,8 +10,8 @@ class DataObjects_Localidad extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'localidad';           // table name
-    public $localidad_id;                    // int(11)  not_null primary_key group_by
-    public $localidad_nombre;                // varchar(255)  
+    public $localidad_id;                   // int(11) not_null primary_key group_by
+    public $localidad_nombre;               // varchar(255)
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
