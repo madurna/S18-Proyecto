@@ -19,158 +19,7 @@
 
 	//creo template
 	$tpl = new tpl();
-	//
-	function calcularPorcentaje($obra_civil)
-	{	
-		$do_obra_civil = DB_DataObject::factory('obra_civil');
-	//	$do_obra_civil -> find(true);
-		$do_obra_civil -> whereAdd("obra_civil_id = $obra_civil");
-
-		$do_obra_civil_hito = DB_DataObject::factory('obra_civil_hito');
-
-		//join obra civil
-		$do_obra_civil_hito -> joinAdd($do_obra_civil);
-		$do_obra_civil_hito -> find();
-
-		$i=0;
-		$j=0;
-		while ( $do_obra_civil_hito -> fetch())
-		{
-			if ($do_obra_civil_hito -> obra_civil_hito_estado){
-				$acumulador_hito_final += $do_obra_civil_hito -> obra_civil_hito_peso;
-				$i++;
-			}else{
-				$j++;
-				if (($obra_civil_hito_ant_id != $do_obra_civil_hito -> obra_civil_hito_id)and($j<=1))
-				{
 	
-					$obra_civil_hito_id =  $do_obra_civil_hito -> obra_civil_hito_id;
-					$peso_hito = $do_obra_civil_hito -> obra_civil_hito_peso;
-				}
-			}
-			$obra_civil_hito_ant_id = $do_obra_civil_hito -> obra_civil_hito_id;
-			$acumulador_hito_completo += $do_obra_civil_hito -> obra_civil_hito_peso; 
-		}
-
-		$acumulador_hito = $acumulador_hito_final/$acumulador_hito_completo;
-
-		//traigo obra_civil_hito_tarea
-		$do_obra_civil_hito_tarea = DB_DataObject::factory('obra_civil_hito_tarea');
-		$do_obra_civil_hito_tarea -> obra_civil_hito_tarea_obra_civil_hito_id = $obra_civil_hito_id;
-		$do_tarea = DB_DataObject::factory('tarea');
-		$do_obra_civil_hito_tarea -> joinAdd($do_tarea);
-		$do_obra_civil_hito_tarea -> find();
-
-		while ( $do_obra_civil_hito_tarea -> fetch())
-		{
-			if ($do_obra_civil_hito_tarea -> obra_civil_hito_tarea_estado){
-				$acumulador_tarea_final += $do_obra_civil_hito_tarea -> tarea_peso; 
-			}
-
-			$acumulador_tarea_completo += $do_obra_civil_hito_tarea -> tarea_peso; 
-		}
-		$acumulador_tarea = $acumulador_tarea_final/$acumulador_tarea_completo;
-
-		$hito_parcial = $peso_hito / $acumulador_hito_completo;
-
-		$acumulador_hito_parcial = $acumulador_tarea * $hito_parcial;
-
-		$acumulador = $acumulador_hito+$acumulador_hito_parcial;
-
-		$porcentaje =  $acumulador*100;
-		$porcentaje = number_format($porcentaje, 2, ",", ".");
-		$text = $porcentaje.' % ';
-		return $text;
-	}
-	//falta actualizar el estado del hito cuando terminen todas las tareas
-	if($_POST['tarea'])
-	{
-		foreach ($_POST['tarea'] as $value)
-		{
-			$do_obra_civil_hito_tarea = DB_DataObject::factory('obra_civil_hito_tarea');
-			$do_obra_civil_hito_tarea -> obra_civil_hito_tarea_id = $value;
-			if($do_obra_civil_hito_tarea -> find(true))
-			{
-				$do_obra_civil_hito_tarea -> obra_civil_hito_tarea_estado = 1;
-				$do_obra_civil_hito_tarea -> obra_civil_hito_tarea_fecha_finalizacion = date('Y-m-d');
-				$do_obra_civil_hito_tarea -> update();
-			}
-		}
-
-		foreach ($_POST['obra_civil_hito_id'] as $value2)
-		{
-			//print($value2);
-
-			$llave = 0;
-			$do_obra_civil_hito_tarea = DB_DataObject::factory('obra_civil_hito_tarea');
-			$do_obra_civil_hito_tarea -> obra_civil_hito_tarea_obra_civil_hito_id = $value2;
-			$do_obra_civil_hito_tarea -> find();
-			while ( $do_obra_civil_hito_tarea -> fetch())
-				{
-					if ($do_obra_civil_hito_tarea -> obra_civil_hito_tarea_estado == 0 ) 
-					{
-						$llave = 1;
-					}
-				}
-
-			//print($llave);
-			
-			if ($llave == 0)
-			{
-				
-				$do_obra_civil_hito = DB_DataObject::factory('obra_civil_hito');
-				$do_obra_civil_hito -> obra_civil_hito_id = $value2;
-				if($do_obra_civil_hito -> find(true))
-				{
-					$do_obra_civil_hito -> obra_civil_hito_estado = 1;
-					$do_obra_civil_hito -> update();
-				}
-			}
-
-		}
-
-	}
-
-	if($_POST['obra_civil'])
-	{
-		//print_r($_POST);exit;
-		foreach ($_POST['hito'] as $value)
-		{
-			//traigo avance
-			$do_obra_civil_hito_buscar = DB_DataObject::factory('obra_civil_hito');
-			$do_obra_civil_hito_buscar -> obra_civil_hito_obra_civil_id = $_POST['obra_civil'];
-			$do_obra_civil_hito_buscar -> obra_civil_hito_hito_id = $value;
-			
-			if(!($do_obra_civil_hito_buscar -> find(true))){
-				$do_obra_civil_hito = DB_DataObject::factory('obra_civil_hito');
-				$do_obra_civil_hito -> obra_civil_hito_peso = $_POST['peso_'.$value];
-				$do_obra_civil_hito -> obra_civil_hito_obra_civil_id = $_POST['obra_civil'];
-				$do_obra_civil_hito -> obra_civil_hito_hito_id = $value;
-				$do_obra_civil_hito -> obra_civil_hito_estado = 0;
-				$id = $do_obra_civil_hito -> insert();
-
-				if($id)
-				{
-					$do_tarea_hito = DB_DataObject::factory('tarea_hito');
-					$do_tarea_hito -> tarea_hito_hito_id = $value;
-					$do_tarea_hito -> find();
-
-					while ($do_tarea_hito -> fetch())
-					{
-						$do_obra_civil_hito_tarea = DB_DataObject::factory('obra_civil_hito_tarea');
-						$do_obra_civil_hito_tarea -> obra_civil_hito_tarea_obra_civil_hito_id = $id;
-						$do_obra_civil_hito_tarea -> obra_civil_hito_tarea_tarea_id = $do_tarea_hito -> tarea_hito_tarea_id;
-						$do_obra_civil_hito_tarea -> obra_civil_hito_tarea_estado = 0;
-						$do_obra_civil_hito_tarea -> insert();
-					}
-
-				}
-
-			}
-		}
-	}
-
-
 	//arreglos
 	$do_localidad = DB_DataObject::factory('localidad');
 	$v_localidad = $do_localidad -> get_localidades_todas();
@@ -232,7 +81,7 @@
 	$columnas[5] = '<font size="1px" color="#FFFFFF">Fecha fin</font>';
 	$columnas[6] = '<font size="1px" color="#FFFFFF">Valor Planta</font>';
 	$columnas[7] = '<font size="1px" color="#FFFFFF">Estado</font>';
-	$columnas[8] = '<font size="1px" color="#FFFFFF">Avance</font>';
+	$columnas[8] = '<font size="1px" color="#FFFFFF">Piezas</font>';
 	$columnas[11] = '<font size="1px" color="#FFFFFF">Empleados</font>';
 	$columnas[12] = '<font size="1px" color="#FFFFFF">Acci&oacute;n</font>';
 	$i = -1;
@@ -252,16 +101,9 @@
 		if ($do_planta -> planta_estado_id == 1)
 			$estado_mostrar='<img title="En proceso" src="../img/spirit20_icons/system-tick-alt-02.png">';
 		$matriz[$i][7] = '<center>'.$estado_mostrar.'</center>';
-		$onClick = "javascript: mostrarDialogo('finalizar_tarea.php?contenido=".$do_planta -> planta_id."',750,550)";
-		$onClick_hito = "javascript: mostrarDialogo('configurar_hitos.php?contenido=".$do_planta -> planta_id."',380,450)";
 		$matriz[$i][8] = '
-		<center><b>'.calcularPorcentaje($do_planta -> planta_id).'</b>&nbsp;
-			<a href="#" onClick="'.$onClick.'"><i title="Ver Avances" class="fa fa-search text-bg text-danger"></i>
-			&nbsp;&nbsp;
-			<a href="#" onClick="'.$onClick_hito.'"><i title="Configurar hitos" class="fa fa-cogs text-bg text-danger"></i>
-		</center>';			
-		
-		$onClick = "javascript: mostrarDialogo('../unidad_funcional/index.php?contenido=".$do_planta -> planta_id."',750,570)";
+			<center><a href="planta_pieza.php?contenido='.$do_planta -> planta_id.'"><i title="Ver" class="fa fa-cogs text-bg text-danger"></i>
+			&nbsp;&nbsp</center>';			
 		$matriz[$i][11] = '<center><a href="#"><i title=" Ver empleados asigandos" class="fa fa-search text-bg text-danger"></i></a></center>';		
 		$matriz[$i][12] = '<center>
 								<a href="modificar_planta.php?contenido='.$do_planta -> planta_id.'"><i title="Modificar" class="fa fa-edit text-bg text-danger"></i>

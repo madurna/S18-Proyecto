@@ -21,18 +21,34 @@
 	//$cliente_get = $_GET['cliente'];
 		
 	//DB_DataObject::debugLevel(5); 
-	$do_trommel = DB_DataObject::factory('trommel');
+	$do_prensa = DB_DataObject::factory('prensa');
+	$do_prensa -> id_planta = $planta_id;
 
-	$do_trommel -> fb_fieldsToRender = array (
-    	'trommel_diametro',
-        'trommel_largo',
-        'trommel_motor',
-        'trommel_plano',
-        'trommel_relacion_engranaje'
+	$do_prensa -> fb_fieldsToRender = array (
+    	'prensa_alto',
+        'prensa_ancho',
+        'prensa_motor',
+        'prensa_bomba',
+        'prensa_cilindro',
+        'prensa_comando',
+        'prensa_fondo',
+        'prensa_kilajeMax',
+        'prensa_plano'
     );
+
+    $do_prensa -> find(true);
+	
+	if (!$do_prensa->find(true)) {
+		$tpl->assign('include_file','error.tpl');
+		$tpl->assign('error_msg','Error: Registro Inexistente'); 
+		$tpl->assign('error_volver','Volver'); 	
+		$tpl->assign('error_volver_href',$paginaOriginante); 	
+		$tpl->display('index.htm');
+		exit;
+	}
 	
 	//Creo el formulario en base a la solicitud
-	$fb =& DB_DataObject_FormBuilder::create($do_trommel);
+	$fb =& DB_DataObject_FormBuilder::create($do_prensa);
 	$frm =& $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
 	$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
 	$frm->setRequiredNote(FRM_NOTA);
@@ -44,28 +60,10 @@
 	$botones[] = $frm->createElement('reset','restaurar','Limpiar');
 	$frm->addGroup($botones);
 	
-	$error = '';
-	if($frm->validate()) {
-		$post = $frm->exportValues();
-		$do_trommel->setFrom($post);
-		$do_trommel->query('BEGIN');
-		$id = $do_trommel->insert(); 
-		
-		// si se inserto se redirije a index.php, de lo contrario se muestra el error
-		if ($id){
-			$do_trommel->query('COMMIT');	
-		}
-		else{
-			$do_trommel->query('ROLLBACK');			
-			$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
-		}
-		header('location:index.php');
-		ob_end_flush();
-		exit;
-	}		
+	$frm->freeze();
 
 	$tpl = new tpl();
-	$titulo_grilla = 'Alta Trommel';
+	$titulo_grilla = 'Ver Prensa';
 	$body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
             <div id="contenido"><p>'.$frm->toHtml().'</p></div>';

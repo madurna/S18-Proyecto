@@ -2066,4 +2066,55 @@ function redireccion_planta($vals,$args){
 	return "<a href=../planta/alta_planta.php?contenido={$record['contrato_cliente_id']}&contenido1={$record['contrato_id']}&accion=a><i class='fa fa-edit text-bg text-danger'></i></a>";
 }
 
+/**
+ * Modulo obrero
+ * 
+ * recibe id de un obrero y retorna un link al script para modificarla
+ *
+ * @param integer -> id de un obrero
+ * @return string -> link al script para modificar un obrero
+ */
+function get_modificar_empleado($vals,$args){
+	extract($vals);
+	extract($args);
+
+	$funciones= "<a href=ver_empleado.php?contenido={$record[$id]}&accion=m> <i class='fa fa-search text-bg text-danger'></i> </a>";
+	$funciones.= "<a href=modificar_empleado.php?contenido={$record[$id]}&accion=m> <i class='fa fa-edit text-bg text-danger'></i> </a>";
+
+	return $funciones;
+}
+
+
+function get_adjuntos_empleado($vals,$args){
+	extract($vals);
+	extract($args);
+	
+	return "<a href=adjuntos_empleado.php?contenido={$record[$id]}><i class='fa fa-paperclip text-bg text-danger'></i></a>";
+}
+
+/**
+ * Retorna el estado del obrero con iconos, indicando si esta activo o no
+ * @param integer -> id de un obrero
+ * 
+ */
+function get_estado_empleado($vals,$args){
+	extract($vals);
+	extract($args);
+	
+	$do_empleado = DB_DataObject::factory('empleado');
+	$do_empleado -> empleado_id = $record[$id];
+	
+	$do_empleado -> find(true);
+	
+	if ($do_empleado -> empleado_estado_id == '3'){
+		return '<img title="Empleado Ejecutado" src="../img/spirit20_icons/system-delete-alt-03.png">';	
+	}
+	elseif ($do_empleado -> empleado_estado_id == '1'){ 
+		return '<img title="Empleado Activo" src="../img/spirit20_icons/system-tick-alt-02.png">';
+	}
+	else{
+		return '<img title="Empleado Inactivo" src="../img/spirit20_icons/system-info-alt-02.png">';
+	}
+}
+
 ?>

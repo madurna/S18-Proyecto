@@ -21,18 +21,30 @@
 	//$cliente_get = $_GET['cliente'];
 		
 	//DB_DataObject::debugLevel(5); 
-	$do_cinta_transportadora = DB_DataObject::factory('cinta_transportadora');
+	$do_trommel = DB_DataObject::factory('trommel');
+	$do_trommel -> id_planta = $planta_id;
 
-	$do_cinta_transportadora -> fb_fieldsToRender = array (
-    	'cinta_transportadora_motor',
-        'cinta_transportadora_largo',
-        'cinta_transportadora_ancho',
-        'cinta_transportadora_material',
-        'cinta_transportadora_tipo_cinta'
+	$do_trommel -> fb_fieldsToRender = array (
+    	'trommel_diametro',
+        'trommel_largo',
+        'trommel_motor',
+        'trommel_plano',
+        'trommel_relacion_engranaje'
     );
+
+    $do_trommel -> find(true);
+	
+	if (!$do_trommel->find(true)) {
+		$tpl->assign('include_file','error.tpl');
+		$tpl->assign('error_msg','Error: Registro Inexistente'); 
+		$tpl->assign('error_volver','Volver'); 	
+		$tpl->assign('error_volver_href',$paginaOriginante); 	
+		$tpl->display('index.htm');
+		exit;
+	}
 	
 	//Creo el formulario en base a la solicitud
-	$fb =& DB_DataObject_FormBuilder::create($do_cinta_transportadora);
+	$fb =& DB_DataObject_FormBuilder::create($do_trommel);
 	$frm =& $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
 	$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
 	$frm->setRequiredNote(FRM_NOTA);
@@ -40,32 +52,14 @@
 	//botones de aceptar , cancelar , limpiar
 	$botones = array();
 	$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.location.href='index.php';"));
+	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.history.back();"));
 	$botones[] = $frm->createElement('reset','restaurar','Limpiar');
 	$frm->addGroup($botones);
 	
-	$error = '';
-	if($frm->validate()) {
-		$post = $frm->exportValues();
-		$do_cinta_transportadora->setFrom($post);
-		$do_cinta_transportadora->query('BEGIN');
-		$id = $do_cinta_transportadora->insert(); 
-		
-		// si se inserto se redirije a index.php, de lo contrario se muestra el error
-		if ($id){
-			$do_cinta_transportadora->query('COMMIT');	
-		}
-		else{
-			$do_cinta_transportadora->query('ROLLBACK');			
-			$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
-		}
-		header('location:index.php');
-		ob_end_flush();
-		exit;
-	}		
+	$frm->freeze();	
 
 	$tpl = new tpl();
-	$titulo_grilla = 'Alta Cinta Transportadora';
+	$titulo_grilla = 'Ver Trommel';
 	$body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
             <div id="contenido"><p>'.$frm->toHtml().'</p></div>';

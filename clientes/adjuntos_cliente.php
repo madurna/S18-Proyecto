@@ -2,6 +2,8 @@
 	require_once('../config/web.config');
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
+	// Links
+	require_once('clientes.config');
 	// PEAR
 	require_once ('DB.php');
 	require_once('DB/DataObject/FormBuilder.php');
@@ -52,7 +54,7 @@
 	
 			$matriz[$i][1] = $do_adjuntos_cliente -> tipo_adjunto_nombre;
 			$matriz[$i][2] = $do_adjuntos_cliente-> adjuntos_cliente_descripcion;
-			$matriz[$i][3] = '<a href=../clientes/descargar_adjunto.php?contenido='.$do_adjuntos_cliente-> adjuntos_cliente_id.'>[Descargar]</a>' ;
+			$matriz[$i][3] = '<a href=descargar_adjunto.php?contenido='.$do_adjuntos_cliente-> adjuntos_cliente_id.'>[Descargar]</a>' ;
 		}
 
 		// Creo la grilla a ser mostrada

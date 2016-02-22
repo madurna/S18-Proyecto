@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: eco_reciclar
 Target Host: localhost
 Target Database: eco_reciclar
-Date: 22/02/2016 01:37:31 a.m.
+Date: 22/02/2016 05:52:06 p.m.
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -23,6 +23,22 @@ CREATE TABLE `adjuntos_cliente` (
   KEY `fk_adjuntos_cliente_id` (`adjuntos_cliente_cliente_id`),
   CONSTRAINT `fk_adjuntos_cliente_id` FOREIGN KEY (`adjuntos_cliente_cliente_id`) REFERENCES `clientes` (`cliente_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+-- ----------------------------
+-- Table structure for adjuntos_empleado
+-- ----------------------------
+DROP TABLE IF EXISTS `adjuntos_empleado`;
+CREATE TABLE `adjuntos_empleado` (
+  `adjuntos_empleado_id` int(11) NOT NULL AUTO_INCREMENT,
+  `adjuntos_empleado_tipo_adjunto_id` int(11) DEFAULT NULL,
+  `adjuntos_empleado_empleado_id` int(11) DEFAULT NULL,
+  `adjuntos_empleado_direccion` varchar(300) DEFAULT NULL,
+  `adjuntos_empleado_descripcion` varchar(300) DEFAULT NULL,
+  `adjuntos_empleado_nombre` varchar(300) DEFAULT NULL,
+  PRIMARY KEY (`adjuntos_empleado_id`),
+  KEY `fk_adjuntos_empleado_id` (`adjuntos_empleado_empleado_id`),
+  CONSTRAINT `fk_adjuntos_empleado_id` FOREIGN KEY (`adjuntos_empleado_empleado_id`) REFERENCES `empleado` (`empleado_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for ajuste
@@ -88,6 +104,7 @@ CREATE TABLE `cinta_transportadora` (
   `cinta_transportadora_material` char(45) DEFAULT NULL,
   `cinta_transportadora_tipo_cinta` char(45) DEFAULT NULL,
   `id_planta` int(11) NOT NULL,
+  `cinta_transportadora_estado_id` int(11) NOT NULL,
   PRIMARY KEY (`cinta_transportadora_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -151,6 +168,40 @@ CREATE TABLE `cuota` (
   KEY `fk_cuota_movimiento_id` (`cuota_movimiento_id`),
   KEY `fk_cuota_unidad_funcional_id` (`cuota_unidad_funcional_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Table structure for empleado
+-- ----------------------------
+DROP TABLE IF EXISTS `empleado`;
+CREATE TABLE `empleado` (
+  `empleado_id` int(11) NOT NULL AUTO_INCREMENT,
+  `empleado_apellido` varchar(255) NOT NULL,
+  `empleado_nombre` varchar(255) NOT NULL,
+  `empleado_tipo_doc_id` int(11) NOT NULL,
+  `empleado_nro_doc` int(11) NOT NULL,
+  `empleado_direccion` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `empleado_localidad_id` int(11) NOT NULL,
+  `empleado_CP` varchar(255) DEFAULT NULL,
+  `empleado_CUIL` varchar(255) DEFAULT NULL,
+  `empleado_CBU` varchar(255) DEFAULT NULL,
+  `empleado_fecha_inicio` date DEFAULT NULL,
+  `empleado_telefono` varchar(255) DEFAULT NULL,
+  `empleado_estado` varchar(255) DEFAULT NULL,
+  `empleado_fecha_nacimiento` date DEFAULT NULL,
+  `empleado_sector_id` int(11) DEFAULT NULL,
+  `empleado_tarea_id` int(11) DEFAULT NULL,
+  `empleado_capacitacion` varchar(45) DEFAULT NULL,
+  `empleado_sexo_id` int(11) DEFAULT NULL,
+  `empleado_estado_civil_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`empleado_id`),
+  KEY `fk_obrero_puesto_id` (`empleado_capacitacion`),
+  KEY `fk_obrero_categoria_id` (`empleado_tarea_id`),
+  KEY `fk_obrero_usuario_id` (`empleado_sector_id`),
+  KEY `fk_obrero_tipo_doc_id` (`empleado_tipo_doc_id`),
+  KEY `fk_obrero_sexo_id` (`empleado_sexo_id`),
+  KEY `fk_obrero_estado_civil_id` (`empleado_estado_civil_id`),
+  KEY `fk_obrero_localidad_id` (`empleado_localidad_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for especialidad_obrero
@@ -403,7 +454,7 @@ CREATE TABLE `modulo` (
   `mod_baja` tinyint(4) NOT NULL,
   PRIMARY KEY (`mod_id`),
   KEY `fk_aplicacion_app_id1` (`mod_app_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for modulo_paginas
@@ -415,7 +466,7 @@ CREATE TABLE `modulo_paginas` (
   `modpag_scriptname` varchar(60) NOT NULL,
   PRIMARY KEY (`modpag_id`),
   KEY `fk_modulo_modpag_mod_id1` (`modpag_mod_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=692 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=699 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for modulo_tablas
@@ -631,17 +682,7 @@ CREATE TABLE `permiso` (
   KEY `fk_rol_has_modulo_modulo1` (`permiso_mod_id`) USING BTREE,
   KEY `fk_rol_has_modulo_rol1` (`permiso_rol_id`) USING BTREE,
   KEY `fk_permiso_tipo_acceso1` (`permiso_tipoacc_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7799 DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Table structure for pieza_tipo
--- ----------------------------
-DROP TABLE IF EXISTS `pieza_tipo`;
-CREATE TABLE `pieza_tipo` (
-  `pieza_tipo_id` int(11) NOT NULL AUTO_INCREMENT,
-  `pieza_tipo_descripcion` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`pieza_tipo_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7803 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for planta
@@ -681,6 +722,7 @@ CREATE TABLE `prensa` (
   `prensa_fondo` int(11) DEFAULT NULL,
   `prensa_kilajeMax` int(11) DEFAULT NULL,
   `id_planta` int(11) NOT NULL,
+  `prensa_estado_id` int(11) NOT NULL,
   PRIMARY KEY (`prensa_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -835,6 +877,7 @@ CREATE TABLE `trommel` (
   `trommel_plano` char(45) DEFAULT NULL,
   `trommel_relacion_engranaje` float DEFAULT NULL,
   `id_planta` int(11) NOT NULL,
+  `trommel_estado_id` int(11) NOT NULL,
   PRIMARY KEY (`trommel_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -922,6 +965,7 @@ INSERT INTO `contrato` VALUES ('1', '3', '3', '6', '2016-02-10', '111.00', null,
 INSERT INTO `contrato` VALUES ('2', '2', '2', '5', '2016-02-05', '222.00', null, null);
 INSERT INTO `contrato` VALUES ('3', '2', '4', '6', '2016-02-01', '333.00', null, null);
 INSERT INTO `contrato` VALUES ('4', '1', '1', '8', '2016-01-12', '256.00', null, null);
+INSERT INTO `empleado` VALUES ('1', 'Perez', 'Juan', '1', '25753684', '2', '355', '1900', '20257536841', '', '0000-00-00', '22', null, '0000-00-00', '152', '0', '', '2', '3');
 INSERT INTO `estado` VALUES ('1', 'Activo', '0');
 INSERT INTO `estado` VALUES ('2', 'Inactivo', '0');
 INSERT INTO `estado` VALUES ('3', 'Ejecutado', '0');
@@ -1688,6 +1732,7 @@ INSERT INTO `modulo` VALUES ('70', '5', 'Contratos', '0');
 INSERT INTO `modulo` VALUES ('71', '5', 'Trommel', '0');
 INSERT INTO `modulo` VALUES ('72', '5', 'Prensa', '0');
 INSERT INTO `modulo` VALUES ('73', '5', 'Cinta Transportadora', '0');
+INSERT INTO `modulo` VALUES ('74', '5', 'Empleado', '0');
 INSERT INTO `modulo_paginas` VALUES ('345', '51', 'aplicaciones/alta_aplicacion.php');
 INSERT INTO `modulo_paginas` VALUES ('346', '51', 'aplicaciones/index.php');
 INSERT INTO `modulo_paginas` VALUES ('347', '51', 'aplicaciones/modificar_aplicacion.php');
@@ -1795,6 +1840,13 @@ INSERT INTO `modulo_paginas` VALUES ('688', '71', 'trommel/alta_trommel.php');
 INSERT INTO `modulo_paginas` VALUES ('689', '72', 'prensa/alta_prensa.php');
 INSERT INTO `modulo_paginas` VALUES ('690', '73', 'cinta_transportadora/alta_cinta_transportadora.php');
 INSERT INTO `modulo_paginas` VALUES ('691', '69', 'planta/planta_pieza.php');
+INSERT INTO `modulo_paginas` VALUES ('692', '74', 'empleado/alta_empleado.php');
+INSERT INTO `modulo_paginas` VALUES ('693', '74', 'empleado/adjuntos_empleado.php');
+INSERT INTO `modulo_paginas` VALUES ('694', '74', 'empleado/descargar_adjunto.php');
+INSERT INTO `modulo_paginas` VALUES ('695', '74', 'empleado/index.php');
+INSERT INTO `modulo_paginas` VALUES ('696', '74', 'empleado/modificar_empleado.php');
+INSERT INTO `modulo_paginas` VALUES ('697', '74', 'empleado/subir_adjuntos_empleado.php');
+INSERT INTO `modulo_paginas` VALUES ('698', '74', 'empleado/ver_empleado.php');
 INSERT INTO `obra_civil` VALUES ('1', '40', '2 y 59', '2015-12-16', '2013-02-04', '50', '800000', '1', '303', 'Edificio 2 y 59 - Oficinas');
 INSERT INTO `obra_civil` VALUES ('2', '40', '2', '2015-04-29', '2015-04-01', '50x20', '4000000', '1', '307', 'Mejora');
 INSERT INTO `obra_civil_hito` VALUES ('8', '1', '1', '1', '1');
@@ -1909,6 +1961,10 @@ INSERT INTO `permiso` VALUES ('7795', '1', '72', '4');
 INSERT INTO `permiso` VALUES ('7796', '1', '72', '1');
 INSERT INTO `permiso` VALUES ('7797', '1', '72', '3');
 INSERT INTO `permiso` VALUES ('7798', '1', '72', '2');
+INSERT INTO `permiso` VALUES ('7799', '1', '74', '4');
+INSERT INTO `permiso` VALUES ('7800', '1', '74', '1');
+INSERT INTO `permiso` VALUES ('7801', '1', '74', '3');
+INSERT INTO `permiso` VALUES ('7802', '1', '74', '2');
 INSERT INTO `planta` VALUES ('1', 'verde', '2 y 59', '2015-12-16', '2013-02-04', '800000', '1', '303', 'Residuos Ayarza', '1', '6', '2016-02-08');
 INSERT INTO `planta` VALUES ('2', 'azul', '2', '2015-04-29', '2015-04-01', '4000000', '1', '307', 'Residuos Esq', '2', '5', '2016-02-01');
 INSERT INTO `planta` VALUES ('6', 'verde', 'Politecnico', '0000-00-00', '0000-00-00', '123456', '1', '37', 'aca no mas', '3', '6', '0000-00-00');

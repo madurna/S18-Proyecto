@@ -4,7 +4,8 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	// Links
-	require_once('clientes.config');
+	require_once('empleado.config');
+	//require_once('../configuraciones/configuraciones.config');
 	// PEAR
 	require_once ('DB.php');
 	require_once('DB/DataObject/FormBuilder.php');
@@ -15,20 +16,20 @@
 	require_once(INC_PATH.'/grilla.php');
 	require_once(AUTHFILE);
 	require_once ('HTTP/Upload.php');
-	$_SESSION['menu_principal'] = 8;
-	$cliente_id = $_GET['contenido'];
+	$_SESSION['menu_principal'] = 7;
+	$empleado_id = $_GET['contenido'];
 	
 	$frm = new HTML_QuickForm('fileuploadexample','POST', null,null,array("enctype" => "multipart/form-data"));
 
 	
 	//DB_DataObject::debugLevel(5); 
-	$do_cliente = DB_DataObject::factory('clientes');
-	$do_cliente -> cliente_id = $cliente_id;
-	$do_cliente -> find(true);
+	$do_empleado = DB_DataObject::factory('empleado');
+	$do_empleado -> empleado_id = $empleado_id;
+	$do_empleado -> find(true);
 	
-	$frm ->addElement('text','apellido','Apellido:', array('id' => 'apellido', 'value'=>$do_cliente -> cliente_apellido));
-	$frm ->addElement('text','nombre','Nombre:', array('id' => 'nombre', 'value'=>$do_cliente -> cliente_nombre));
-	$frm ->addElement('text','dni','Documento:', array('id' => 'dni', 'value'=> $do_cliente -> cliente_nro_doc));
+	$frm ->addElement('text','apellido','Apellido:', array('id' => 'apellido', 'value'=>$do_empleado -> empleado_apellido));
+	$frm ->addElement('text','nombre','Nombre:', array('id' => 'nombre', 'value'=>$do_empleado -> empleado_nombre));
+	$frm ->addElement('text','dni','Documento:', array('id' => 'dni', 'value'=> $do_empleado -> empleado_nro_doc));
 	$frm ->freeze(nombre);
 	$frm ->freeze(apellido);
 	$frm ->freeze(dni);
@@ -51,7 +52,7 @@
 	$frm ->addElement('hidden','hidden_ids', $ids, array('id' => 'hidden_ids'));
 	$frm ->addElement('hidden','hidden_valores', $valores, array('id' => 'hidden_valores'));
 	$frm ->addElement('hidden','hidden_cantidad_tipo_adjuntos', $cantidad_tipo_adjuntos, array('id' => 'hidden_cantidad_tipo_adjuntos'));
-	$frm ->addElement('hidden','hidden_cliente', $cliente_id, array('id' => 'hidden_cliente'));
+	$frm ->addElement('hidden','hidden_empleado', $empleado_id, array('id' => 'hidden_empleado'));
 	
 	//elemento oculto para guardar la cantidad de adjuntos
 	$frm ->addElement('hidden','hidden_cantidad_adjuntos', '1', array('id' => 'hidden_cantidad_adjuntos'));
@@ -96,7 +97,7 @@
 	
 	// Posible cantidad de adjuntos
 	$cantidad_adjuntos = $_POST['hidden_cantidad_adjuntos'];
-	$cliente_post_id = $_POST['hidden_cliente'];
+	$empleado_post_id = $_POST['hidden_empleado'];
 	
 	//
 	$frm ->addElement('html', '<tr><td colspan=2><br/></td></tr>');
@@ -127,7 +128,7 @@
 			if ($file->isValid()) {
 				// Creo una carpeta para los adjuntos, si existe al menos uno
 				if ($campo_adjunto == 'adjunto_1'){
-					$carpeta = WWW_PATH.'/adjuntos/cliente/'.$cliente_post_id;
+					$carpeta = WWW_PATH.'/adjuntos/empleado/'.$empleado_post_id;
 					mkdir($carpeta, 0777);
 				}
 				
@@ -138,18 +139,18 @@
 				$nom = str_replace(' ', '_', $nombre);
 	
 				// Ruta del archivo
-				$ruta='/adjuntos/cliente/'.$cliente_post_id.'/'.$nom;
+				$ruta='/adjuntos/empleado/'.$empleado_post_id.'/'.$nom;
 				
 				// Muevo el archivo a la carpeta correspondiente
 				$file->moveTo($carpeta);
 				chmod($ruta, 0755);
 				// Inserto en la tabla "adjuntos"
-				$do_adjuntos = DB_DataObject::factory('adjuntos_cliente');
-				$do_adjuntos -> adjuntos_cliente_tipo_adjunto_id = $_POST['tipo_adjunto_'.$i];
-				$do_adjuntos -> adjuntos_cliente_cliente_id = $cliente_post_id;
-				$do_adjuntos -> adjuntos_cliente_direccion = $ruta;
-				$do_adjuntos -> adjuntos_cliente_descripcion = $_POST['descripcion_'.$i];
-				$do_adjuntos -> adjuntos_cliente_nombre = $nom;
+				$do_adjuntos = DB_DataObject::factory('adjuntos_empleado');
+				$do_adjuntos -> adjuntos_empleado_tipo_adjunto_id = $_POST['tipo_adjunto_'.$i];
+				$do_adjuntos -> adjuntos_empleado_empleado_id = $empleado_post_id;
+				$do_adjuntos -> adjuntos_empleado_direccion = $ruta;
+				$do_adjuntos -> adjuntos_empleado_descripcion = $_POST['descripcion_'.$i];
+				$do_adjuntos -> adjuntos_empleado_nombre = $nom;
 				$id_adjunto = $do_adjuntos -> insert();
 				
 			}	
@@ -159,7 +160,7 @@
 	}
 	
 	$tpl = new tpl();
-	$titulo_grilla = 'Subir adjuntos cliente';
+	$titulo_grilla = 'Subir adjuntos empleado';
 	$body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
             <div id="contenido"><p>'.$frm->toHtml().'</p></div>
@@ -168,7 +169,7 @@
 	$tpl->assign('body', $body);
     $tpl->assign('menu','menu_oceba.htm');
 	$tpl->assign('webTitulo', WEB_TITULO);
-	$tpl->assign('secTitulo', WEB_SECCION . ' - Subir adjuntos cliente');
+	$tpl->assign('secTitulo', WEB_SECCION . ' - Subir adjuntos empleado');
 	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');

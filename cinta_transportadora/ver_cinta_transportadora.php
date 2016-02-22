@@ -21,18 +21,30 @@
 	//$cliente_get = $_GET['cliente'];
 		
 	//DB_DataObject::debugLevel(5); 
-	$do_trommel = DB_DataObject::factory('trommel');
+	$do_cinta_transportadora = DB_DataObject::factory('cinta_transportadora');
+	$do_cinta_transportadora -> id_planta = $planta_id;
 
-	$do_trommel -> fb_fieldsToRender = array (
-    	'trommel_diametro',
-        'trommel_largo',
-        'trommel_motor',
-        'trommel_plano',
-        'trommel_relacion_engranaje'
+	$do_cinta_transportadora -> fb_fieldsToRender = array (
+    	'cinta_transportadora_motor',
+        'cinta_transportadora_largo',
+        'cinta_transportadora_ancho',
+        'cinta_transportadora_material',
+        'cinta_transportadora_tipo_cinta'
     );
+
+    $do_cinta_transportadora -> find(true);
+	
+	if (!$do_cinta_transportadora->find(true)) {
+		$tpl->assign('include_file','error.tpl');
+		$tpl->assign('error_msg','Error: Registro Inexistente'); 
+		$tpl->assign('error_volver','Volver'); 	
+		$tpl->assign('error_volver_href',$paginaOriginante); 	
+		$tpl->display('index.htm');
+		exit;
+	}
 	
 	//Creo el formulario en base a la solicitud
-	$fb =& DB_DataObject_FormBuilder::create($do_trommel);
+	$fb =& DB_DataObject_FormBuilder::create($do_cinta_transportadora);
 	$frm =& $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
 	$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
 	$frm->setRequiredNote(FRM_NOTA);
@@ -44,28 +56,10 @@
 	$botones[] = $frm->createElement('reset','restaurar','Limpiar');
 	$frm->addGroup($botones);
 	
-	$error = '';
-	if($frm->validate()) {
-		$post = $frm->exportValues();
-		$do_trommel->setFrom($post);
-		$do_trommel->query('BEGIN');
-		$id = $do_trommel->insert(); 
-		
-		// si se inserto se redirije a index.php, de lo contrario se muestra el error
-		if ($id){
-			$do_trommel->query('COMMIT');	
-		}
-		else{
-			$do_trommel->query('ROLLBACK');			
-			$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
-		}
-		header('location:index.php');
-		ob_end_flush();
-		exit;
-	}		
+	$frm->freeze();		
 
 	$tpl = new tpl();
-	$titulo_grilla = 'Alta Trommel';
+	$titulo_grilla = 'Ver Cinta Transportadora';
 	$body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
             <div id="contenido"><p>'.$frm->toHtml().'</p></div>';
