@@ -10,10 +10,10 @@ class DataObjects_Tarea extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'tarea';               // table name
-    public $tarea_id;                       // int(11) not_null primary_key auto_increment group_by
-    public $tarea_descripcion;              // varchar(50)
-    public $tarea_peso;                     // int(5) not_null group_by
-    public $tarea_baja;                     // tinyint(1) not_null group_by
+    public $tarea_id;                        // int(11)  not_null primary_key auto_increment group_by
+    public $tarea_descripcion;               // varchar(50)  
+    public $tarea_peso;                      // int(5)  not_null group_by
+    public $tarea_baja;                      // tinyint(1)  not_null group_by
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE

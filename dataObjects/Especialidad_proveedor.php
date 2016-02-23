@@ -10,8 +10,8 @@ class DataObjects_Especialidad_proveedor extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'especialidad_proveedor';    // table name
-    public $especialidad_proveedor_id;      // int(11) not_null primary_key auto_increment group_by
-    public $especialidad_proveedor_descripcion;   // varchar(200) not_null
+    public $especialidad_proveedor_id;       // int(11)  not_null primary_key auto_increment group_by
+    public $especialidad_proveedor_descripcion;    // varchar(200)  not_null
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE

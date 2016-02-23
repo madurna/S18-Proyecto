@@ -4,6 +4,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	// Links
+	require_once('contrato.config');
 	// PEAR
 	require_once ('DB.php');
 	require_once('DB/DataObject/FormBuilder.php');
@@ -15,37 +16,20 @@
 	require_once(AUTHFILE);
 	require_once ('HTTP/Upload.php');
 	$_SESSION['menu_principal'] = 8;
-
+	
 	$cliente_id = $_GET['contenido'];
 	
 	$frm = new HTML_QuickForm('fileuploadexample','POST', null,null,array("enctype" => "multipart/form-data"));
-
-	$do_contrato = DB_DataObject::factory('contrato');
-	
-	$do_contrato -> fb_fieldsToRender = array (
-    	'contrato_bibliorato',
-		'contrato_caja_numero',
-		'contrato_monto'
-    );
-
-    //Creo el formulario en base a la solicitud
-	$fb =& DB_DataObject_FormBuilder::create($do_contrato);
-	$frm =& $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
-	$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
-	$frm->setRequiredNote(FRM_NOTA);
 	
 	//DB_DataObject::debugLevel(5); 
-	/*$do_cliente = DB_DataObject::factory('clientes');
+	$do_cliente = DB_DataObject::factory('clientes');
 	$do_cliente -> cliente_id = $cliente_id;
 	$do_cliente -> find(true);
 	
-	$frm ->addElement('text','apellido','Apellido:', array('id' => 'apellido', 'value'=>$do_cliente -> cliente_apellido));
-	$frm ->addElement('text','nombre','Nombre:', array('id' => 'nombre', 'value'=>$do_cliente -> cliente_nombre));
-	$frm ->addElement('text','dni','Documento:', array('id' => 'dni', 'value'=> $do_cliente -> cliente_nro_doc));
-	$frm ->freeze(nombre);
-	$frm ->freeze(apellido);
-	$frm ->freeze(dni);*/
-	
+	$frm ->addElement('text','bibliorato','Bibliorato:', array('id' => 'bibliorato'));
+	$frm ->addElement('text','caja_numero','Caja n&uacute;mero:', array('id' => 'caja_numero'));
+	$frm ->addElement('text','monto','M&oacute;nto:', array('id' => 'monto'));
+		
 	//obtengo tipos de adjunto
 	$cantidad_tipo_adjuntos = 0;
 	$do_tipo_adjunto = DB_DataObject::factory('tipo_adjunto');
@@ -109,7 +93,7 @@
 	
 	// Posible cantidad de adjuntos
 	$cantidad_adjuntos = $_POST['hidden_cantidad_adjuntos'];
-	//$cliente_post_id = $_POST['hidden_cliente'];
+	$cliente_post_id = $_POST['hidden_cliente'];
 	
 	//
 	$frm ->addElement('html', '<tr><td colspan=2><br/></td></tr>');
@@ -117,31 +101,30 @@
 	//botones de aceptar , cancelar , limpiar
 	$botones = array();
 	$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.history.back();"));
+	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.location.href='index.php';"));
 	$botones[] = $frm->createElement('reset','restaurar','Limpiar');
 	$frm->addGroup($botones);
 	
 	$aceptar = $_POST['aceptar'];
 	
 	if ($aceptar == 'Guardar'){
-
-		//print_r($_POST);exit;
+		
 		// Creo el objeto HTTP_Upload
 		$upload = new HTTP_Upload('es');
 			
 		// Itero por la posible cantidad de adjuntos
 		for ($i = 1; $i <= $cantidad_adjuntos; $i++) {
 			// Nombre del input file
-			$campo_adjunto = 'adjunto_'.$i; 
+			$campo_adjunto = 'adjunto_'.$i;
 			
 			// Obtengo el archivo a subir
-			$file = $upload->getFiles($campo_adjunto); 
+			$file = $upload->getFiles($campo_adjunto);
 	
 			// Valido el archivo
-			if ($file->isValid()) { //print_r('holas');exit;
+			if ($file->isValid()) {
 				// Creo una carpeta para los adjuntos, si existe al menos uno
 				if ($campo_adjunto == 'adjunto_1'){
-					$carpeta = WWW_PATH.'/contratos/cliente/'.$cliente_id;
+					$carpeta = WWW_PATH.'/contratos/cliente/'.$cliente_post_id;
 					mkdir($carpeta, 0777);
 				}
 				
@@ -152,40 +135,32 @@
 				$nom = str_replace(' ', '_', $nombre);
 	
 				// Ruta del archivo
-				$ruta='../contratos/cliente/'.$cliente_id.'/'.$nom;
+				$ruta='/contratos/cliente/'.$cliente_post_id.'/'.$nom;
 				
 				// Muevo el archivo a la carpeta correspondiente
 				$file->moveTo($carpeta);
 				chmod($ruta, 0755);
-				// Inserto en la tabla "contrato"
+				// Inserto en la tabla "adjuntos"
 				$do_contrato = DB_DataObject::factory('contrato');
-				$do_contrato -> contrato_bibliorato = $_POST['contrato_bibliorato'];
-				$do_contrato -> contrato_caja_numero = $_POST['contrato_caja_numero'];
-				$do_contrato -> contrato_monto = $_POST['contrato_monto'];
+				$do_contrato -> contrato_bibliorato = $_POST['bibliorato'];
+				$do_contrato -> contrato_caja_numero = $_POST['caja_numero'];
 				$do_contrato -> contrato_cliente_id = $cliente_post_id;
+				$do_contrato -> contrato_fecha = date("Y-m-d");
+				$do_contrato -> contrato_monto = $_POST['monto'];
 				$do_contrato -> contrato_path = $ruta;
 				$do_contrato -> contrato_descripcion = $_POST['descripcion_'.$i];
-				$do_contrato -> contrato_fecha = date("Y-m-d");
-				$id_adjunto = $do_contrato -> insert();				
-			}
-			//$do_contrato->query('BEGIN');
-			
-			//print_r($id_adjunto);exit;
-			// si se inserto se redirije a index.php, de lo contrario se muestra el error
-			if ($id_adjunto){
-				$do_contrato->query('COMMIT');	
-			}
-			else{
-				$do_contrato->query('ROLLBACK');			
-				$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
-			}
+				$do_contrato -> contrato_tipo_adjunto_id = $_POST['tipo_adjunto_'.$i];
+				$do_contrato -> contrato_adjunto_nombre = $nom;
+				$id = $do_contrato -> insert();
+				
+			}	
 		}
-		header('Location:contrato.php?contenido='.$cliente_id);
+		header('Location:contrato.php?contenido='.$cliente_post_id);
 		exit;
 	}
 	
 	$tpl = new tpl();
-	$titulo_grilla = 'Subir contrato cliente';
+	$titulo_grilla = 'Alta contrato cliente';
 	$body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
             <div id="contenido"><p>'.$frm->toHtml().'</p></div>
@@ -194,8 +169,8 @@
 	$tpl->assign('body', $body);
     $tpl->assign('menu','menu_oceba.htm');
 	$tpl->assign('webTitulo', WEB_TITULO);
-	$tpl->assign('secTitulo', WEB_SECCION . ' - Subir Contrato adjunto');
-	//$tpl->assign('links',$links1);
+	$tpl->assign('secTitulo', WEB_SECCION . ' - Alta contrato cliente');
+	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');
 	ob_end_flush();

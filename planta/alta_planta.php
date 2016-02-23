@@ -79,7 +79,7 @@
 		// si se inserto se redirije a index.php, de lo contrario se muestra el error
 		if ($id){
 			$do_planta->query('COMMIT');
-			header('location:alta_planta_pieza.php?contenido='.$contrato_get.'&cliente='.$cliente_get);
+			header('location:planta_pieza.php?contenido='.$contrato_get.'&cliente='.$cliente_get);
 			ob_end_flush();
 			exit;	
 		}
@@ -87,9 +87,6 @@
 			$do_planta->query('ROLLBACK');			
 			$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
 		}
-		/*header('location:index.php');
-		ob_end_flush();
-		exit;*/
 	}		
 
 	$tpl = new tpl();
@@ -101,7 +98,7 @@
     $tpl->assign('menu','menu_oceba.htm');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION);
-	$tpl->assign('links',$links1);
+	//$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');
 	ob_end_flush();

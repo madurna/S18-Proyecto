@@ -4,7 +4,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	// links
-	//require_once('../planta/planta.config');
+	require_once('trommel.config');
 	// PEAR
 	require_once ('DB.php');
 	require_once('DB/DataObject/FormBuilder.php');

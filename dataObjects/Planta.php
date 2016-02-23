@@ -238,4 +238,15 @@ class DataObjects_Planta extends DB_DataObject
         $text = $porcentaje.' % ';
         return $text;
     }
+
+    function get_plantas_todas(){
+        $this -> orderBy('planta_descripcion ASC');
+        $this ->find();
+        $planta['Todas'] = 'Seleccione una Planta';
+        while($this->fetch()){
+            if($this-> planta_descripcion)
+                $planta[$this->planta_id] = utf8_encode($this-> planta_descripcion);
+        }
+    return $planta;
+    }
 }

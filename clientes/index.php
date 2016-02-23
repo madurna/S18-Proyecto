@@ -107,7 +107,9 @@
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">&nbsp;&nbsp;Acci&oacute;n&nbsp;&nbsp;</span>',null,null,array('width' => '20px', 'align' => "center"),null,'get_ejecutar_cliente',array('id' => 'cliente_id')));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Contratos</span>',null,null,array('width' => '20px', 'align' => "center"),null,'get_contratos_cliente',array('id' => 'cliente_id')));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Plantas</span>',null,null,array('width' => '20px', 'align' => "center"),null,'get_plantas_cliente',array('id' => 'cliente_id')));
-	
+	//link para agregar una actividad
+    $agregar = '<br><a href="alta_cliente.php">[Agregar cliente]</a>';
+
     //armo template
 	$tpl = new tpl();
 	if ($dg->getRecordCount() > 0 ) {		
@@ -125,7 +127,7 @@
 		}
 	}
 	$tpl->assign('body', '<div align=center><b>Clientes</b></div>
-	<div align="center"><br/>'.$frm->toHTML().'</div><div><br/>'.$salida_grilla.'</div><br/><b>Se encontraron '.$dg->getRecordCount().' Clientes<b/><br/><br/>');
+	<div align="center"><br/>'.$frm->toHTML().'</div><div><br/>'.$agregar.'</div><div><br/>'.$salida_grilla.'</div><br/><b>Se encontraron '.$dg->getRecordCount().' Clientes<b/><br/><br/>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo','Clientes');
 	$tpl->assign('menu', "menu_oceba.htm");	

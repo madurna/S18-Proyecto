@@ -4,7 +4,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	
-	//require_once('clientes.config');
+	require_once('clientes.config');
 	
 	// PEAR
 	require_once ('DB.php');
@@ -20,8 +20,6 @@
 	
 	$_SESSION['menu_principal'] = 8;
 	
-	//print_r($_SESSION['usuario']['id']);
-	
 	//DB_DataObject::debugLevel(5); 
 	
 	//recupero el id del cliente a modificar
@@ -30,8 +28,7 @@
 	//recupero el nombre que tenia originalmente en la base
 	$do_cliente = DB_DataObject::factory('clientes');
 	$do_cliente -> cliente_id = $cliente_id;
-	//$do_cliente -> fb_fieldsToRender = array('cliente_apellido, cliente_nombre, cliente_documento');	
-	
+		
 	$do_cliente -> fb_fieldsToRender = array (
     	'cliente_apellido',
 		'cliente_nombre',
@@ -49,7 +46,6 @@
     );
 	
 	$do_cliente -> find();	
-
 
 	if (!$do_cliente->find(true)) {
 		$tpl->assign('include_file','error.tpl');
@@ -69,56 +65,10 @@
 	$frm->updateAttributes(array('accept-charset'=>'UTF-8'));
 	
 	$botones = array();
-	//$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	if(!($_GET['planta']))
-		$botones[] = $frm->createElement('button','volver','Volver',array('onClick'=> "javascript: window.location.href='index.php';"));
-	else
-		$botones[] = $frm->createElement('button','volver','Volver',array('onClick'=> "javascript: cerrarDialogo();mostrarDialogo('../unidad_funcional/index.php?contenido=".$_GET['obra_civil']."',750,570)"));
-	//$botones[] = $frm->createElement('reset','restaurar','Restaurar');
+	$botones[] = $frm->createElement('button','volver','Volver',array('onClick'=> "javascript: window.location.href='index.php';"));
 	$frm->addGroup($botones);
 	
-	//$frm->freeze();
-	
-	// Si el formulado fue enviado y validado realizo la modificacion
-	/*if($frm->validate()){
-		$post = $frm->exportValues();
-		$do_cliente->setFrom($post);
-		
-		$ape=utf8_decode($post['cliente_apellido']);
-		$do_cliente->cliente_apellido=$ape;
-		
-		$nom=utf8_decode($post['cliente_nombre']);
-		$do_cliente->cliente_nombre=$nom;
-		
-		$dir=utf8_decode($post['cliente_direccion']);
-		$do_cliente->cliente_direccion=$dir;
-		
-		$do_cliente->cliente_usuario_id=$_SESSION['usuario']['id'];
-		
-		//$this -> fb_preDefElements['cliente_direccion'] = $aux;
-		
-		$fecha = $post['cliente_fecha_inicio'];
-		list($dia,$mes,$anio) = explode("-",$fecha);
-		$fecha_db = $anio.'-'.$mes.'-'.$dia;
-		$do_cliente->cliente_fecha_inicio = $fecha_db;
-		
-		$fecha = $post['cliente_fecha_nacimiento'];
-		list($dia,$mes,$anio) = explode("-",$fecha);
-		$fecha_db = $anio.'-'.$mes.'-'.$dia;
-		$do_cliente->cliente_fecha_nacimiento = $fecha_db;
-		
-		$id = $do_cliente->update();
-		
-		if ($id){	
-			$do_cliente->query('COMMIT');
-		}
-		else {
-			$do_cliente->query('ROLLBACK');
-			$error = 'Error en la modificaci&oacute;n del cliente</b></div>';				
-		}
-		header('Location:index.php');
-		exit;
-	}*/		
+	$frm->freeze();
 	
 	$tpl = new tpl();
 	$titulo_grilla = 'Ver cliente';

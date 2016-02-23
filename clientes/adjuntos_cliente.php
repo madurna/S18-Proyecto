@@ -39,11 +39,12 @@
 		$do_adjuntos_cliente = DB_DataObject::factory('adjuntos_cliente');
 		$do_tipo_adjunto = DB_DataObject::factory('tipo_adjunto');
 		$do_adjuntos_cliente -> joinAdd($do_cliente);
+		$do_adjuntos_cliente -> joinAdd($do_tipo_adjunto);
 		$do_adjuntos_cliente -> find();
 		
-		$columnas[1] = '<font size="1px" color="#FFFFFF">Tipo Adjunto</font>';
-		$columnas[2] = '<font size="1px" color="#FFFFFF">Descripci&oacute;n</font>';
-		$columnas[3] = '<font size="1px" color="#FFFFFF">Acci&oacute;n</font>';
+		$columnas[1] = '<font size="1.5px" color="#FFFFFF">&nbsp;&nbsp;Tipo Adjunto&nbsp;&nbsp;</font>';
+		$columnas[2] = '<font size="1.5px" color="#FFFFFF">&nbsp;&nbsp;Descripci&oacute;n&nbsp;&nbsp;</font>';
+		$columnas[3] = '<font size="1.5px" color="#FFFFFF">&nbsp;&nbsp;Acci&oacute;n&nbsp;&nbsp;</font>';
 		
 		$i=0;
 		
@@ -91,8 +92,9 @@
 
 	// Instancio el template
 	$agregar = '<br><a href="subir_adjuntos_cliente.php?contenido='.$cliente_id.'">[Agregar adjunto]</a>';
+	$volver = '<br><a href="index.php">[Volver]</a>';
 	$titulo_grilla = '<font size="2px">Adjuntos de: <u>'.$apellido_nombre.'</u></font><br /><br />';
-	$body='<div align=center><b>'.$titulo_grilla.'</b></div><div><br/>'.$agregar.'</div><div><br/></div><div><br/>'.$salida_grilla.'</div></div>';
+	$body='<div align=center><b>'.$titulo_grilla.'</b></div><div><br/>'.$agregar.'</div><div><br/></div><div><br/>'.$salida_grilla.'</b></div><div><br/>'.$volver.'</div></div>';
 	$tpl->assign('body', $body);
 	$tpl->assign('menu','menu_oceba.htm');
 	$tpl->assign('webTitulo', WEB_TITULO);

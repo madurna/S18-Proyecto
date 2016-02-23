@@ -10,27 +10,27 @@ class DataObjects_Obrero extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'obrero';              // table name
-    public $obrero_id;                      // int(11) not_null primary_key auto_increment group_by
-    public $obrero_apellido;                // varchar(255) not_null
-    public $obrero_nombre;                  // varchar(255) not_null
-    public $obrero_tipo_doc_id;             // int(11) not_null multiple_key group_by
-    public $obrero_nro_doc;                 // int(11) not_null group_by
-    public $obrero_direccion;               // varchar(255)
-    public $obrero_localidad_id;            // int(11) not_null multiple_key group_by
-    public $obrero_CP;                      // varchar(255)
-    public $obrero_CUIL;                    // varchar(255)
-    public $obrero_CBU;                     // varchar(255)
-    public $obrero_fecha_inicio;            // date(10)
-    public $obrero_telefono;                // varchar(255)
-    public $obrero_estado;                  // varchar(255)
-    public $obrero_fecha_nacimiento;        // date(10)
-    public $obrero_usuario_id;              // int(11) multiple_key group_by
-    public $obrero_categoria_id;            // int(11) multiple_key group_by
-    public $obrero_puesto_id;               // int(11) multiple_key group_by
-    public $obrero_obrero_especialidad_id;   // int(11) multiple_key group_by
-    public $obrero_estudio_alcanzado_id;    // int(11) multiple_key group_by
-    public $obrero_sexo_id;                 // int(11) multiple_key group_by
-    public $obrero_estado_civil_id;         // int(11) multiple_key group_by
+    public $obrero_id;                       // int(11)  not_null primary_key auto_increment group_by
+    public $obrero_apellido;                 // varchar(255)  not_null
+    public $obrero_nombre;                   // varchar(255)  not_null
+    public $obrero_tipo_doc_id;              // int(11)  not_null multiple_key group_by
+    public $obrero_nro_doc;                  // int(11)  not_null group_by
+    public $obrero_direccion;                // varchar(255)  
+    public $obrero_localidad_id;             // int(11)  not_null multiple_key group_by
+    public $obrero_CP;                       // varchar(255)  
+    public $obrero_CUIL;                     // varchar(255)  
+    public $obrero_CBU;                      // varchar(255)  
+    public $obrero_fecha_inicio;             // date(10)  
+    public $obrero_telefono;                 // varchar(255)  
+    public $obrero_estado;                   // varchar(255)  
+    public $obrero_fecha_nacimiento;         // date(10)  
+    public $obrero_usuario_id;               // int(11)  multiple_key group_by
+    public $obrero_categoria_id;             // int(11)  multiple_key group_by
+    public $obrero_puesto_id;                // int(11)  multiple_key group_by
+    public $obrero_obrero_especialidad_id;    // int(11)  multiple_key group_by
+    public $obrero_estudio_alcanzado_id;     // int(11)  multiple_key group_by
+    public $obrero_sexo_id;                  // int(11)  multiple_key group_by
+    public $obrero_estado_civil_id;          // int(11)  multiple_key group_by
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE

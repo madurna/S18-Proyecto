@@ -16,6 +16,7 @@
 	require_once(AUTHFILE);
 	require_once ('HTTP/Upload.php');
 	$_SESSION['menu_principal'] = 8;
+	
 	$cliente_id = $_GET['contenido'];
 	
 	$frm = new HTML_QuickForm('fileuploadexample','POST', null,null,array("enctype" => "multipart/form-data"));

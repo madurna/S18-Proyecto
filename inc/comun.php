@@ -2117,4 +2117,19 @@ function get_estado_empleado($vals,$args){
 	}
 }
 
+function get__descargar_contrato($vals,$args){
+	extract($vals);
+	extract($args);
+	
+	$do_contrato = DB_DataObject::factory('contrato');
+	$do_contrato -> contrato_id = $record[contrato_id];
+	$do_contrato->find(true);
+
+	if($do_contrato->contrato_path != ''){
+		return "<a title='Descargar' href='descargar_adjunto.php?contenido={$record[contrato_id]}'>[Descargar]</a>";
+	}else{
+		return '-';
+	}
+}
+
 ?>

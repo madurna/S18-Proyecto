@@ -4,7 +4,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	
-	require_once('obrero.config');
+	require_once('empleado.config');
 	
 	// PEAR
 	require_once ('DB.php');

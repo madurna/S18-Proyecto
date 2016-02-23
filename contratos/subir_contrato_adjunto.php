@@ -3,7 +3,8 @@
 	require_once('../config/web.config');
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
-	// Links
+	// links
+	require_once('contrato.config');
 	// PEAR
 	require_once ('DB.php');
 	require_once('DB/DataObject/FormBuilder.php');
@@ -35,17 +36,7 @@
 	$frm->setRequiredNote(FRM_NOTA);
 	
 	//DB_DataObject::debugLevel(5); 
-	/*$do_cliente = DB_DataObject::factory('clientes');
-	$do_cliente -> cliente_id = $cliente_id;
-	$do_cliente -> find(true);
-	
-	$frm ->addElement('text','apellido','Apellido:', array('id' => 'apellido', 'value'=>$do_cliente -> cliente_apellido));
-	$frm ->addElement('text','nombre','Nombre:', array('id' => 'nombre', 'value'=>$do_cliente -> cliente_nombre));
-	$frm ->addElement('text','dni','Documento:', array('id' => 'dni', 'value'=> $do_cliente -> cliente_nro_doc));
-	$frm ->freeze(nombre);
-	$frm ->freeze(apellido);
-	$frm ->freeze(dni);*/
-	
+		
 	//obtengo tipos de adjunto
 	$cantidad_tipo_adjuntos = 0;
 	$do_tipo_adjunto = DB_DataObject::factory('tipo_adjunto');

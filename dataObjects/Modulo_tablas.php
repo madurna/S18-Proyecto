@@ -10,9 +10,9 @@ class DataObjects_Modulo_tablas extends DB_DataObject
     /* the code below is auto generated do not remove the above tag */
 
     public $__table = 'modulo_tablas';       // table name
-    public $modtab_id;                      // int(11) not_null primary_key auto_increment group_by
-    public $modtab_ddt_id;                  // int(11) not_null multiple_key group_by
-    public $modtab_mod_id;                  // int(11) not_null multiple_key group_by
+    public $modtab_id;                       // int(11)  not_null primary_key auto_increment group_by
+    public $modtab_ddt_id;                   // int(11)  not_null multiple_key group_by
+    public $modtab_mod_id;                   // int(11)  not_null multiple_key group_by
 
     /* the code above is auto generated do not remove the tag below */
     ###END_AUTOCODE
