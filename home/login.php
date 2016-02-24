@@ -3,12 +3,12 @@
 	require_once('../config/web.config');
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
-    require_once(INC_PATH.'/AccesoOceba.class.php');	
+    require_once(INC_PATH.'/AccesoEco.class.php');	
 	// librerias PEAR
 	require_once('HTML/QuickForm.php');
 	//DB_DataObject::debugLevel(5);	
 		
-	if (AccesoOceba::usuarioRegistrado(APP_ID)) {
+	if (AccesoEco::usuarioRegistrado(APP_ID)) {
 		header('Location: ../'.PGN_INDEX);
 		exit;
 	}
@@ -48,7 +48,7 @@
 	exit;
 	
 	function esUsuario($post) {		
-		$encontrado = AccesoOceba::registrarUsuario($post['usuario'],$post['clave'],APP_ID);
+		$encontrado = AccesoEco::registrarUsuario($post['usuario'],$post['clave'],APP_ID);
 		if ($encontrado === true) {			
 			return true;
 		}

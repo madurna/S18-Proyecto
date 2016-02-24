@@ -38,7 +38,7 @@ $tpl->assign('secTitulo', WEB_SECCION);
 
 
 //Template del archivo
-$tpl->assign('menu','menu_oceba.tpl');
+$tpl->assign('menu','menu.tpl');
 $tpl->assign('include_file','resetear-clave.tpl');
 
 //Mostrar en

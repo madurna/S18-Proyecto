@@ -1,10 +1,10 @@
 /*
 MySQL Data Transfer
 Source Host: localhost
-Source Database: eco_reciclar
+Source Database: local
 Target Host: localhost
-Target Database: eco_reciclar
-Date: 22/02/2016 05:52:06 p.m.
+Target Database: local
+Date: 24/02/2016 02:45:51 p.m.
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -22,7 +22,7 @@ CREATE TABLE `adjuntos_cliente` (
   PRIMARY KEY (`adjuntos_cliente_id`),
   KEY `fk_adjuntos_cliente_id` (`adjuntos_cliente_cliente_id`),
   CONSTRAINT `fk_adjuntos_cliente_id` FOREIGN KEY (`adjuntos_cliente_cliente_id`) REFERENCES `clientes` (`cliente_id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- ----------------------------
 -- Table structure for adjuntos_empleado
@@ -140,16 +140,18 @@ CREATE TABLE `clientes` (
 DROP TABLE IF EXISTS `contrato`;
 CREATE TABLE `contrato` (
   `contrato_id` int(11) NOT NULL AUTO_INCREMENT,
-  `contrato_bibliorato` varchar(50) NOT NULL,
-  `contrato_caja_numero` varchar(50) NOT NULL,
+  `contrato_bibliorato` int(11) NOT NULL,
+  `contrato_caja_numero` int(11) NOT NULL,
   `contrato_cliente_id` int(11) NOT NULL,
   `contrato_fecha` date NOT NULL,
   `contrato_monto` double(20,2) NOT NULL,
-  `contrato_path` varchar(100) DEFAULT NULL,
-  `contrato_descripcion` varchar(255) DEFAULT NULL,
+  `contrato_path` varchar(300) DEFAULT NULL,
+  `contrato_descripcion` varchar(300) DEFAULT NULL,
+  `contrato_tipo_adjunto_id` int(11) DEFAULT NULL,
+  `contrato_adjunto_nombre` varchar(300) DEFAULT NULL,
   PRIMARY KEY (`contrato_id`),
   KEY `fk_contrato_cliente_id` (`contrato_cliente_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for cuota
@@ -194,13 +196,13 @@ CREATE TABLE `empleado` (
   `empleado_sexo_id` int(11) DEFAULT NULL,
   `empleado_estado_civil_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`empleado_id`),
-  KEY `fk_obrero_puesto_id` (`empleado_capacitacion`),
-  KEY `fk_obrero_categoria_id` (`empleado_tarea_id`),
-  KEY `fk_obrero_usuario_id` (`empleado_sector_id`),
-  KEY `fk_obrero_tipo_doc_id` (`empleado_tipo_doc_id`),
-  KEY `fk_obrero_sexo_id` (`empleado_sexo_id`),
-  KEY `fk_obrero_estado_civil_id` (`empleado_estado_civil_id`),
-  KEY `fk_obrero_localidad_id` (`empleado_localidad_id`)
+  KEY `fk_empleado_puesto_id` (`empleado_capacitacion`),
+  KEY `fk_empleado_categoria_id` (`empleado_tarea_id`),
+  KEY `fk_empleado_usuario_id` (`empleado_sector_id`),
+  KEY `fk_empleado_tipo_doc_id` (`empleado_tipo_doc_id`),
+  KEY `fk_empleado_sexo_id` (`empleado_sexo_id`),
+  KEY `fk_empleado_estado_civil_id` (`empleado_estado_civil_id`),
+  KEY `fk_empleado_localidad_id` (`empleado_localidad_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -366,19 +368,6 @@ CREATE TABLE `herramienta` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for hito
--- ----------------------------
-DROP TABLE IF EXISTS `hito`;
-CREATE TABLE `hito` (
-  `hito_id` int(11) NOT NULL AUTO_INCREMENT,
-  `hito_nombre` varchar(45) NOT NULL,
-  `hito_plazo_estimado_dias` int(11) NOT NULL,
-  `hito_estado` tinyint(1) NOT NULL,
-  PRIMARY KEY (`hito_id`),
-  KEY `fk_hito_estado1_idx` (`hito_estado`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
-
--- ----------------------------
 -- Table structure for licencia
 -- ----------------------------
 DROP TABLE IF EXISTS `licencia`;
@@ -403,19 +392,6 @@ CREATE TABLE `localidad` (
   `localidad_nombre` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`localidad_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for localidad-
--- ----------------------------
-DROP TABLE IF EXISTS `localidad-`;
-CREATE TABLE `localidad-` (
-  `localidad_id` int(4) NOT NULL,
-  `localidad_nombre` varchar(60) NOT NULL,
-  `cpostal` int(4) NOT NULL,
-  `provincia_id` smallint(2) NOT NULL,
-  PRIMARY KEY (`localidad_id`),
-  KEY `cpostal` (`cpostal`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for log_ingreso
@@ -454,7 +430,7 @@ CREATE TABLE `modulo` (
   `mod_baja` tinyint(4) NOT NULL,
   PRIMARY KEY (`mod_id`),
   KEY `fk_aplicacion_app_id1` (`mod_app_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for modulo_paginas
@@ -466,7 +442,7 @@ CREATE TABLE `modulo_paginas` (
   `modpag_scriptname` varchar(60) NOT NULL,
   PRIMARY KEY (`modpag_id`),
   KEY `fk_modulo_modpag_mod_id1` (`modpag_mod_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=699 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=711 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for modulo_tablas
@@ -491,130 +467,6 @@ CREATE TABLE `movimiento` (
   `material_fecha` datetime NOT NULL,
   `material_monto` float NOT NULL,
   PRIMARY KEY (`movimiento_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for obra_civil
--- ----------------------------
-DROP TABLE IF EXISTS `obra_civil`;
-CREATE TABLE `obra_civil` (
-  `obra_civil_id` int(11) NOT NULL AUTO_INCREMENT,
-  `obra_civil_cantidad_pisos` int(11) NOT NULL,
-  `obra_civil_direccion` varchar(45) NOT NULL,
-  `obra_civil_fecha_fin` date NOT NULL,
-  `obra_civil_fecha_inicio` date NOT NULL,
-  `obra_civil_dimensiones_terreno` varchar(45) NOT NULL,
-  `obra_civil_valor_compra` float NOT NULL,
-  `obra_civil_estado_id` int(11) NOT NULL,
-  `obra_civil_localidad_id` int(11) NOT NULL,
-  `obra_civil_descripcion` varchar(200) NOT NULL,
-  PRIMARY KEY (`obra_civil_id`),
-  KEY `fk_obra_civil_estado1_idx` (`obra_civil_estado_id`),
-  KEY `fk_obra_civil_localidad_id` (`obra_civil_localidad_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for obra_civil_hito
--- ----------------------------
-DROP TABLE IF EXISTS `obra_civil_hito`;
-CREATE TABLE `obra_civil_hito` (
-  `obra_civil_hito_id` int(11) NOT NULL AUTO_INCREMENT,
-  `obra_civil_hito_peso` int(5) NOT NULL,
-  `obra_civil_hito_obra_civil_id` int(11) NOT NULL,
-  `obra_civil_hito_hito_id` int(11) NOT NULL,
-  `obra_civil_hito_estado` tinyint(4) NOT NULL,
-  PRIMARY KEY (`obra_civil_hito_id`),
-  KEY `fk_obra_civil_hito_obra_civil_id` (`obra_civil_hito_obra_civil_id`),
-  KEY `fk_obra_civil_hito_hito_id` (`obra_civil_hito_hito_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for obra_civil_hito_tarea
--- ----------------------------
-DROP TABLE IF EXISTS `obra_civil_hito_tarea`;
-CREATE TABLE `obra_civil_hito_tarea` (
-  `obra_civil_hito_tarea_id` int(11) NOT NULL AUTO_INCREMENT,
-  `obra_civil_hito_tarea_obra_civil_hito_id` int(11) NOT NULL,
-  `obra_civil_hito_tarea_tarea_id` int(11) NOT NULL,
-  `obra_civil_hito_tarea_estado` tinyint(1) NOT NULL DEFAULT '0',
-  `obra_civil_hito_tarea_fecha_finalizacion` date DEFAULT NULL,
-  PRIMARY KEY (`obra_civil_hito_tarea_id`),
-  KEY `fk_obra_civil_hito_tarea_obra_civil_hito_id` (`obra_civil_hito_tarea_obra_civil_hito_id`),
-  KEY `fk_obra_civil_hito_tarea_tarea_id` (`obra_civil_hito_tarea_tarea_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for obra_yeseria
--- ----------------------------
-DROP TABLE IF EXISTS `obra_yeseria`;
-CREATE TABLE `obra_yeseria` (
-  `obra_yeseria_id` int(11) NOT NULL AUTO_INCREMENT,
-  `obra_yeseria_descripcion` varchar(200) NOT NULL,
-  `obra_yeseria_domicilio` varchar(45) NOT NULL,
-  `obra_yeseria_fecha_fin` date NOT NULL,
-  `obra_yeseria_fecha_inicio` date NOT NULL,
-  `obra_yeseria_monto` float NOT NULL,
-  `obra_yeseria_estado_id` int(11) NOT NULL,
-  `obra_yeseria_localidad_id` int(11) DEFAULT NULL,
-  `obra_yeseria_cliente_id` int(11) DEFAULT NULL,
-  `obra_yeseria_contrato_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`obra_yeseria_id`),
-  KEY `fk_obra_yeseria_estado1_idx` (`obra_yeseria_estado_id`),
-  KEY `fk_obra_yeseria_localidad_id` (`obra_yeseria_localidad_id`),
-  KEY `fk_obra_yeseria_cliente_id` (`obra_yeseria_cliente_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for obrero
--- ----------------------------
-DROP TABLE IF EXISTS `obrero`;
-CREATE TABLE `obrero` (
-  `obrero_id` int(11) NOT NULL AUTO_INCREMENT,
-  `obrero_apellido` varchar(255) NOT NULL,
-  `obrero_nombre` varchar(255) NOT NULL,
-  `obrero_tipo_doc_id` int(11) NOT NULL,
-  `obrero_nro_doc` int(11) NOT NULL,
-  `obrero_direccion` varchar(255) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `obrero_localidad_id` int(11) NOT NULL,
-  `obrero_CP` varchar(255) DEFAULT NULL,
-  `obrero_CUIL` varchar(255) DEFAULT NULL,
-  `obrero_CBU` varchar(255) DEFAULT NULL,
-  `obrero_fecha_inicio` date DEFAULT NULL,
-  `obrero_telefono` varchar(255) DEFAULT NULL,
-  `obrero_estado` varchar(255) DEFAULT NULL,
-  `obrero_fecha_nacimiento` date DEFAULT NULL,
-  `obrero_usuario_id` int(11) DEFAULT NULL,
-  `obrero_categoria_id` int(11) DEFAULT NULL,
-  `obrero_puesto_id` int(11) DEFAULT NULL,
-  `obrero_obrero_especialidad_id` int(11) DEFAULT NULL,
-  `obrero_estudio_alcanzado_id` int(11) DEFAULT NULL,
-  `obrero_sexo_id` int(11) DEFAULT NULL,
-  `obrero_estado_civil_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`obrero_id`),
-  KEY `fk_obrero_puesto_id` (`obrero_puesto_id`),
-  KEY `fk_obrero_obrero_especialidad_id` (`obrero_obrero_especialidad_id`),
-  KEY `fk_obrero_categoria_id` (`obrero_categoria_id`),
-  KEY `fk_obrero_usuario_id` (`obrero_usuario_id`),
-  KEY `fk_obrero_tipo_doc_id` (`obrero_tipo_doc_id`),
-  KEY `fk_obrero_estudio_alcanzado_id` (`obrero_estudio_alcanzado_id`),
-  KEY `fk_obrero_sexo_id` (`obrero_sexo_id`),
-  KEY `fk_obrero_estado_civil_id` (`obrero_estado_civil_id`),
-  KEY `fk_obrero_localidad_id` (`obrero_localidad_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for obrero_obra_yeseria
--- ----------------------------
-DROP TABLE IF EXISTS `obrero_obra_yeseria`;
-CREATE TABLE `obrero_obra_yeseria` (
-  `obrero_obra_yeseria_id` int(11) NOT NULL AUTO_INCREMENT,
-  `obrero_obra_yeseria_descripcion` varchar(200) NOT NULL,
-  `obrero_obra_yeseria_fecha` date NOT NULL,
-  `obrero_obra_yeseria_obrero_id` int(11) NOT NULL,
-  `obrero_obra_yeseria_obra_yeseria_id` int(11) NOT NULL,
-  PRIMARY KEY (`obrero_obra_yeseria_id`),
-  KEY `fk_obrero_obra_yeseria_obra_yeseria1_idx` (`obrero_obra_yeseria_obra_yeseria_id`),
-  KEY `fk_obrero_obra_yeseria_obrero_id` (`obrero_obra_yeseria_obrero_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
@@ -682,7 +534,7 @@ CREATE TABLE `permiso` (
   KEY `fk_rol_has_modulo_modulo1` (`permiso_mod_id`) USING BTREE,
   KEY `fk_rol_has_modulo_rol1` (`permiso_rol_id`) USING BTREE,
   KEY `fk_permiso_tipo_acceso1` (`permiso_tipoacc_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=7803 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7807 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for planta
@@ -704,7 +556,7 @@ CREATE TABLE `planta` (
   PRIMARY KEY (`planta_id`),
   KEY `fk_planta_estado1_idx` (`planta_estado_id`),
   KEY `fk_planta_localidad_id` (`planta_localidad_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for prensa
@@ -798,6 +650,23 @@ CREATE TABLE `rol` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for servicio_tecnico
+-- ----------------------------
+DROP TABLE IF EXISTS `servicio_tecnico`;
+CREATE TABLE `servicio_tecnico` (
+  `servicio_tecnico_id` int(11) NOT NULL AUTO_INCREMENT,
+  `servicio_tecnico_fecha_estimada_inicio` date NOT NULL,
+  `servicio_tecnico_precio_estimado` float NOT NULL,
+  `servicio_tecnico_estado_id` int(11) NOT NULL,
+  `servicio_tecnico_descripcion` varchar(300) DEFAULT NULL,
+  `id_planta_contrato` int(11) DEFAULT NULL,
+  `id_planta_cliente` int(11) DEFAULT NULL,
+  `servicio_tecnico_fecha_alta` date NOT NULL,
+  PRIMARY KEY (`servicio_tecnico_id`),
+  KEY `fk_servicio_tecnico_estado_id` (`servicio_tecnico_estado_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
 -- Table structure for sexo
 -- ----------------------------
 DROP TABLE IF EXISTS `sexo`;
@@ -806,32 +675,6 @@ CREATE TABLE `sexo` (
   `sexo_nombre` varchar(200) NOT NULL,
   PRIMARY KEY (`sexo_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for tarea
--- ----------------------------
-DROP TABLE IF EXISTS `tarea`;
-CREATE TABLE `tarea` (
-  `tarea_id` int(11) NOT NULL AUTO_INCREMENT,
-  `tarea_descripcion` varchar(50) DEFAULT NULL,
-  `tarea_peso` int(5) NOT NULL,
-  `tarea_baja` tinyint(1) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`tarea_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
-
--- ----------------------------
--- Table structure for tarea_hito
--- ----------------------------
-DROP TABLE IF EXISTS `tarea_hito`;
-CREATE TABLE `tarea_hito` (
-  `tarea_hito_id` int(11) NOT NULL AUTO_INCREMENT,
-  `tarea_hito_tarea_id` int(11) NOT NULL,
-  `tarea_hito_hito_id` int(11) NOT NULL,
-  `tarea_hito_fecha` date NOT NULL,
-  PRIMARY KEY (`tarea_hito_id`),
-  KEY `fk_tarea_hito_tarea_id` (`tarea_hito_tarea_id`),
-  KEY `fk_tarea_hito_hito_id` (`tarea_hito_hito_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Table structure for tipo_acceso
@@ -882,28 +725,6 @@ CREATE TABLE `trommel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- ----------------------------
--- Table structure for unidad_funcional
--- ----------------------------
-DROP TABLE IF EXISTS `unidad_funcional`;
-CREATE TABLE `unidad_funcional` (
-  `unidad_funcional_id` int(11) NOT NULL AUTO_INCREMENT,
-  `unidad_funcional_obra_civil_id` int(11) NOT NULL,
-  `unidad_funcional_cantidad_ambientes` int(11) NOT NULL,
-  `unidad_funcional_coeficiente` double(5,2) NOT NULL,
-  `unidad_funcional_departamento` varchar(50) NOT NULL,
-  `unidad_funcional_estado_uf_id` int(11) NOT NULL,
-  `unidad_funcional_dimensiones` varchar(100) NOT NULL,
-  `unidad_funcional_monto` double(20,2) NOT NULL,
-  `unidad_funcional_observacion` varchar(255) NOT NULL,
-  `unidad_funcional_piso` varchar(50) NOT NULL,
-  `unidad_funcional_cliente_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`unidad_funcional_id`),
-  KEY `fk_unidad_funcional_obra_civil_id` (`unidad_funcional_obra_civil_id`),
-  KEY `fk_unidad_funcional_cliente_id` (`unidad_funcional_cliente_id`),
-  KEY `fk_unidad_funcional_estado_uf_id` (`unidad_funcional_estado_uf_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
-
--- ----------------------------
 -- Table structure for usuario
 -- ----------------------------
 DROP TABLE IF EXISTS `usuario`;
@@ -943,6 +764,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- ----------------------------
 -- Records 
 -- ----------------------------
+INSERT INTO `adjuntos_cliente` VALUES ('1', '1', '6', '/adjuntos/cliente/6/Invoice_160211001047755053.pdf', 'sadsad', 'Invoice_160211001047755053.pdf');
 INSERT INTO `aplicacion` VALUES ('5', 'ECO-RECICLAR', '0');
 INSERT INTO `clientes` VALUES ('1', 'CEPEDA', 'LILIANA INES', '1', '6841180', '41 Nº 736 E/ 8 Y 9', '72', '2010-04-22', '0221-4272409', '3', '1942-01-20', null, null, null, null);
 INSERT INTO `clientes` VALUES ('2', 'D´ALESSANDRO', 'MARIA INES', '1', '22669100', '42 Nº 1028 E/ 15 Y 16', '72', '2010-04-22', '0221-4256235', '3', '1972-03-29', null, null, null, null);
@@ -961,10 +783,11 @@ INSERT INTO `clientes` VALUES ('14', 'MARTINEZ ROCCA', 'ANA MARIA', '1', '621686
 INSERT INTO `clientes` VALUES ('15', 'CITARELLI', 'SILVIA ANAHI', '1', '18212627', '209 S/N E/ 519 Y 519 BIS', '72', '2010-05-17', '0221-4917898', '1', '1967-01-15', null, null, null, null);
 INSERT INTO `clientes` VALUES ('16', 'SCUFFI', 'EDGARDO ENRIQUE', '1', '10753506', 'L N ALEM 179', '72', '2010-05-17', '02268-491176/491078', '1', '1953-01-23', null, null, null, null);
 INSERT INTO `clientes` VALUES ('18', 'mike', 'mike', '1', '123434', 'dsadad sad 65', '715', '2015-11-02', '1234565', '1', '1980-09-02', 'mike srl', 'sadfas das ds ad ', '2147483647', null);
-INSERT INTO `contrato` VALUES ('1', '3', '3', '6', '2016-02-10', '111.00', null, null);
-INSERT INTO `contrato` VALUES ('2', '2', '2', '5', '2016-02-05', '222.00', null, null);
-INSERT INTO `contrato` VALUES ('3', '2', '4', '6', '2016-02-01', '333.00', null, null);
-INSERT INTO `contrato` VALUES ('4', '1', '1', '8', '2016-01-12', '256.00', null, null);
+INSERT INTO `contrato` VALUES ('1', '3', '3', '6', '2016-02-10', '111.00', null, null, null, null);
+INSERT INTO `contrato` VALUES ('2', '2', '2', '5', '2016-02-05', '222.00', null, null, null, null);
+INSERT INTO `contrato` VALUES ('3', '2', '4', '6', '2016-02-01', '333.00', null, null, null, null);
+INSERT INTO `contrato` VALUES ('4', '1', '1', '8', '2016-01-12', '256.00', null, null, null, null);
+INSERT INTO `contrato` VALUES ('5', '111', '2222', '6', '2016-02-23', '33333.00', '/contratos/cliente/6/PasoaPasoF4550.pdf', 'qwerty', '1', 'PasoaPasoF4550.pdf');
 INSERT INTO `empleado` VALUES ('1', 'Perez', 'Juan', '1', '25753684', '2', '355', '1900', '20257536841', '', '0000-00-00', '22', null, '0000-00-00', '152', '0', '', '2', '3');
 INSERT INTO `estado` VALUES ('1', 'Activo', '0');
 INSERT INTO `estado` VALUES ('2', 'Inactivo', '0');
@@ -989,9 +812,6 @@ INSERT INTO `estudio_alcanzado` VALUES ('4', 'Terciario');
 INSERT INTO `estudio_alcanzado` VALUES ('5', 'Universitario');
 INSERT INTO `estudio_alcanzado` VALUES ('6', 'Posgrado');
 INSERT INTO `estudio_alcanzado` VALUES ('7', 'Otro');
-INSERT INTO `hito` VALUES ('1', 'Hito 1', '13', '1');
-INSERT INTO `hito` VALUES ('2', 'Hito 2', '18', '1');
-INSERT INTO `hito` VALUES ('3', 'Hito 3', '15', '0');
 INSERT INTO `localidad` VALUES ('1', 'ALMIRANTE BROWN');
 INSERT INTO `localidad` VALUES ('2', 'ADOLFO ALSINA');
 INSERT INTO `localidad` VALUES ('3', 'ALBERTI');
@@ -1718,10 +1538,7 @@ INSERT INTO `modulo` VALUES ('51', '5', 'Seguridad', '0');
 INSERT INTO `modulo` VALUES ('52', '5', 'Inicio', '0');
 INSERT INTO `modulo` VALUES ('53', '5', 'Listados', '0');
 INSERT INTO `modulo` VALUES ('58', '5', 'Estadisticos', '0');
-INSERT INTO `modulo` VALUES ('60', '5', 'Obra civil', '0');
-INSERT INTO `modulo` VALUES ('61', '5', 'Obra yeserÃ­a', '0');
 INSERT INTO `modulo` VALUES ('62', '5', 'Clientes', '0');
-INSERT INTO `modulo` VALUES ('63', '5', 'Obreros', '0');
 INSERT INTO `modulo` VALUES ('64', '5', 'Configuracion', '0');
 INSERT INTO `modulo` VALUES ('65', '5', 'Proveedor', '0');
 INSERT INTO `modulo` VALUES ('66', '5', 'PaÃ±ol', '0');
@@ -1733,6 +1550,7 @@ INSERT INTO `modulo` VALUES ('71', '5', 'Trommel', '0');
 INSERT INTO `modulo` VALUES ('72', '5', 'Prensa', '0');
 INSERT INTO `modulo` VALUES ('73', '5', 'Cinta Transportadora', '0');
 INSERT INTO `modulo` VALUES ('74', '5', 'Empleado', '0');
+INSERT INTO `modulo` VALUES ('75', '5', 'Servicio Tecnico', '0');
 INSERT INTO `modulo_paginas` VALUES ('345', '51', 'aplicaciones/alta_aplicacion.php');
 INSERT INTO `modulo_paginas` VALUES ('346', '51', 'aplicaciones/index.php');
 INSERT INTO `modulo_paginas` VALUES ('347', '51', 'aplicaciones/modificar_aplicacion.php');
@@ -1793,30 +1611,11 @@ INSERT INTO `modulo_paginas` VALUES ('640', '62', 'clientes/descargar_adjuntos.p
 INSERT INTO `modulo_paginas` VALUES ('641', '62', 'clientes/modificar_cliente.php');
 INSERT INTO `modulo_paginas` VALUES ('642', '62', 'clientes/subir_adjuntos_cliente.php');
 INSERT INTO `modulo_paginas` VALUES ('643', '62', 'clientes/ver_cliente.php');
-INSERT INTO `modulo_paginas` VALUES ('644', '60', 'obra_civil/alta_obra_civil.php');
-INSERT INTO `modulo_paginas` VALUES ('645', '60', 'obra_civil/eliminar_obra_civil.php');
-INSERT INTO `modulo_paginas` VALUES ('646', '60', 'obra_civil/modificar_obra_civil.php');
-INSERT INTO `modulo_paginas` VALUES ('647', '60', 'obra_civil/index.php');
-INSERT INTO `modulo_paginas` VALUES ('648', '61', 'obra_yeseria/alta_obra_yeseria.php');
-INSERT INTO `modulo_paginas` VALUES ('649', '61', 'obra_yeseria/eliminar_obra_yeseria.php');
-INSERT INTO `modulo_paginas` VALUES ('650', '61', 'obra_yeseria/modificar_obra_yeseria.php');
-INSERT INTO `modulo_paginas` VALUES ('651', '61', 'obra_yeseria/index.php');
-INSERT INTO `modulo_paginas` VALUES ('652', '63', 'obrero/index.php');
-INSERT INTO `modulo_paginas` VALUES ('653', '63', 'obrero/adjuntos_obrero.php');
-INSERT INTO `modulo_paginas` VALUES ('654', '63', 'obrero/alta_obrero.php');
-INSERT INTO `modulo_paginas` VALUES ('655', '63', 'obrero/descargar_adjunto.php');
-INSERT INTO `modulo_paginas` VALUES ('656', '63', 'obrero/modificar_obrero.php');
-INSERT INTO `modulo_paginas` VALUES ('657', '63', 'obrero/ver_obrero.php');
-INSERT INTO `modulo_paginas` VALUES ('658', '63', 'obrero/subir_adjuntos_obrero.php');
 INSERT INTO `modulo_paginas` VALUES ('659', '64', 'configuraciones/index.php');
 INSERT INTO `modulo_paginas` VALUES ('660', '68', 'cobro_cuotas/index.php');
 INSERT INTO `modulo_paginas` VALUES ('661', '66', 'panol/index.php');
 INSERT INTO `modulo_paginas` VALUES ('662', '67', 'presupuesto/index.php');
 INSERT INTO `modulo_paginas` VALUES ('663', '65', 'proveedor/index.php');
-INSERT INTO `modulo_paginas` VALUES ('664', '60', 'unidad_funcional/index.php');
-INSERT INTO `modulo_paginas` VALUES ('665', '60', 'unidad_funcional/alta_unidad_funcional.php');
-INSERT INTO `modulo_paginas` VALUES ('666', '60', 'unidad_funcional/modificar_unidad_funcional.php');
-INSERT INTO `modulo_paginas` VALUES ('667', '60', 'unidad_funcional/eliminar_unidad_funcional.php');
 INSERT INTO `modulo_paginas` VALUES ('668', '64', 'tarea/alta_tarea.php');
 INSERT INTO `modulo_paginas` VALUES ('669', '64', 'tarea/modificar_tarea.php');
 INSERT INTO `modulo_paginas` VALUES ('670', '64', 'tarea/eliminar_tarea.php');
@@ -1827,8 +1626,6 @@ INSERT INTO `modulo_paginas` VALUES ('674', '64', 'hito/index.php');
 INSERT INTO `modulo_paginas` VALUES ('675', '64', 'hito/eliminar_hito.php');
 INSERT INTO `modulo_paginas` VALUES ('676', '64', 'hito/hito_tarea.php');
 INSERT INTO `modulo_paginas` VALUES ('677', '64', 'hito/configurar_hito_tarea.php');
-INSERT INTO `modulo_paginas` VALUES ('678', '60', 'obra_civil/finalizar_tarea.php');
-INSERT INTO `modulo_paginas` VALUES ('679', '60', 'obra_civil/configurar_hitos.php');
 INSERT INTO `modulo_paginas` VALUES ('680', '69', 'planta/index.php');
 INSERT INTO `modulo_paginas` VALUES ('681', '69', 'planta/alta_planta.php');
 INSERT INTO `modulo_paginas` VALUES ('683', '62', 'contratos/contrato.php');
@@ -1847,28 +1644,18 @@ INSERT INTO `modulo_paginas` VALUES ('695', '74', 'empleado/index.php');
 INSERT INTO `modulo_paginas` VALUES ('696', '74', 'empleado/modificar_empleado.php');
 INSERT INTO `modulo_paginas` VALUES ('697', '74', 'empleado/subir_adjuntos_empleado.php');
 INSERT INTO `modulo_paginas` VALUES ('698', '74', 'empleado/ver_empleado.php');
-INSERT INTO `obra_civil` VALUES ('1', '40', '2 y 59', '2015-12-16', '2013-02-04', '50', '800000', '1', '303', 'Edificio 2 y 59 - Oficinas');
-INSERT INTO `obra_civil` VALUES ('2', '40', '2', '2015-04-29', '2015-04-01', '50x20', '4000000', '1', '307', 'Mejora');
-INSERT INTO `obra_civil_hito` VALUES ('8', '1', '1', '1', '1');
-INSERT INTO `obra_civil_hito` VALUES ('9', '2', '1', '2', '1');
-INSERT INTO `obra_civil_hito` VALUES ('12', '1', '2', '1', '0');
-INSERT INTO `obra_civil_hito` VALUES ('13', '2', '2', '2', '0');
-INSERT INTO `obra_civil_hito` VALUES ('15', '12', '1', '3', '0');
-INSERT INTO `obra_civil_hito_tarea` VALUES ('6', '8', '1', '1', '2015-04-30');
-INSERT INTO `obra_civil_hito_tarea` VALUES ('7', '8', '2', '1', '2015-04-30');
-INSERT INTO `obra_civil_hito_tarea` VALUES ('8', '8', '4', '1', '2015-05-01');
-INSERT INTO `obra_civil_hito_tarea` VALUES ('9', '9', '3', '1', '2015-05-01');
-INSERT INTO `obra_civil_hito_tarea` VALUES ('10', '9', '5', '1', '2015-05-01');
-INSERT INTO `obra_civil_hito_tarea` VALUES ('11', '12', '1', '0', null);
-INSERT INTO `obra_civil_hito_tarea` VALUES ('12', '12', '2', '0', null);
-INSERT INTO `obra_civil_hito_tarea` VALUES ('13', '12', '4', '0', null);
-INSERT INTO `obra_civil_hito_tarea` VALUES ('14', '13', '3', '0', null);
-INSERT INTO `obra_civil_hito_tarea` VALUES ('15', '13', '5', '0', null);
-INSERT INTO `obra_yeseria` VALUES ('1', 'Mejoramiento Teatro Argentino', '51 e/ 9 y 10', '2014-12-04', '2015-05-09', '1000550', '1', '303', '1', '0');
-INSERT INTO `obra_yeseria` VALUES ('2', 'Mejoramiento Coliseo', '10 e/ 46 y 47', '2014-12-04', '2015-05-09', '907000', '1', '303', '2', '0');
-INSERT INTO `obra_yeseria` VALUES ('3', 'Remodelar comercio 5', '38 e/ 9 y 10', '2014-12-04', '2015-05-09', '300000', '1', '303', '3', '0');
-INSERT INTO `obra_yeseria` VALUES ('4', 'Mejoramiento edificio Policia Montada', '1 y 60', '2014-12-04', '2015-05-09', '540640', '1', '303', '4', '0');
-INSERT INTO `obrero` VALUES ('1', 'Acosta', 'Agustin', '1', '36421777', '2', '355', '1900', '20364217774', '', '2015-04-27', '22', null, '1991-06-03', '152', null, null, null, null, null, null);
+INSERT INTO `modulo_paginas` VALUES ('699', '73', 'cinta_transportadora/modificar_cinta_transportadora.php');
+INSERT INTO `modulo_paginas` VALUES ('700', '73', 'cinta_transportadora/ver_cinta_transportadora.php');
+INSERT INTO `modulo_paginas` VALUES ('701', '72', 'prensa/modificar_prensa.php');
+INSERT INTO `modulo_paginas` VALUES ('702', '72', 'prensa/ver_prensa.php');
+INSERT INTO `modulo_paginas` VALUES ('703', '71', 'trommel/modificar_trommel.php');
+INSERT INTO `modulo_paginas` VALUES ('704', '71', 'trommel/ver_trommel.php');
+INSERT INTO `modulo_paginas` VALUES ('705', '70', 'contratos/descargar_adjunto.php');
+INSERT INTO `modulo_paginas` VALUES ('706', '75', 'servicio_tecnico/index.php');
+INSERT INTO `modulo_paginas` VALUES ('707', '75', 'servicio_tecnico/alta_servicio_tecnico.php');
+INSERT INTO `modulo_paginas` VALUES ('708', '75', 'servicio_tecnico/eliminar_servicio_tecnico.php');
+INSERT INTO `modulo_paginas` VALUES ('709', '75', 'servicio_tecnico/modificar_servicio_tecnico.php');
+INSERT INTO `modulo_paginas` VALUES ('710', '75', 'servicio_tecnico/ver_servicio_tecnico.php');
 INSERT INTO `permiso` VALUES ('7707', '1', '51', '4');
 INSERT INTO `permiso` VALUES ('7708', '1', '51', '1');
 INSERT INTO `permiso` VALUES ('7709', '1', '51', '3');
@@ -1965,10 +1752,15 @@ INSERT INTO `permiso` VALUES ('7799', '1', '74', '4');
 INSERT INTO `permiso` VALUES ('7800', '1', '74', '1');
 INSERT INTO `permiso` VALUES ('7801', '1', '74', '3');
 INSERT INTO `permiso` VALUES ('7802', '1', '74', '2');
+INSERT INTO `permiso` VALUES ('7803', '1', '75', '4');
+INSERT INTO `permiso` VALUES ('7804', '1', '75', '1');
+INSERT INTO `permiso` VALUES ('7805', '1', '75', '3');
+INSERT INTO `permiso` VALUES ('7806', '1', '75', '2');
 INSERT INTO `planta` VALUES ('1', 'verde', '2 y 59', '2015-12-16', '2013-02-04', '800000', '1', '303', 'Residuos Ayarza', '1', '6', '2016-02-08');
 INSERT INTO `planta` VALUES ('2', 'azul', '2', '2015-04-29', '2015-04-01', '4000000', '1', '307', 'Residuos Esq', '2', '5', '2016-02-01');
 INSERT INTO `planta` VALUES ('6', 'verde', 'Politecnico', '0000-00-00', '0000-00-00', '123456', '1', '37', 'aca no mas', '3', '6', '0000-00-00');
 INSERT INTO `planta` VALUES ('7', 'verde', 'aca', '0000-00-00', '0000-00-00', '111111', '1', '712', 'xzxzz', '3', '6', '0000-00-00');
+INSERT INTO `planta` VALUES ('8', 'lima', 'En la casa', '0000-00-00', '0000-00-00', '1111', '1', '13', 'asdsadad', '4', '8', '0000-00-00');
 INSERT INTO `puesto` VALUES ('1', '1/2 OFICIAL');
 INSERT INTO `puesto` VALUES ('2', '1/2 OFICIAL EN GENERAL');
 INSERT INTO `puesto` VALUES ('3', 'ADM. SEMI SENIOR');
@@ -2180,18 +1972,13 @@ INSERT INTO `rol` VALUES ('1', 'Administrador', '0');
 INSERT INTO `rol` VALUES ('2', 'Test', '0');
 INSERT INTO `rol` VALUES ('3', 'Intermedio +', '0');
 INSERT INTO `rol` VALUES ('4', 'Basico', '0');
+INSERT INTO `servicio_tecnico` VALUES ('1', '2013-02-04', '800000', '3', 'Residuos Ayarza', '1', '1', '2016-02-08');
+INSERT INTO `servicio_tecnico` VALUES ('2', '2015-04-01', '4000000', '1', 'Residuos Esq', '2', '2', '2016-02-01');
+INSERT INTO `servicio_tecnico` VALUES ('6', '0000-00-00', '123456', '2', 'aca no mas', '3', '6', '0000-00-00');
+INSERT INTO `servicio_tecnico` VALUES ('7', '0000-00-00', '111111', '1', 'xzxzz', '3', '7', '0000-00-00');
+INSERT INTO `servicio_tecnico` VALUES ('8', '0000-00-00', '1111', '1', 'asdsadad', '4', '8', '0000-00-00');
 INSERT INTO `sexo` VALUES ('1', 'F');
 INSERT INTO `sexo` VALUES ('2', 'M');
-INSERT INTO `tarea` VALUES ('1', 'Tarea 1', '1', '0');
-INSERT INTO `tarea` VALUES ('2', 'Tarea 2', '2', '0');
-INSERT INTO `tarea` VALUES ('3', 'Tarea 3', '1', '0');
-INSERT INTO `tarea` VALUES ('4', 'Tarea 4', '3', '0');
-INSERT INTO `tarea` VALUES ('5', 'Tarea 5', '1', '0');
-INSERT INTO `tarea_hito` VALUES ('1', '1', '1', '2015-04-24');
-INSERT INTO `tarea_hito` VALUES ('2', '2', '1', '2015-04-24');
-INSERT INTO `tarea_hito` VALUES ('3', '4', '1', '2015-04-27');
-INSERT INTO `tarea_hito` VALUES ('4', '3', '2', '2015-04-26');
-INSERT INTO `tarea_hito` VALUES ('5', '5', '2', '2015-04-26');
 INSERT INTO `tipo_acceso` VALUES ('1', 'Alta', '0');
 INSERT INTO `tipo_acceso` VALUES ('2', 'Modificacion', '0');
 INSERT INTO `tipo_acceso` VALUES ('3', 'Baja', '0');
@@ -2205,24 +1992,5 @@ INSERT INTO `tipo_documento` VALUES ('2', 'Cedula');
 INSERT INTO `tipo_documento` VALUES ('3', 'Pasaporte');
 INSERT INTO `tipo_documento` VALUES ('4', 'LE');
 INSERT INTO `tipo_documento` VALUES ('5', 'LC');
-INSERT INTO `unidad_funcional` VALUES ('3', '1', '3', '14.00', 'A', '1', '45x20', '700000.00', 'observación', '1', '16');
-INSERT INTO `unidad_funcional` VALUES ('4', '1', '3', '15.00', 'B', '1', '49x15', '700000.00', 'observación', '1', null);
-INSERT INTO `unidad_funcional` VALUES ('5', '1', '3', '17.00', 'C', '1', '45x21', '800000.00', 'observación', '1', null);
-INSERT INTO `unidad_funcional` VALUES ('6', '1', '1', '13.00', 'A', '1', '49x16', '550000.00', 'observación', '2', null);
-INSERT INTO `unidad_funcional` VALUES ('7', '1', '2', '14.50', 'B', '2', '45x22', '600000.00', 'observación', '2', '16');
-INSERT INTO `unidad_funcional` VALUES ('8', '1', '2', '14.40', 'C', '1', '49x17', '600000.00', 'observación', '2', '1');
-INSERT INTO `unidad_funcional` VALUES ('9', '1', '2', '14.30', 'A', '2', '45x23', '600000.00', 'observación', '3', null);
-INSERT INTO `unidad_funcional` VALUES ('10', '1', '2', '14.20', 'B', '1', '49x18', '600000.00', 'observación', '3', null);
-INSERT INTO `unidad_funcional` VALUES ('11', '1', '1', '14.10', 'C', '1', '45x24', '450000.00', 'observación', '3', null);
-INSERT INTO `unidad_funcional` VALUES ('12', '1', '1', '14.00', 'A', '2', '49x19', '450000.00', 'observación', '4', null);
-INSERT INTO `unidad_funcional` VALUES ('13', '1', '1', '13.90', 'B', '1', '45x25', '450000.00', 'observación', '4', null);
-INSERT INTO `unidad_funcional` VALUES ('14', '1', '2', '13.80', 'C', '1', '49x20', '580000.00', 'observación', '4', null);
-INSERT INTO `unidad_funcional` VALUES ('15', '1', '2', '13.70', 'A', '2', '45x26', '670000.00', 'observación', '5', null);
-INSERT INTO `unidad_funcional` VALUES ('16', '1', '1', '13.60', 'B', '1', '49x21', '570000.00', 'observación', '5', null);
-INSERT INTO `unidad_funcional` VALUES ('17', '1', '2', '13.50', 'C', '1', '45x27', '670000.00', 'observación', '5', null);
-INSERT INTO `unidad_funcional` VALUES ('18', '1', '3', '13.40', 'A', '1', '49x22', '900000.00', 'observación', '6', null);
-INSERT INTO `unidad_funcional` VALUES ('19', '1', '3', '13.30', 'B', '2', '45x28', '900000.00', 'observación', '6', null);
-INSERT INTO `unidad_funcional` VALUES ('20', '1', '3', '13.20', 'A', '2', '49x23', '900000.00', 'observación', '7', null);
-INSERT INTO `unidad_funcional` VALUES ('21', '1', '3', '13.10', 'B', '1', '45x29', '900000.00', 'observación', '7', null);
 INSERT INTO `usuario` VALUES ('152', 'admin', 'admin', 'e10adc3949ba59abbe56e057f20f883e', 'admin@admin.com', '', '', '0');
 INSERT INTO `usuario_rol` VALUES ('177', '152', '1', '5');

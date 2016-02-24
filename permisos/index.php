@@ -100,7 +100,7 @@
 	<script type="text/javascript" src="../js/jquery.min.js"></script>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION . ' - Permisos');
-	$tpl->assign('menu', "menu_oceba.htm");	
+	$tpl->assign('menu', "menu_eco_reciclar.htm");	
 	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');

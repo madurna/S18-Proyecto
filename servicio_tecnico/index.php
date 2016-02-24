@@ -135,7 +135,7 @@
 	$tpl->assign('body','<div align=center><b>Servicio T&eacute;cnico</b></div><div align="center"><br/>'.$frm->toHTML().'</div><br/><div><center>'.$agregar.'</center></div><br/><div><center>'.$excel.'</center></div><div><br/>'.$salida_grilla.'<br /><b>'.$mostrar_cantidad.'</b></div>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION);
-	$tpl->assign('menu', "menu_oceba.htm");	
+	$tpl->assign('menu', "menu_eco_reciclar.htm");	
 	//$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');	    

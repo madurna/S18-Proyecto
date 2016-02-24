@@ -28,7 +28,7 @@
 	$tpl = new tpl();
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION . ' - Perfil');	
-	$tpl->assign('menu', "menu_oceba.htm");		
+	$tpl->assign('menu', "menu_eco_reciclar.htm");		
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre']);
 	
 	if ($do->find(true)) {

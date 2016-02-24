@@ -113,7 +113,7 @@ class DataObjects_Usuario extends DB_DataObject
 //                     'Content-type' => 'text/html; charset=UTF-8\r\n',
 //                     'From' => $mail,
 //                     'sendmail_path'=> '/usr/lib/sendmail',
-//                     'Subject' => 'Su nueva clave - Oceba');
+//                     'Subject' => 'Su nueva clave - Eco-Reciclar');
 //
 //
 //            //Creo la instancia
@@ -126,10 +126,10 @@ class DataObjects_Usuario extends DB_DataObject
 //            $body = '
 //			<div>
 //			<h3>Su nueva clave</h3>
-//                        <p>Alguien a solicitado una nueva clave para ingresar al sistema Oceba Calidad</p>
+//                        <p>Alguien a solicitado una nueva clave para ingresar al sistema Eco-Reciclar Calidad</p>
 //                        <p>Su nueva clave es: '.$nueva_pwd.'</p>
-//                        <p>Ingrese en su panel del sistema Oceba con esta clave y proceda a cambiarla por una de su preferencia.</p>
-//                        <p>Cualquier consulta comunicarse con Oceba.</p>
+//                        <p>Ingrese en su panel del sistema Eco-Reciclar con esta clave y proceda a cambiarla por una de su preferencia.</p>
+//                        <p>Cualquier consulta comunicarse con Eco-Reciclar.</p>
 //			</div>';
 //
 //            //Envio el mail

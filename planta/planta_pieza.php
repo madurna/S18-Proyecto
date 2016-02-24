@@ -97,7 +97,7 @@
 	<div align="center"><br/>'.$salida_grilla.'<br />'.$volver.'</center>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo','Piezas');
-	$tpl->assign('menu', "menu_oceba.htm");	
+	$tpl->assign('menu', "menu_eco_reciclar.htm");	
 	//$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');	    

@@ -11,7 +11,7 @@ function Header()
 {
   	$this->setLeftMargin(5);
     //Logo
-    $this->Image('../img/logoOceba2.jpg',25,8,50);
+    $this->Image('../img/logo_header.png',25,8,50);
     //Arial bold 15
     $this->SetFont('Times','B',10);
     //Movernos a la derecha

@@ -134,7 +134,7 @@
 	<div align="center"><br/>'.$frm->toHTML().'</div><div><br/>'.$agregar.'</div><div><br/>'.$salida_grilla.'</div><br/><b>Se encontraron '.$dg->getRecordCount().' obreros<b/><br/><br/>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION);
-	$tpl->assign('menu', "menu_oceba.htm");	
+	$tpl->assign('menu', "menu_eco_reciclar.htm");	
 	//$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');	    

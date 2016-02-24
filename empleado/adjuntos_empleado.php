@@ -108,7 +108,7 @@
 		$body='<div align=center><b>'.$titulo_grilla.'</b></div><div><br/>'.$agregar.'</div><div><br/></div><div><br/>'.$salida_grilla.'</div></div>';
 		//$body='<div align=center><b><u>'.$titulo_grilla.'</u></b></div><div><br/>'.$frm->toHTML().'</div>';
 		$tpl->assign('body', $body);
-   		$tpl->assign('menu','menu_oceba.htm');
+   		$tpl->assign('menu','menu_eco_reciclar.htm');
 		$tpl->assign('webTitulo', WEB_TITULO);
 		$tpl->assign('secTitulo', WEB_SECCION . ' - Adjuntos empleado');
 		$tpl->assign('links',$links1);

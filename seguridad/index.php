@@ -22,7 +22,7 @@
 	$tpl->assign('secTitulo', WEB_SECCION);
 	$tpl->assign('body', '<h2>Administraci&oacute;n de Seguridad</h2><div align="center"><br><b>Seleccione los datos que desea ver.</b></div>');
 	$tpl->assign('usuario', $_SESSION['usuario']['nombre']);
-    $tpl->assign('menu','menu_oceba.htm');
+    $tpl->assign('menu','menu_eco_reciclar.htm');
     $tpl->assign('links', $links1);
 	$tpl->display('index.htm');	    
     ob_end_flush();

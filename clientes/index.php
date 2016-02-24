@@ -100,10 +100,6 @@
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">&nbsp;&nbsp;&nbsp;Nombre&nbsp;&nbsp;&nbsp;</span>','cliente_nombre',null,array('width' => '60px', 'align' => "center"), null, 'get_nom()'));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Localidad</span>','cliente_localidad_id',null,array('width' => '20px', 'align' => "center"),null,'get_loca()'));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Estado</span>','cliente_estado_id',null,array('width' => '20px', 'align' => "center"),null,'get_estado_cliente',array('id' => 'cliente_id')));
-	//FALTAN FECHAS!!
-	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Porcentaje</span>','comercializador_porcentaje',null,array('width' => '20px', 'align' => "center")));
-	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Valor cuota</span>','comercializador_valor_cuota',null,array('width' => '20px', 'align' => "center")));
-	//$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Acci&oacute;n</span>',null,null,array('width' => '5%', 'align' => "center"),null,'get_modificar_cliente',array('id' => 'cliente_id')));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">&nbsp;&nbsp;Acci&oacute;n&nbsp;&nbsp;</span>',null,null,array('width' => '20px', 'align' => "center"),null,'get_ejecutar_cliente',array('id' => 'cliente_id')));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Contratos</span>',null,null,array('width' => '20px', 'align' => "center"),null,'get_contratos_cliente',array('id' => 'cliente_id')));
 	$dg->addColumn(new Structures_DataGrid_Column('<span class="tituloGrilla">Plantas</span>',null,null,array('width' => '20px', 'align' => "center"),null,'get_plantas_cliente',array('id' => 'cliente_id')));
@@ -130,7 +126,7 @@
 	<div align="center"><br/>'.$frm->toHTML().'</div><div><br/>'.$agregar.'</div><div><br/>'.$salida_grilla.'</div><br/><b>Se encontraron '.$dg->getRecordCount().' Clientes<b/><br/><br/>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo','Clientes');
-	$tpl->assign('menu', "menu_oceba.htm");	
+	$tpl->assign('menu', "menu_eco_reciclar.htm");	
 	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');	    

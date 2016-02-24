@@ -4,7 +4,7 @@
 	require_once(CFG_PATH.'/smarty.config');
 	require_once(CFG_PATH.'/data.config');
 	// links
-	require_once('../seguridad/seguridad.config');
+	require_once('servicio_tecnico.config');
 	// PEAR
 	require_once ('DB.php');
 	require_once('DB/DataObject/FormBuilder.php');
@@ -13,21 +13,21 @@
 	require_once(INC_PATH.'/comun.php');	
 	require_once(INC_PATH.'/rutinas.php');	
 	require_once(INC_PATH.'/grilla.php');	
-	require_once(AUTHFILE);
-	$_SESSION['menu_principal'] = 4;
+	//require_once(AUTHFILE);
+	$_SESSION['menu_principal'] = 3;
 		
 	//DB_DataObject::debugLevel(5); 
 	
-	//recupero el id de la aplicacion a modificar
-	$app_id = $_GET['contenido'];
+	//recupero el id del servicio tecnico a modificar
+	$servicio_tecnico_id = $_GET['contenido'];
 	
 	//recupero el nombre que tenia originalmente en la base
-	$do_aplicacion = DB_DataObject::factory('aplicacion');
-	$do_aplicacion -> app_id = $app_id;
-	$do_aplicacion -> fb_fieldsToRender = array('app_nombre','app_baja');
-	$do_aplicacion -> find(true);
+	$do_servicio_tecnico = DB_DataObject::factory('servicio_tecnico');
+	$do_servicio_tecnico -> servicio_tecnico_id = $servicio_tecnico_id;
 	
-	if (!$do_aplicacion->find(true)) {
+	$do_servicio_tecnico -> find(true);
+	
+	if (!$do_servicio_tecnico->find(true)) {
 		$paginaOriginante = 'index.php';
 		$tpl->assign('include_file','error.tpl');
 		$tpl->assign('error_msg','Error: Registro Inexistente'); 
@@ -38,7 +38,7 @@
 	}
 	
 	// Genero el formulario
-	$fb =& DB_DataObject_Formbuilder::create($do_aplicacion);
+	$fb =& DB_DataObject_Formbuilder::create($do_servicio_tecnico);
 	$frm = $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
 	$frm->setRequiredNote(FRM_NOTA);
 	$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
@@ -53,24 +53,19 @@
 	if($frm->validate()){
 		
 		//restauro los modulos asociados a la aplicacion
-		$do_modulo = DB_DataObject::factory('modulo');
-		$do_modulo -> mod_app_id = $app_id;
-		$do_modulo -> find();
-		while ($do_modulo -> fetch()){
-			$do_modulo  -> mod_baja = 0;
-			$do_modulo -> update();
-		}
-		
+		$do_servicio_tecnico = DB_DataObject::factory('servicio_tecnico');
+		$do_servicio_tecnico -> servicio_tecnico_id = $servicio_tecnico_id;
+		$do_servicio_tecnico -> find();
+				
 		$post = $frm->exportValues();
-		$do_aplicacion->setFrom($post);
-		$id = $do_aplicacion->update();
+		$do_servicio_tecnico->setFrom($post);
+		$id = $do_servicio_tecnico->update();
 		
 		if ($id){	
-			$do_aplicacion->query('COMMIT');
-		}
-		else {
-			$do_aplicacion->query('ROLLBACK');
-			$error = 'Error en la modificaci&oacute;n de la aplicaci&oacute;n</b></div>';				
+			$do_servicio_tecnico->query('COMMIT');
+		}else{
+			$do_servicio_tecnico->query('ROLLBACK');
+			$error = 'Error en la modificaci&oacute;n del Servicio T&eacute;cnico</b></div>';				
 		}
 		header('location:index.php');
 		ob_end_flush();
@@ -78,14 +73,14 @@
 	}
 	
 	$tpl = new tpl();
-	$titulo_grilla = 'Modificar aplicaci&oacute;n';
+	$titulo_grilla = 'Modificar Servicio T&eacute;cnico';
 	$body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
             <div id="contenido"><p>'.$frm->toHtml().'</p></div>';
 	$tpl->assign('body', $body);
-    $tpl->assign('menu','menu_oceba.htm');
+    $tpl->assign('menu','menu_eco_reciclar.htm');
 	$tpl->assign('webTitulo', WEB_TITULO);
-	$tpl->assign('secTitulo', WEB_SECCION . ' - Alta aplicaci&oacute;n');
+	$tpl->assign('secTitulo', WEB_SECCION . ' - Alta Servicio T&eacute;cnico');
 	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');

@@ -78,7 +78,7 @@
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
             <div id="contenido"><p>'.$frm->toHtml().'</p></div>';
 	$tpl->assign('body', $body);
-    $tpl->assign('menu','menu_oceba.htm');
+    $tpl->assign('menu','menu_eco_reciclar.htm');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION . ' - Modificar P&aacute;gina');
 	$tpl->assign('links',$links1);

@@ -5,7 +5,7 @@
 	require_once(INC_PATH.'/funciones/function.armarPermisos.php');
 	require_once(INC_PATH.'/funciones/function.calcular_tiempo_trasnc.php');	
 	session_start();
-	Class AccesoOceba {
+	Class AccesoEco {
 		
 		static function getIdUsuario() {
 			return $_SESSION['usuario']['id'];
@@ -15,7 +15,7 @@
 			require('../config/menu.config');
 			//print_r($linkMenu);
 			foreach($linkMenu as $l) {
-	             if (AccesoOceba::verificarAccesoPagina($l['link'],'Acceso')) {
+	             if (AccesoEco::verificarAccesoPagina($l['link'],'Acceso')) {
 	             	$linkMenu2[] = $l;
 	      		}
 	      	}	
@@ -46,7 +46,7 @@
 		}
 		
 		static function usuarioRegistrado($app_id) {	
-			if (AccesoOceba::getAppId() != $app_id) {
+			if (AccesoEco::getAppId() != $app_id) {
 				session_destroy();
 				session_start();	
 			}
@@ -73,7 +73,7 @@
 			if($encontrado > 0) {
 				$sess_usuarios = armarPermisos($do_usuario);
 				$_SESSION['usuario'] = $sess_usuarios['usuario'];
-				//AccesoOceba::registrarLog($sess_usuarios['usuario']['id'],$app_id);
+				//AccesoEco::registrarLog($sess_usuarios['usuario']['id'],$app_id);
 				return true;
 			}
 			else {
@@ -123,7 +123,7 @@
                 //$do_usuario_empresa -> usremp_usua_id = $do_usuario->usua_id;
                 //$encontrado2 = $do_usuario_empresa->find(true);	
 				
-				AccesoOceba::registrarLog(AccesoOceba::getIdUsuario(),$app_id);				
+				AccesoEco::registrarLog(AccesoEco::getIdUsuario(),$app_id);				
 				
 				/*
 				$_SESSION['usuario']['empresa'] = $do_usuario_empresa->usremp_emp_id;
@@ -146,7 +146,7 @@
 		}
 		
 		static function getAccesoArchivo($arch_id) {
-			if (AccesoOceba::getAccesoModulo('Superusuario'))
+			if (AccesoEco::getAccesoModulo('Superusuario'))
 				return true;
 			$do_ai = DB_DataObject::factory('archivos_importacion');
 			$do_ai->arch_id = $arch_id;
@@ -158,12 +158,12 @@
 			$do_ddt->ddt_id = $do_ai->tipoarch_ddt_id;
 			if (!$do_ddt->find(true))
 				return false;
-			return AccesoOceba::getAccesoTabla($do_ddt->ddt_tabla_origen);
+			return AccesoEco::getAccesoTabla($do_ddt->ddt_tabla_origen);
 			exit;
 		}
 		
 		static function getAccesoTabla($tabla) {
-			if (AccesoOceba::getAccesoModulo('Superusuario'))
+			if (AccesoEco::getAccesoModulo('Superusuario'))
 				return true;
 				
 			if (!$tabla)
@@ -197,7 +197,7 @@
 		}
 
 		static function getAccesoSuperusuario() {							
-			if (!AccesoOceba::getDatosUsuario())
+			if (!AccesoEco::getDatosUsuario())
 				return null;	
 							
 			$do_m = DB_DataObject::factory('modulo'); 
@@ -220,9 +220,9 @@
 		}
 				
 		static function getAccesoModulo($modulo) {							
-			if ((!$modulo) and (!AccesoOceba::getDatosUsuario()))
+			if ((!$modulo) and (!AccesoEco::getDatosUsuario()))
 				return null;	
-			if (AccesoOceba::getAccesoSuperusuario())
+			if (AccesoEco::getAccesoSuperusuario())
 				return true;
 			$do_m = DB_DataObject::factory('modulo'); 
 			$do_m->mod_nombre = $modulo;
@@ -251,26 +251,26 @@
 			$archivos_comercial = $obj->getValor('tipos_archivos_por_modulo','comercial',true);
 			$archivos_servicio = $obj->getValor('tipos_archivos_por_modulo','servicio',true);
 			$archivos_producto = $obj->getValor('tipos_archivos_por_modulo','producto',true);
-			if (AccesoOceba::getAccesoModulo('Superusuario')) {
+			if (AccesoEco::getAccesoModulo('Superusuario')) {
 				return $archivos_comercial.','.$archivos_servicio.','.$archivos_producto.','.$archivos_datos;
 				exit;
 			}
-			$aux = AccesoOceba::getAccesoModulo('Ver archivos de importación de comercial');			
+			$aux = AccesoEco::getAccesoModulo('Ver archivos de importación de comercial');			
 			if($aux > 0)
 				{
 				$archivos .= $archivos_comercial;
 				}
-			$aux2 = AccesoOceba::getAccesoModulo('Ver archivos de importación de producto');
+			$aux2 = AccesoEco::getAccesoModulo('Ver archivos de importación de producto');
 			if($aux2 > 0)
 				{
 				$archivos .= $archivos_producto;
 				}
-			$aux3 = AccesoOceba::getAccesoModulo('Ver archivos de importación de servicio');
+			$aux3 = AccesoEco::getAccesoModulo('Ver archivos de importación de servicio');
 			if($aux3 > 0)
 				{
 				$archivos .= $archivos_servicio;
 				}	
-			$aux4 = AccesoOceba::getAccesoModulo('Ver archivos de importación de datos');
+			$aux4 = AccesoEco::getAccesoModulo('Ver archivos de importación de datos');
 			if($aux4 > 0)
 				{
 				$archivos .= $archivos_datos;
@@ -284,7 +284,7 @@
 			debug_sistema('Iniciando autorización');	
 			
 			if (MANTENIMIENTO == 1) {
-				if (!AccesoOceba::getAccesoModulo(utf8_encode('Mantenimiento')))
+				if (!AccesoEco::getAccesoModulo(utf8_encode('Mantenimiento')))
 					header('Location: ../home/mantenimiento.php');
 			}
 			
@@ -298,7 +298,7 @@
 			$pagina = trim($pagina,'/ ');
 			
 			debug_sistema('Autorizando Script '.$pagina);			
-			$datosUsuario = AccesoOceba::getDatosUsuario();	
+			$datosUsuario = AccesoEco::getDatosUsuario();	
 			$aplicacionUsuario = $datosUsuario['app_id'];
 			
 			if ((!isset($datosUsuario)) or ($aplicacionUsuario != APP_ID)) {		
@@ -347,7 +347,7 @@
 					
 				if (!defined('GENERICO')) {
 					debug_sistema('Buscando permisos para la pÃ¡gina');		
-					$habilitado = AccesoOceba::verificarAcceso($datosUsuario['permisos'],$pagina,$accesos);
+					$habilitado = AccesoEco::verificarAcceso($datosUsuario['permisos'],$pagina,$accesos);
 				}
 				else {
 					debug_sistema('La pÃ¡gina no requiere autorizacion');		
@@ -373,13 +373,13 @@
 		}
 		
 		static function verificarAccesoPagina($pagina = null, $acceso = array())
-		{	$datosUsuario = AccesoOceba::getDatosUsuario();
+		{	$datosUsuario = AccesoEco::getDatosUsuario();
 			if (is_array($acceso))
 				$accesos = $acceso;
 			else
 				$accesos = array($acceso);
 			//print_r($accesos);
-			return AccesoOceba::verificarAcceso($datosUsuario['permisos'],$pagina,$accesos);
+			return AccesoEco::verificarAcceso($datosUsuario['permisos'],$pagina,$accesos);
 		}
 		
 		/**

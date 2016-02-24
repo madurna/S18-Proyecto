@@ -17,11 +17,11 @@
 	$_SESSION['menu_principal'] = 2;
 
 	//traido id del modulo pasado por GET
-	$contrato_get = $_GET['contenido'];
-	$cliente_get = $_GET['cliente'];
+	$planta_id = $_GET['contenido'];
 		
 	//DB_DataObject::debugLevel(5); 
 	$do_planta = DB_DataObject::factory('planta');
+	$do_planta -> planta_id = $planta_id;
 
 	$do_planta -> fb_fieldsToRender = array (
     	'planta_direccion',
@@ -33,6 +33,17 @@
         'planta_localidad_id',
         'planta_descripcion'		
     );
+
+    $do_planta -> find(true);
+	
+	if (!$do_planta->find(true)) {
+		$tpl->assign('include_file','error.tpl');
+		$tpl->assign('error_msg','Error: Registro Inexistente'); 
+		$tpl->assign('error_volver','Volver'); 	
+		$tpl->assign('error_volver_href',$paginaOriginante); 	
+		$tpl->display('index.htm');
+		exit;
+	}
 	
 	//Creo el formulario en base a la solicitud
 	$fb =& DB_DataObject_FormBuilder::create($do_planta);

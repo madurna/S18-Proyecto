@@ -144,8 +144,6 @@
 	$tpl->assign('body',' 
 	<link rel="stylesheet" href="../css/modal-message.css" type="text/css">
 
-	<link type="text/css" rel="stylesheet" href="css/autocomplete_cliente/estilo.css" />
-	<script type="text/javascript" src="../js/calendario.js"></script>
 	<script type="text/javascript" src="../js/ajax/ajax.js"></script>
 	<script type="text/javascript" src="../js/ajax/ajax-dynamic-content.js"></script>
 	<script type="text/javascript" src="../js/ajax/modal-message.js"></script>
@@ -165,14 +163,14 @@
 			}
 
 		</script>
-	<link type="text/css" rel="stylesheet" href="css/autocomplete_cliente/jquery-ui-1.8.4.custom.css"/>
-	<script type="text/javascript" src="js/autocomplete_cliente/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript" src="js/autocomplete_cliente/jquery-ui-1.8.4.custom.min.js"></script>
+	<link type="text/css" rel="stylesheet" href="../js/jqueryui/jquery-ui.css"/>
+	<script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
+	<script type="text/javascript" src="../js/jqueryui/js/jquery-ui-1.8.11.custom.min.js"></script>
 	<div align=center><b>Plantas</b></div>
 	<div align="center"><br/>'.$frm->toHTML().'</div><br/><div><center>'.$excel.'</center></div><div><br/>'.$salida_grilla.'<br /><b>'.$mostrar_cantidad.'</b></div>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION);
-	$tpl->assign('menu', "menu_oceba.htm");	
+	$tpl->assign('menu', "menu_eco_reciclar.htm");	
 	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');	    

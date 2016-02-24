@@ -1,8 +1,8 @@
 <?php
 	ob_start();
 	require_once('../config/web.config');
-	require_once(INC_PATH.'/AccesoOceba.class.php');	
-	AccesoOceba::finalizarSesion();
+	require_once(INC_PATH.'/AccesoEco.class.php');	
+	AccesoEco::finalizarSesion();
 	header('Location:../'.PGN_LOGIN);
 	ob_end_flush();
 	exit;

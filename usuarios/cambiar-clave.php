@@ -84,7 +84,7 @@ $tpl->assign('volver','../usuarios/modificar_usuario.php?contenido='.$_GET['id']
 $tpl->assign('webTitulo', WEB_TITULO);
 $tpl->assign('secTitulo', WEB_SECCION);
 
-$tpl->assign('menu','menu_oceba.tpl');
+$tpl->assign('menu','menu.tpl');
     //$tpl->assign('links', $links);
 //Template del archivo
 $tpl->assign('include_file','cambiar-clave.tpl');

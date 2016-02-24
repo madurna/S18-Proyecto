@@ -183,7 +183,7 @@
             <script language="javascript" type="text/javascript" src="../js/agregar_campo_file.js"></script>
             ';
 	$tpl->assign('body', $body);
-    $tpl->assign('menu','menu_oceba.htm');
+    $tpl->assign('menu','menu_eco_reciclar.htm');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION . ' - Subir Contrato adjunto');
 	//$tpl->assign('links',$links1);

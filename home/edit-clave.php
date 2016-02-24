@@ -26,7 +26,7 @@
 	$tpl = new tpl();
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION . ' - Cambiar clave');	
-	$tpl->assign('menu', "menu_oceba.tpl");		
+	$tpl->assign('menu', "menu.tpl");		
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre']);
 	
 	if ($do->find(true)) {

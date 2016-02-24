@@ -96,7 +96,7 @@
 	$titulo_grilla = '<font size="2px">Adjuntos de: <u>'.$apellido_nombre.'</u></font><br /><br />';
 	$body='<div align=center><b>'.$titulo_grilla.'</b></div><div><br/>'.$agregar.'</div><div><br/></div><div><br/>'.$salida_grilla.'</b></div><div><br/>'.$volver.'</div></div>';
 	$tpl->assign('body', $body);
-	$tpl->assign('menu','menu_oceba.htm');
+	$tpl->assign('menu','menu_eco_reciclar.htm');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION . ' - Adjuntos cliente');
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );

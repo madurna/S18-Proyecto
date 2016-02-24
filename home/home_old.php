@@ -22,7 +22,7 @@
 	$tpl = new tpl();
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION);
-	$tpl->assign('menu', "menu_oceba.htm");
+	$tpl->assign('menu', "menu_eco_reciclar.htm");
 	$tpl->assign('links', $links2);
 	$tpl->assign('body', '<div align="center"><br><b>Seleccione los datos que desea ver.</b></div>');
 	//$tpl->assign('include_file','grilla_index.tpl');

@@ -55,7 +55,7 @@
 	$tpl->assign('body', '<h2>Administraci&oacute;n de Seguridad</h2><div align=center><b>P&aacute;ginas del m&oacute;dulo</b></div>'.$agregar.'</div><div><br/>'.$salida_grilla.'</div>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION . ' - P&aacute;ginas');
-	$tpl->assign('menu', "menu_oceba.htm");	
+	$tpl->assign('menu', "menu_eco_reciclar.htm");	
 	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');
