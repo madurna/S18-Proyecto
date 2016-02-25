@@ -48,6 +48,8 @@
 	if($frm->validate()) {
 		$post = $frm->exportValues();
 		$do_cinta_transportadora->setFrom($post);
+		$do_cinta_transportadora -> id_planta = $planta_id;
+		$do_cinta_transportadora -> trommel_estado_id = 1;
 		$do_cinta_transportadora->query('BEGIN');
 		$id = $do_cinta_transportadora->insert(); 
 		
@@ -59,7 +61,7 @@
 			$do_cinta_transportadora->query('ROLLBACK');			
 			$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
 		}
-		header('location:index.php');
+		header('location:../planta/planta_pieza.php?contenido='.$planta_id);
 		ob_end_flush();
 		exit;
 	}		

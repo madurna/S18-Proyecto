@@ -48,6 +48,8 @@
 	if($frm->validate()) {
 		$post = $frm->exportValues();
 		$do_trommel->setFrom($post);
+		$do_trommel -> id_planta = $planta_id;
+		$do_trommel -> trommel_estado_id = 1;
 		$do_trommel->query('BEGIN');
 		$id = $do_trommel->insert(); 
 		
@@ -59,7 +61,7 @@
 			$do_trommel->query('ROLLBACK');			
 			$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
 		}
-		header('location:index.php');
+		header('location:../planta/planta_pieza.php?contenido='.$planta_id);
 		ob_end_flush();
 		exit;
 	}		

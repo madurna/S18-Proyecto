@@ -52,6 +52,8 @@
 	if($frm->validate()) {
 		$post = $frm->exportValues();
 		$do_prensa->setFrom($post);
+		$do_prensa -> id_planta = $planta_id;
+		$do_prensa -> trommel_estado_id = 1;
 		$do_prensa->query('BEGIN');
 		$id = $do_prensa->insert(); 
 		
@@ -63,7 +65,7 @@
 			$do_prensa->query('ROLLBACK');			
 			$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
 		}
-		header('location:index.php');
+		header('location:../planta/planta_pieza.php?contenido='.$planta_id);
 		ob_end_flush();
 		exit;
 	}		

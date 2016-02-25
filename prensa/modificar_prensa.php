@@ -63,7 +63,7 @@
 	
 	$botones = array();
 	$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.location.href='index.php';"));
+	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.window.history.back();"));
 	$botones[] = $frm->createElement('reset','restaurar','Restaurar');
 	$frm->addGroup($botones);
 	

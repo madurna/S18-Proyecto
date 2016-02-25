@@ -34,11 +34,11 @@
 	$columnas[1] = '<font size="2px" color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prensa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>';
 	$columnas[2] = '<font size="2px" color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;Cinta Transportadora&nbsp;&nbsp;&nbsp;&nbsp;</font>';
 
-	if($do_trommel->trommel_id != ''){
+	if($do_trommel->trommel_id && $do_trommel->trommel_estado_id != '0'){
 		$matriz[0][0]= "<b><center><i class='fa fa-check-circle text-bg text-success'></i>&nbsp;
-			<i class='fa fa-search text-bg text-success'></i>&nbsp;
-			<i class='fa fa-pencil text-bg text-success'></i>&nbsp;
-			<i class='fa fa-close text-bg text-success'></i></center></b>";
+			<a href=../trommel/ver_trommel.php?contenido=$planta_id><i title='Ver' class='fa fa-search text-bg text-success'></i></a>&nbsp;
+			<a href=../trommel/modificar_trommel.php?contenido=$planta_id><i title='Editar' class='fa fa-pencil text-bg text-success'></i></a>&nbsp;
+			<a href=../trommel/eliminar_trommel.php?contenido=$planta_id><i title='Eliminar' class='fa fa-close text-bg text-success'></i></a></center></b>";
 	}else{
 		$matriz[0][0]= "<b><center><a href=../trommel/alta_trommel.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
 			<i class='fa fa-search text-bg text-muted'></i>&nbsp;
@@ -46,11 +46,11 @@
 			<i class='fa fa-close text-bg text-muted'></i></center></b>";
 	}
 
-	if($do_prensa->prensa_id != ''){
+	if($do_prensa->prensa_id && $do_prensa->prensa_estado_id != '0'){
 		$matriz[0][1]= "<b><center><i class='fa fa-check-circle text-bg text-success'></i>&nbsp;
-			<i class='fa fa-search text-bg text-success'></i>&nbsp;
-			<i class='fa fa-pencil text-bg text-success'></i>&nbsp;
-			<i class='fa fa-close text-bg text-success'></i></center></b>";
+			<a href=../prensa/ver_prensa.php?contenido=$planta_id><i title='Ver' class='fa fa-search text-bg text-success'></i></a>&nbsp;
+			<a href=../prensa/modificar_prensa.php?contenido=$planta_id><i title='Editar' class='fa fa-pencil text-bg text-success'></i></a>&nbsp;
+			<a href=../prensa/eliminar_prensa.php?contenido=$planta_id><i title='Eliminar' class='fa fa-close text-bg text-success'></i></a></center></b>";
 	}else{
 		$matriz[0][1]= "<b><center><a href=../prensa/alta_prensa.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
 			<i class='fa fa-search text-bg text-muted'></i>&nbsp;
@@ -58,11 +58,11 @@
 			<i class='fa fa-close text-bg text-muted'></i></center></b>";
 	}
 
-	if($do_cinta_transportadora->cinta_transportadora_id != ''){
+	if($do_cinta_transportadora->cinta_transportadora_id && $do_cinta_transportadora->cinta_transportadora_estado_id != '0'){
 		$matriz[0][2]= "<b><center><i class='fa fa-check-circle text-bg text-success'></i>&nbsp;
-			<i class='fa fa-search text-bg text-success'></i>&nbsp;
-			<i class='fa fa-pencil text-bg text-success'></i>&nbsp;
-			<i class='fa fa-close text-bg text-success'></i></center></b>";
+			<a href=../cinta_transportadora/ver_cinta_transportadora.php?contenido=$planta_id><i title='Ver' class='fa fa-search text-bg text-success'></i></a>&nbsp;
+			<a href=../cinta_transportadora/modificar_cinta_transportadora.php?contenido=$planta_id><i title='Editar' class='fa fa-pencil text-bg text-success'></i></a>&nbsp;
+			<a href=../cinta_transportadora/eliminar_cinta_transportadora.php?contenido=$planta_id><i title='Eliminar' class='fa fa-close text-bg text-success'></i></a></center></b>";
 	}else{
 		$matriz[0][2]= "<b><center><a href=../cinta_transportadora/alta_cinta_transportadora.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
 			<i class='fa fa-search text-bg text-muted'></i>&nbsp;
