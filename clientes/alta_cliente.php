@@ -73,10 +73,10 @@
 		$fecha = $post['cliente_fecha_nacimiento'];
 		list($dia,$mes,$anio) = explode("/",$fecha);
 		$fecha_db = $anio.'-'.$mes.'-'.$dia;
-		$do_cliente->cliente_fecha_nacimiento = $fecha_db; print_r($do_cliente->cliente_fecha_nacimiento);print_r("<br>");
+		$do_cliente->cliente_fecha_nacimiento = $fecha_db;
 		
 		$do_cliente->query('BEGIN');
-		//$id = $do_cliente->insert(); 
+		$id = $do_cliente->insert(); 
 		
 		print_r($do_cliente);exit;
 		// si se inserto se redirije a index.php, de lo contrario se muestra el error

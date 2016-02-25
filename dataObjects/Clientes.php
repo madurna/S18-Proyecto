@@ -107,8 +107,8 @@ class DataObjects_Clientes extends DB_DataObject
 		
 		$frm-> addElement('html','
 			
-			<script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
-            <script type="text/javascript" src="../js/jqueryui/js/jquery-ui-1.8.11.custom.min.js"></script>
+			<script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+            <script type="text/javascript" src="../js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 
 			<script type="text/javascript">
 				function trim(str) {
@@ -116,33 +116,8 @@ class DataObjects_Clientes extends DB_DataObject
 				}
 		
 				jQuery(function($){
-					$.datepicker.regional["es"] = {
-						closeText: "Cerrar",
-						prevText: "&#x3c;Ant",
-						nextText: "Sig&#x3e;",
-						currentText: "Hoy",
-						monthNames: ["Enero","Febrero","Marzo","Abril","Mayo","Junio",
-						"Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"],
-						monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun",
-						"Jul","Ago","Sep","Oct","Nov","Dic"],
-						dayNames: ["Domingo","Lunes","Martes","Mi&eacute;rcoles","Jueves","Viernes","S&aacute;bado"],
-						dayNamesShort: ["Dom","Lun","Mar","Mi&eacute;","Juv","Vie","S&aacute;b"],
-						dayNamesMin: ["Do","Lu","Ma","Mi","Ju","Vi","S&aacute;"],
-						weekHeader: "Sm",
-						dateFormat: "dd-mm-yy",
-						firstDay: 1,
-						isRTL: false,
-						showMonthAfterYear: false,
-						yearSuffix: "",
-						changeMonth: true,
-						changeYear: true,
-						yearRange:"1920:2015",
-						showOn: "button",
-						buttonImageOnly: true,
-						buttonImage: "../img/spirit20_icons/calendar.png"
-					};
-
-					$.datepicker.setDefaults($.datepicker.regional["es"]);
+					
+					$.datepicker.setDefaults($.datepicker);
 				});
 
 				$(document).ready(function() {
@@ -175,8 +150,8 @@ class DataObjects_Clientes extends DB_DataObject
 							function(){
 								var fecha_inicio = "'.$fecha_inicio.'";
 								var fecha_nacimiento = "'.$fecha_nacimiento.'";
-								$("#cliente_fecha_inicio").datepicker("setDate", fecha_inicio);
-								$("#cliente_fecha_nacimiento").datepicker("setDate", fecha_nacimiento);
+								$("#cliente_fecha_inicio").datepicker("setDate", "fecha_inicio");
+								$("#cliente_fecha_nacimiento").datepicker("setDate", "fecha_nacimiento");
 							}
 						);
 					</script>
@@ -195,7 +170,7 @@ class DataObjects_Clientes extends DB_DataObject
 							$(document).ready(
 								function(){
 									var fecha_inicio = "'.$fecha_inicio.'";
-									$("#cliente_fecha_inicio").datepicker("setDate", fecha_inicio);
+									$("#cliente_fecha_inicio").datepicker("setDate", "fecha_inicio");
 								}
 							);
 						</script>

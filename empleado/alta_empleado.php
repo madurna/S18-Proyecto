@@ -18,33 +18,31 @@
 	$_SESSION['menu_principal'] = 7;
 		
 	//DB_DataObject::debugLevel(5); 
-	$do_obrero = DB_DataObject::factory('obrero');
+	$do_empleado = DB_DataObject::factory('empleado');
 	
-	$do_obrero -> fb_fieldsToRender = array (
-    	'obrero_apellido',
-		'obrero_nombre',
-		'obrero_tipo_doc_id',
-		'obrero_nro_doc',
-		'obrero_fecha_nacimiento',
-		'obrero_direccion',
-		'obrero_localidad_id',
-		'obrero_CP',
-		'obrero_CUIL',
-		'obrero_cuenta_bancaria',
-		'obrero_CBU',
-		'obrero_fecha_inicio',
-		'obrero_telefono',
-		'obrero_tel_fijo_celular',
-		'obrero_tel_laboral1',
-		'obrero_tel_laboral2',
-		'obrero_referido1',
-		'obrero_referido2',
-		'obrero_reparticion_id',
-		'obrero_estado_id',		
+	$do_empleado -> fb_fieldsToRender = array (
+    	'empleado_apellido',
+        'empleado_nombre',
+        'empleado_tipo_doc_id',
+        'empleado_nro_doc',
+        'empleado_CUIL',
+        'empleado_fecha_nacimiento',
+        'empleado_direccion',
+        'empleado_localidad_id',
+        'empleado_CP',
+        'empleado_CBU',
+        'empleado_fecha_inicio',
+        'empleado_telefono',
+        'empleado_sector_id',
+        'empleado_tarea_id',
+        'empleado_estado',
+        'empleado_capacitacion',
+        'empleado_sexo_id',
+        'empleado_estado_civil_id'		
     );
 	
 	//Creo el formulario en base a la solicitud
-	$fb =& DB_DataObject_FormBuilder::create($do_obrero);
+	$fb =& DB_DataObject_FormBuilder::create($do_empleado);
 	$frm =& $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
 	$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
 	$frm->setRequiredNote(FRM_NOTA);
@@ -62,39 +60,37 @@
 	$error = '';
 	if($frm->validate()) {
 		$post = $frm->exportValues();
-		$do_obrero->setFrom($post);
+		$do_empleado->setFrom($post);
 		
-		$ape=utf8_decode($post['obrero_apellido']);
-		$do_obrero->obrero_apellido=$ape;
+		$ape=utf8_decode($post['empleado_apellido']);
+		$do_empleado->empleado_apellido=$ape;
 		
-		$nom=utf8_decode($post['obrero_nombre']);
-		$do_obrero->obrero_nombre=$nom;
+		$nom=utf8_decode($post['empleado_nombre']);
+		$do_empleado->empleado_nombre=$nom;
 		
-		$dir=utf8_decode($post['obrero_direccion']);
-		$do_obrero->obrero_direccion=$dir;
+		$dir=utf8_decode($post['empleado_direccion']);
+		$do_empleado->empleado_direccion=$dir;
 		
-		$do_obrero->obrero_usuario_id=$_SESSION['usuario']['id'];
-		
-		$fecha = $post['obrero_fecha_inicio'];
+		$fecha = $post['empleado_fecha_inicio'];
 		list($dia,$mes,$anio) = explode("-",$fecha);
 		$fecha_db = $anio.'-'.$mes.'-'.$dia;
-		$do_obrero->obrero_fecha_inicio = $fecha_db;
+		$do_empleado->empleado_fecha_inicio = $fecha_db;
 		
-		$fecha = $post['obrero_fecha_nacimiento'];
+		$fecha = $post['empleado_fecha_nacimiento'];
 		list($dia,$mes,$anio) = explode("-",$fecha);
 		$fecha_db = $anio.'-'.$mes.'-'.$dia;
-		$do_obrero->obrero_fecha_nacimiento = $fecha_db;
+		$do_empleado->empleado_fecha_nacimiento = $fecha_db;
 		
-		$do_obrero->query('BEGIN');
-		$id = $do_obrero->insert(); 
+		$do_empleado->query('BEGIN');
+		$id = $do_empleado->insert(); 
 		
 		//print_r($post);
 		// si se inserto se redirije a index.php, de lo contrario se muestra el error
 		if ($id){
-			$do_obrero->query('COMMIT');	
+			$do_empleado->query('COMMIT');	
 		}
 		else{
-			$do_obrero->query('ROLLBACK');			
+			$do_empleado->query('ROLLBACK');			
 			$error = 'Error en la generaci&oacute;n de los datos</b></div>';				
 		}
 		header('location:index.php');
@@ -102,7 +98,7 @@
 	}		
 
 	$tpl = new tpl();
-	$titulo_grilla = 'Alta obrero';
+	$titulo_grilla = 'Alta Empleado';
 	$body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
             <div id="contenido"><p>'.$frm->toHtml().'</p></div>
@@ -110,7 +106,7 @@
 	$tpl->assign('body', $body);
     $tpl->assign('menu','menu_eco_reciclar.htm');
 	$tpl->assign('webTitulo', WEB_TITULO);
-	$tpl->assign('secTitulo', WEB_SECCION . ' - Alta obrero');
+	$tpl->assign('secTitulo', WEB_SECCION . ' - Alta Empleado');
 	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
 	$tpl->display('index.htm');
