@@ -54,7 +54,7 @@ class DataObjects_Planta extends DB_DataObject
 
         if ($_GET['ver'] == ''){
             //fecha fin
-            $aux =  HTML_QuickForm::createElement('text', 'planta_fecha_fin', 'Fecha Estimada de fin: ', array('id' => 'planta_fecha_fin', 'value' => '', 'readonly' => 'readonly', 'size' => '11', 'class' => 'datepicker', 'title' => 'DD-MM-AAAA'));
+            $aux =  HTML_QuickForm::createElement('text', 'planta_fecha_fin', 'Fecha Estimada de fin: ', array('id' => 'planta_fecha_fin', 'value' => '', 'size' => '11', 'class' => 'datepicker', 'title' => 'DD-MM-AAAA'));
             $this -> fb_preDefElements['planta_fecha_fin'] = $aux;
                 
             //fecha inicio
@@ -79,8 +79,8 @@ class DataObjects_Planta extends DB_DataObject
         
         $frm-> addElement('html','
             
-            <script type="text/javascript" src="../js/jquery-1.3.2.min.js"></script>
-            <script type="text/javascript" src="../js/jqueryui/js/jquery-ui-1.8.11.custom.min.js"></script>
+            <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+            <script type="text/javascript" src="../js/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
 
             <script type="text/javascript">
                 function trim(str) {
@@ -155,7 +155,7 @@ class DataObjects_Planta extends DB_DataObject
                             $(document).ready(
                                 function(){
                                     var fecha_inicio = "'.$fecha_inicio.'";
-                                    $("#cliente_fecha_inicio").datepicker("setDate", fecha_inicio);
+                                    $("#planta_fecha_inicio").datepicker("setDate", fecha_inicio);
                                 }
                             );
                         </script>

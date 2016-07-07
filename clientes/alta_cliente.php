@@ -66,14 +66,10 @@
 		//$do_cliente->cliente_usuario_id=$_SESSION['usuario']['id'];
 		
 		$fecha = $post['cliente_fecha_inicio'];
-		list($dia,$mes,$anio) = explode('/',$fecha);
-		$fecha_db = $anio.'-'.$mes.'-'.$dia;
-		$do_cliente->cliente_fecha_inicio = $fecha_db;
+		$do_cliente->cliente_fecha_inicio = setFecha($fecha);
 		
 		$fecha = $post['cliente_fecha_nacimiento'];
-		list($dia,$mes,$anio) = explode("/",$fecha);
-		$fecha_db = $anio.'-'.$mes.'-'.$dia;
-		$do_cliente->cliente_fecha_nacimiento = $fecha_db;
+		$do_cliente->cliente_fecha_nacimiento = setFecha($fecha_db);
 		
 		$do_cliente->query('BEGIN');
 		$id = $do_cliente->insert(); 
