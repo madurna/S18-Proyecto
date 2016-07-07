@@ -170,7 +170,7 @@ class DataObjects_Clientes extends DB_DataObject
 							$(document).ready(
 								function(){
 									var fecha_inicio = "'.$fecha_inicio.'";
-									$("#cliente_fecha_inicio").datepicker("setDate", "fecha_inicio");
+									$("#cliente_fecha_inicio").datepicker("setDate", fecha_inicio);
 								}
 							);
 						</script>

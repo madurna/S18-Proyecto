@@ -67,10 +67,10 @@
 	if($frm->validate()) {
 		$post = $frm->exportValues();
 		$do_planta->setFrom($post);
-		$fecha_fin = $post['planta_fecha_fin']; //print_r($fecha_fin);exit;
-		$fecha_inicio =$post['planta_fecha_inicio'];
-		$do_planta-> planta_fecha_fin = $fecha_fin;
-		$do_planta-> planta_fecha_inicio = $fecha_inicio;
+		$fecha_fin = $post['planta_fecha_fin'];
+		$fecha_inicio =$post['planta_fecha_inicio']; //print_r($fecha_inicio);exit;
+		$do_planta-> planta_fecha_fin = setFecha($fecha_fin);
+		$do_planta-> planta_fecha_inicio = setFecha($fecha_inicio);
 		$do_planta-> planta_contrato_id = $contrato_get;
 		$do_planta-> planta_cliente_id = $cliente_get; 
 		$do_planta->query('BEGIN');
