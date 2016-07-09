@@ -18,11 +18,13 @@
 
 	//traido id del modulo pasado por GET
 	$planta_id = $_GET['contenido'];
+	$id_cinta_transportadora = $_GET['id'];
 	//$cliente_get = $_GET['cliente'];
 		
 	//DB_DataObject::debugLevel(5); 
 	$do_cinta_transportadora = DB_DataObject::factory('cinta_transportadora');
 	$do_cinta_transportadora -> id_planta = $planta_id;
+	$do_cinta_transportadora -> cinta_transportadora_id = $id_cinta_transportadora;
 
 	$do_cinta_transportadora -> fb_fieldsToRender = array (
     	'cinta_transportadora_motor',

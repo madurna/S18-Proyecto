@@ -66,14 +66,14 @@
 				<a href=../prensa/modificar_prensa.php?contenido=$planta_id&id=". $do_prensa->prensa_id .")><i title='Editar' class='fa fa-pencil text-bg text-success'></i></a>&nbsp;
 				<a href=../prensa/eliminar_prensa.php?contenido=$planta_id&id=". $do_prensa->prensa_id .")><i title='Eliminar' class='fa fa-close text-bg text-success'></i></a></center></b>";
 		}else{
-			$matriz[$i][1]= "<b><center><a href=../prensa/alta_rensa.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
+			$matriz[$i][1]= "<b><center><a href=../prensa/alta_prensa.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
 				<i class='fa fa-search text-bg text-muted'></i>&nbsp;
 				<i class='fa fa-pencil text-bg text-muted'></i>&nbsp;
 				<i class='fa fa-close text-bg text-muted'></i></center></b>";
 		}
 	}
 	$i++;
-	$matriz[$i][1]= "<b><center><a href=../trommel/alta_prensa.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
+	$matriz[$i][1]= "<b><center><a href=../prensa/alta_prensa.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
 				</b>";
 				
 	//recorre la lista de los trommeles de la planta y los agrega a la matriz de la grilla
