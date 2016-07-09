@@ -18,11 +18,13 @@
 
 	//traido id del modulo pasado por GET
 	$planta_id = $_GET['contenido'];
+	$id_prensa = $_GET['id'];
 	//$cliente_get = $_GET['cliente'];
 		
 	//DB_DataObject::debugLevel(5); 
 	$do_prensa = DB_DataObject::factory('prensa');
 	$do_prensa -> id_planta = $planta_id;
+	$do_prensa -> prensa_id = $id_prensa;
 
 	$do_prensa -> fb_fieldsToRender = array (
     	'prensa_alto',

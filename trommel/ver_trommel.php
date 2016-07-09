@@ -18,11 +18,13 @@
 
 	//traido id del modulo pasado por GET
 	$planta_id = $_GET['contenido'];
+	$id_trommel = $GET['id'];
 	//$cliente_get = $_GET['cliente'];
 		
 	//DB_DataObject::debugLevel(5); 
 	$do_trommel = DB_DataObject::factory('trommel');
 	$do_trommel -> id_planta = $planta_id;
+	$do_trommel -> trommel_id = $id_trommel;
 
 	$do_trommel -> fb_fieldsToRender = array (
     	'trommel_diametro',
