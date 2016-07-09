@@ -68,13 +68,13 @@
 		$fecha = $post['cliente_fecha_inicio'];
 		$do_cliente->cliente_fecha_inicio = setFecha($fecha);
 		
-		$fecha = $post['cliente_fecha_nacimiento'];
+		$fecha_db = $post['cliente_fecha_nacimiento'];
 		$do_cliente->cliente_fecha_nacimiento = setFecha($fecha_db);
 		
 		$do_cliente->query('BEGIN');
 		$id = $do_cliente->insert(); 
 		
-		print_r($do_cliente);exit;
+		//print_r($do_cliente);exit;
 		// si se inserto se redirije a index.php, de lo contrario se muestra el error
 		if ($id){
 			$do_cliente->query('COMMIT');	

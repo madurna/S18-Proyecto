@@ -140,7 +140,7 @@ class DataObjects_Clientes extends DB_DataObject
 			
 			//$frm->addRule('cliente_cuil', 'El CUIL debe tener 11 digitos', 'minlength', 11, 'client');
 			//modificacion-eliminacion
-			if ($_GET['accion']){ print_r($_GET['ver']);
+			if ($_GET['accion']){ //print_r($_GET['ver']);
 				$fecha_inicio = fechaAntiISO($this -> cliente_fecha_inicio);
 				$fecha_nacimiento = fechaAntiISO($this -> cliente_fecha_nacimiento);
 				
@@ -169,8 +169,8 @@ class DataObjects_Clientes extends DB_DataObject
 						<script type="text/javascript">
 							$(document).ready(
 								function(){
-									var fecha_inicio = "'.$fecha_inicio.'";
-									$("#cliente_fecha_inicio").datepicker("setDate", fecha_inicio);
+									var fecha_inicio = "'.$fecha_inicio.'"; console.log(fecha_inicio);
+									$("#cliente_fecha_inicio").datepicker("setDate", "fecha_inicio");
 								}
 							);
 						</script>
