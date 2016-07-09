@@ -74,7 +74,6 @@
 		$do_cliente->query('BEGIN');
 		$id = $do_cliente->insert(); 
 		
-		print_r($do_cliente);exit;
 		// si se inserto se redirije a index.php, de lo contrario se muestra el error
 		if ($id){
 			$do_cliente->query('COMMIT');	

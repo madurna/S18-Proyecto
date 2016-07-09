@@ -21,20 +21,82 @@
 	
 	$do_trommel = DB_DataObject::factory('trommel');
 	$do_trommel -> whereAdd("id_planta = '$planta_id'");
-	$do_trommel -> find(true);
+	$do_trommel -> find();
 	$do_prensa = DB_DataObject::factory('prensa');
 	$do_prensa -> whereAdd("id_planta = '$planta_id'");
-	$do_prensa -> find(true);
+	$do_prensa -> find();
 	$do_cinta_transportadora = DB_DataObject::factory('cinta_transportadora');
 	$do_cinta_transportadora -> whereAdd("id_planta = '$planta_id'");
-	$do_cinta_transportadora -> find(true);
+	$do_cinta_transportadora -> find();
 
 	$columnas = array();
 	$columnas[0] = '<font size="2px" color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Trommel&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>';
 	$columnas[1] = '<font size="2px" color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Prensa&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>';
 	$columnas[2] = '<font size="2px" color="#FFFFFF">&nbsp;&nbsp;&nbsp;&nbsp;Cinta Transportadora&nbsp;&nbsp;&nbsp;&nbsp;</font>';
-
-	if($do_trommel->trommel_id && $do_trommel->trommel_estado_id != '0'){
+	
+	//recorre la lista de los trommeles de la planta y los agrega a la matriz de la grilla
+	$i=0;
+	while ( $do_trommel -> fetch())
+		{
+			$i++;
+		if($do_trommel->trommel_id && $do_trommel->trommel_estado_id != '0'){
+			$matriz[$i][0] =  "<b><center>$i &nbsp;
+				<a href=../trommel/ver_trommel.php?contenido=$planta_id&id=". $do_trommel->trommel_id .")><i title='Ver' class='fa fa-search text-bg text-success'></i></a>&nbsp;
+				<a href=../trommel/modificar_trommel.php?contenido=$planta_id&id=". $do_trommel->trommel_id .")><i title='Editar' class='fa fa-pencil text-bg text-success'></i></a>&nbsp;
+				<a href=../trommel/eliminar_trommel.php?contenido=$planta_id&id=". $do_trommel->trommel_id .")><i title='Eliminar' class='fa fa-close text-bg text-success'></i></a></center></b>";
+		}else{
+			$matriz[$i][0]= "<b><center><a href=../trommel/alta_trommel.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
+				<i class='fa fa-search text-bg text-muted'></i>&nbsp;
+				<i class='fa fa-pencil text-bg text-muted'></i>&nbsp;
+				<i class='fa fa-close text-bg text-muted'></i></center></b>";
+		}
+	}
+	$i++;
+	$matriz[$i][0]= "<b><center><a href=../trommel/alta_trommel.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
+				</b>";
+				
+	//recorre la lista de las prensas de la planta y los agrega a la matriz de la grilla
+	$i=0;
+	while ( $do_prensa -> fetch())
+		{
+			$i++;
+		if($do_prensa->prensa_id && $do_prensa->prensa_estado_id != '0'){
+			$matriz[$i][1] =  "<b><center>$i &nbsp;
+				<a href=../prensa/ver_prensa.php?contenido=$planta_id&id=". $do_prensa->prensa_id .")><i title='Ver' class='fa fa-search text-bg text-success'></i></a>&nbsp;
+				<a href=../prensa/modificar_prensa.php?contenido=$planta_id&id=". $do_prensa->prensa_id .")><i title='Editar' class='fa fa-pencil text-bg text-success'></i></a>&nbsp;
+				<a href=../prensa/eliminar_prensa.php?contenido=$planta_id&id=". $do_prensa->prensa_id .")><i title='Eliminar' class='fa fa-close text-bg text-success'></i></a></center></b>";
+		}else{
+			$matriz[$i][1]= "<b><center><a href=../prensa/alta_rensa.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
+				<i class='fa fa-search text-bg text-muted'></i>&nbsp;
+				<i class='fa fa-pencil text-bg text-muted'></i>&nbsp;
+				<i class='fa fa-close text-bg text-muted'></i></center></b>";
+		}
+	}
+	$i++;
+	$matriz[$i][1]= "<b><center><a href=../trommel/alta_prensa.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
+				</b>";
+				
+	//recorre la lista de los trommeles de la planta y los agrega a la matriz de la grilla
+	$i=0;	
+	while ( $do_cinta_transportadora -> fetch())
+		{
+			$i++;
+		if($do_cinta_transportadora->cinta_transportadora_id && $do_cinta_transportadora->cinta_transportadora_estado_id != '0'){
+			$matriz[$i][2] =  "<b><center>$i &nbsp;
+				<a href=../cinta_transportadora/ver_cinta_transportadora.php?contenido=$planta_id&id=". $do_cinta_transportadora->cinta_transportadora_id .")><i title='Ver' class='fa fa-search text-bg text-success'></i></a>&nbsp;
+				<a href=../cinta_transportadora/modificar_cinta_transportadora.php?contenido=$planta_id&id=". $do_cinta_transportadora->cinta_transportadora_id .")><i title='Editar' class='fa fa-pencil text-bg text-success'></i></a>&nbsp;
+				<a href=../cinta_transportadora/eliminar_cinta_transportadora.php?contenido=$planta_id><i title='Eliminar' class='fa fa-close text-bg text-success'></i></a></center></b>";
+		}else{
+			$matriz[$i][2]= "<b><center><a href=../cinta_transportadora/alta_cinta_transportadora.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
+				<i class='fa fa-search text-bg text-muted'></i>&nbsp;
+				<i class='fa fa-pencil text-bg text-muted'></i>&nbsp;
+				<i class='fa fa-close text-bg text-muted'></i></center></b>";
+		}
+	}
+	$i++;
+	$matriz[$i][2]= "<b><center><a href=../cinta_transportadora/alta_cinta_transportadora.php?contenido=$planta_id><i title='Crear' class='fa fa-check-circle text-bg text-danger'></i></a>&nbsp;
+				</b>";
+/*	if($do_trommel->trommel_id && $do_trommel->trommel_estado_id != '0'){
 		$matriz[0][0]= "<b><center><i class='fa fa-check-circle text-bg text-success'></i>&nbsp;
 			<a href=../trommel/ver_trommel.php?contenido=$planta_id><i title='Ver' class='fa fa-search text-bg text-success'></i></a>&nbsp;
 			<a href=../trommel/modificar_trommel.php?contenido=$planta_id><i title='Editar' class='fa fa-pencil text-bg text-success'></i></a>&nbsp;
@@ -69,7 +131,7 @@
 			<i class='fa fa-pencil text-bg text-muted'></i>&nbsp;
 			<i class='fa fa-close text-bg text-muted'></i></center></b>";
 	}
-			
+	*/		
 	//armo grilla
 	$cantidadColumnas = array();
 	for ($i=0; $i <= 4; $i++) $cantidadColumnas[$i] = $i;

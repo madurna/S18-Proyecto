@@ -53,7 +53,7 @@
 		$post = $frm->exportValues();
 		$do_prensa->setFrom($post);
 		$do_prensa -> id_planta = $planta_id;
-		$do_prensa -> trommel_estado_id = 1;
+		$do_prensa -> prensa_estado_id = 1;
 		$do_prensa->query('BEGIN');
 		$id = $do_prensa->insert(); 
 		

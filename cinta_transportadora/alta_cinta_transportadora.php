@@ -49,7 +49,7 @@
 		$post = $frm->exportValues();
 		$do_cinta_transportadora->setFrom($post);
 		$do_cinta_transportadora -> id_planta = $planta_id;
-		$do_cinta_transportadora -> trommel_estado_id = 1;
+		$do_cinta_transportadora -> cinta_transportadora_estado_id = 1;
 		$do_cinta_transportadora->query('BEGIN');
 		$id = $do_cinta_transportadora->insert(); 
 		
