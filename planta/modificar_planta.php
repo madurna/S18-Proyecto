@@ -61,11 +61,12 @@
  		$clientes_v[ $do_cliente->cliente_id ] = utf8_encode($do_cliente -> cliente_apellido).' '. utf8_encode($do_cliente -> cliente_nombre);
 	}
 
-	if($cliente_get == ''){
-		$frm -> addElement('select', 'cliente', 'Cliente: ',$clientes_v, array('id' => 'cliente'));
-	}else{
-		$frm -> addElement('text', 'cliente', 'Cliente: ',array('id'=>'cliente','size'=>'30','value'=>$clientes_v[ $cliente_get ],'readonly'=>'readonly'));
-	}
+// Cambiar cliente podría traer inconsistencias con Contrato
+//	if($cliente_get == ''){
+//		$frm -> addElement('select', 'cliente', 'Cliente: ',$clientes_v, array('id' => 'cliente'));
+//	}else{
+		$frm -> addElement('text', 'cliente', 'Cliente: ',array('id'=>'cliente','size'=>'30','value'=>$clientes_v[ $do_planta -> planta_cliente_id ],'readonly'=>'readonly'));
+//	}
 	
 	//botones de aceptar , cancelar , limpiar
 	$botones = array();
@@ -80,12 +81,12 @@
 		$do_planta->setFrom($post);
 		$fecha_fin = $post['planta_fecha_fin']; //print_r($fecha_fin);exit;
 		$fecha_inicio =$post['planta_fecha_inicio'];
-		$do_planta-> planta_fecha_fin = $fecha_fin;
-		$do_planta-> planta_fecha_inicio = $fecha_inicio;
+		$do_planta-> planta_fecha_fin = setFecha($fecha_fin);
+		$do_planta-> planta_fecha_inicio = setFecha($fecha_inicio);
 		$do_planta-> planta_contrato_id = $contrato_get;
-		$do_planta-> planta_cliente_id = $cliente_get; 
+//		$do_planta-> planta_cliente_id = $cliente_get;
 		$do_planta->query('BEGIN');
-		$id = $do_planta->insert(); 
+		$id = $do_planta->update();
 		
 		// si se inserto se redirije a index.php, de lo contrario se muestra el error
 		if ($id){
@@ -101,7 +102,7 @@
 	}		
 
 	$tpl = new tpl();
-	$titulo_grilla = 'Alta de Planta';
+	$titulo_grilla = 'Modificar de Planta';
 	$body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
             <div id="contenido"><p>'.$frm->toHtml().'</p></div>';

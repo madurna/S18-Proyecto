@@ -13,7 +13,7 @@
 	require_once(INC_PATH.'/comun.php');	
 	require_once(INC_PATH.'/rutinas.php');	
 	require_once(INC_PATH.'/grilla.php');	
-	//require_once(AUTHFILE);
+	require_once(AUTHFILE);
 	$_SESSION['menu_principal'] = 2;
 	//DB_DataObject::debugLevel(5); 
 
@@ -157,7 +157,7 @@
 				messageObj.setShadowDivVisible(true);	// Enable shadow for these boxes
 				messageObj.display();
 			}
-		
+
 			function cerrarDialogo() {
 				messageObj.close();
 			}
