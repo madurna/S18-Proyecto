@@ -140,7 +140,7 @@
 	$dg -> setRendererOption('hideColumnLinks', $cantidadColumnas);
 	$table = new HTML_Table('cellpadding=5 walign=center border=0');
 	$dg -> fill($table);
-	$volver = '<a href="index.php">[Volver]</a>';
+	$volver = '<a href="javascript: window.history.back();">[ VOLVER ]</a><br/>';
 	//armo template
 	$tpl = new tpl();
 	if ($dg->getRecordCount() > 0 ) {	
@@ -150,7 +150,7 @@
 	$dg->setRendererOption('onMove', 'updateGrid', true);
 	}	
 	$tpl->assign('body', '<div align=center><b><h2>Piezas</h2></b></div>
-	<div align="center"><br/>'.$salida_grilla.'<br />'.$volver.'</center>');
+	<div align="center"><br/>'.$volver.'<br/>'.$salida_grilla.'</center>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo','Piezas');
 	$tpl->assign('menu', "menu_eco_reciclar.htm");	
