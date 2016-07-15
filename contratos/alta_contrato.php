@@ -101,7 +101,7 @@
 	//botones de aceptar , cancelar , limpiar
 	$botones = array();
 	$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.location.href='index.php';"));
+	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.history.back();;"));
 	$botones[] = $frm->createElement('reset','restaurar','Limpiar');
 	$frm->addGroup($botones);
 	

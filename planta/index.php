@@ -13,7 +13,7 @@
 	require_once(INC_PATH.'/comun.php');	
 	require_once(INC_PATH.'/rutinas.php');	
 	require_once(INC_PATH.'/grilla.php');	
-	//require_once(AUTHFILE);
+	require_once(AUTHFILE);
 	$_SESSION['menu_principal'] = 2;
 	//DB_DataObject::debugLevel(5); 
 
@@ -74,7 +74,7 @@
 	//armo grilla	
 	$columnas = array();
 	$columnas[0] = '<font size="1px" color="#FFFFFF">N&uacute;mero</font>';
-	$columnas[1] = '<font size="1px" color="#FFFFFF">Nombre</font>';
+	$columnas[1] = '<font size="1px" color="#FFFFFF">Descripci&oacute;n</font>';
 	$columnas[2] = '<font size="1px" color="#FFFFFF">Localidad</font>';
 	$columnas[3] = '<font size="1px" color="#FFFFFF">Domicilio</font>';
 	$columnas[4] = '<font size="1px" color="#FFFFFF">Fecha inicio</font>';
@@ -157,7 +157,7 @@
 				messageObj.setShadowDivVisible(true);	// Enable shadow for these boxes
 				messageObj.display();
 			}
-		
+
 			function cerrarDialogo() {
 				messageObj.close();
 			}
@@ -170,10 +170,10 @@
 	<div align="center"><br/>'.$frm->toHTML().'</div><br/><div><center>'.$excel.'</center></div><div><br/>'.$salida_grilla.'<br /><b>'.$mostrar_cantidad.'</b></div>');
 	$tpl->assign('webTitulo', WEB_TITULO);
 	$tpl->assign('secTitulo', WEB_SECCION);
-	$tpl->assign('menu', "menu_eco_reciclar.htm");	
+	$tpl->assign('menu', "menu_eco_reciclar.htm");
 	$tpl->assign('links',$links1);
 	$tpl->assign('usuario',$_SESSION['usuario']['nombre'] );
-	$tpl->display('index.htm');	    
+	$tpl->display('index.htm');
 	ob_end_flush();
 	exit;
 ?>
