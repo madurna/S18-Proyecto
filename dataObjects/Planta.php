@@ -136,8 +136,8 @@ class DataObjects_Planta extends DB_DataObject
                             function(){
                                 var fecha_inicio = "'.$fecha_inicio.'";
                                 var fecha_fin = "'.$fecha_fin.'";
-                                $("#planta_fecha_inicio").datepicker("setDate", "fecha_inicio"");
-                                $("#planta_fecha_fin").datepicker("setDate", "fecha_fin");
+                                $("#planta_fecha_inicio").datepicker("setDate", fecha_inicio);
+                                $("#planta_fecha_fin").datepicker("setDate", fecha_fin);
                             }
                         );
                     </script>
@@ -155,7 +155,7 @@ class DataObjects_Planta extends DB_DataObject
                             $(document).ready(
                                 function(){
                                     var fecha_inicio = "'.$fecha_inicio.'";
-                                    $("#planta_fecha_inicio").datepicker("setDate", "fecha_inicio");
+                                    $("#planta_fecha_inicio").datepicker("setDate", fecha_inicio);
                                 }
                             );
                         </script>
