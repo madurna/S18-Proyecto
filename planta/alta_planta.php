@@ -71,10 +71,11 @@
 		$fecha_inicio =$post['planta_fecha_inicio']; //print_r($fecha_inicio);exit;
 		$do_planta-> planta_fecha_fin = setFecha($fecha_fin);
 		$do_planta-> planta_fecha_inicio = setFecha($fecha_inicio);
-        if($cliente_get == ''){
-            $cliente_get = $post['cliente'];
-        }
+        $do_planta-> planta_fecha_alta = setFecha(date('d/m/Y'));
 		$do_planta-> planta_contrato_id = $contrato_get;
+        if($cliente_get == ''){
+           $cliente_get = $post['cliente'];
+        }
 		$do_planta-> planta_cliente_id = $cliente_get; 
 		$do_planta->query('BEGIN');
 		$id = $do_planta->insert(); 

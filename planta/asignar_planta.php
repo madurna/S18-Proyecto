@@ -17,11 +17,13 @@
     $_SESSION['menu_principal'] = 8;
 
     //traido id del modulo pasado por GET
-    $cliente_id = $_GET['contenido'];
+    $contrato_id = $_GET['contenido'];
+    $cliente_id = $_GET['cliente'];
 
     //armo consulta con el id del modulo
     $do_planta = DB_DataObject::factory('planta');
     $do_planta-> whereAdd("planta_cliente_id = '$cliente_id'");
+    $do_planta-> whereAdd("planta_contrato_id IS NULL");
     $do_planta-> orderBy('planta_direccion');
     $do_planta-> find();
 
@@ -43,8 +45,7 @@ $columnas[5] = '<font size="1px" color="#FFFFFF">Fecha fin</font>';
 $columnas[6] = '<font size="1px" color="#FFFFFF">Valor Planta</font>';
 $columnas[7] = '<font size="1px" color="#FFFFFF">Estado</font>';
 $columnas[8] = '<font size="1px" color="#FFFFFF">Piezas</font>';
-$columnas[11] = '<font size="1px" color="#FFFFFF">Empleados</font>';
-$columnas[12] = '<font size="1px" color="#FFFFFF">Acci&oacute;n</font>';
+$columnas[11] = '<font size="1px" color="#FFFFFF">Acci&oacute;n</font>';
 $i = -1;
 
 //if($aceptar == 'Filtrar'){
@@ -65,11 +66,8 @@ while ( $do_planta -> fetch())
     $matriz[$i][8] = '
 			<center><a href="planta_pieza.php?contenido='.$do_planta -> planta_id.'"><i title="Ver" class="fa fa-cogs text-bg text-danger"></i>
 			&nbsp;&nbsp</center>';
-    $matriz[$i][11] = '<center><a href="#"><i title=" Ver empleados asigandos" class="fa fa-search text-bg text-danger"></i></a></center>';
-    $matriz[$i][12] = '<center>
-								<a href="modificar_planta.php?contenido='.$do_planta -> planta_id.'"><i title="Modificar" class="fa fa-edit text-bg text-danger"></i>
-								<a href="eliminar_planta.php?ver=true&contenido='.$do_planta -> planta_id.'"><i title="Eliminar" class="fa fa-trash-o text-bg text-danger"></i>
-							</center>';
+    $matriz[$i][11] = '<center><a href="contrato_planta.php?contenido='.$do_planta ->planta_id.'&contrato='.$contrato_id.'"><i title=" Asignar Planta" class="fa fa-external-link text-bg text-bg"></i></a></center>';
+
 }
 
 $cantidadColumnas = array();

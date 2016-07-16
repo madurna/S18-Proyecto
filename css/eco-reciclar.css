@@ -5,6 +5,13 @@ Marron oscuro 	#7F7359
 Celeste 		#94E2F9
 
 */
+#mainHead{
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+    background:url(../img/backHead.png);
+}
+
+
 .header_menu_principal {
 	background-color:#7F7359;
 }

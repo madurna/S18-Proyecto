@@ -31,7 +31,7 @@
         'planta_color',
         'planta_estado_id',
         'planta_localidad_id',
-        'planta_descripcion'		
+        'planta_descripcion'
     );
 
     $do_planta -> find(true);
@@ -88,10 +88,10 @@
 		$do_planta->query('BEGIN');
 		$id = $do_planta->update();
 		
-		// si se inserto se redirije a index.php, de lo contrario se muestra el error
+		// si se actualizo se redirije a index.php, de lo contrario se muestra el error
 		if ($id){
 			$do_planta->query('COMMIT');
-			header('location:planta_pieza.php?contenido='.$contrato_get.'&cliente='.$cliente_get);
+			header('location:index.php');
 			ob_end_flush();
 			exit;	
 		}

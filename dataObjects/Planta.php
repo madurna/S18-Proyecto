@@ -127,8 +127,8 @@ class DataObjects_Planta extends DB_DataObject
             //$frm->addRule('cliente_cuil', 'El CUIL debe tener 11 digitos', 'minlength', 11, 'client');
             //modificacion-eliminacion
             if ($_GET['contenido']){
-                $fecha_inicio = fechaAntiISO($this -> planta_fecha_inicio);
-                $fecha_fin = fechaAntiISO($this -> planta_fecha_fin);
+                $fecha_inicio = fechaAntiISODatepicker($this -> planta_fecha_inicio);
+                $fecha_fin = fechaAntiISODatepicker($this -> planta_fecha_fin);
                 
                 $frm-> addElement('html','
                     <script type="text/javascript">
@@ -136,8 +136,8 @@ class DataObjects_Planta extends DB_DataObject
                             function(){
                                 var fecha_inicio = "'.$fecha_inicio.'";
                                 var fecha_fin = "'.$fecha_fin.'";
-                                $("#planta_fecha_inicio").datepicker("setDate", "fecha_inicio"");
-                                $("#planta_fecha_fin").datepicker("setDate", "fecha_fin");
+                                $("#planta_fecha_inicio").datepicker("setDate", fecha_inicio);
+                                $("#planta_fecha_fin").datepicker("setDate", fecha_fin);
                             }
                         );
                     </script>
@@ -149,13 +149,13 @@ class DataObjects_Planta extends DB_DataObject
             else{
                 //alta
                 if (!($_GET['contenido'])) {
-                    $fecha_inicio = date('d-m-Y');
+                    $fecha_inicio = date('d/m/Y');
                     $frm-> addElement('html','
                         <script type="text/javascript">
                             $(document).ready(
                                 function(){
                                     var fecha_inicio = "'.$fecha_inicio.'";
-                                    $("#planta_fecha_inicio").datepicker("setDate", "fecha_inicio");
+                                    $("#planta_fecha_inicio").datepicker("setDate", fecha_inicio);
                                 }
                             );
                         </script>

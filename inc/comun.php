@@ -705,10 +705,11 @@ function get_contrato_planta($vals,$args){
 	$do_planta = DB_DataObject::factory('planta');
 	$do_planta -> planta_contrato_id = $record[contrato_id];
 
-	if($do_planta->find()){
-		return "<a title='Ver' href=../planta/ver_planta.php?contenido={$record[contrato_id]}><i class='fa fa-industry text-bg'></i></a>";
+	if($do_planta->find(true)){
+		return "<a title='Ver' href=../planta/ver_planta.php?ver=true&contenido=$do_planta->planta_id><i class='fa fa-industry text-bg'></i></a>";
 	}else{
-		return "<a title='Crear' href=../planta/alta_planta.php?contenido={$record[$id]}&cliente={$record[$cliente]}><i class='fa fa-industry text-bg text-primary'></i></a>";
+		return "<a title='Crear' href=../planta/alta_planta.php?contenido={$record[$id]}&cliente={$record[$cliente]}><i class='fa fa-industry text-bg text-primary'></i></a>
+        &nbsp;<a title='Asignar' href=../planta/asignar_planta.php?contenido={$record[$id]}&cliente={$record[$cliente]}><i class='fa fa-external-link-square text-bg text-primary'></i></a>";
 	}
 }
 /**
@@ -906,6 +907,22 @@ function fechaAntiISO($date) {
 		else
 			return array();
 	}
+}
+
+// Dada una fecha en formato ISO AAAAMMDD, la retorna en formato DD/MM/AAAA
+function fechaAntiISODatepicker($date) {
+    if ($date == null || !strlen($date))
+        return array();
+    else {
+        $date2 = DB_DataObject_FormBuilder::_date2array($date);
+        if (strlen($date2['d']) == 1) $date2['d'] = '0'.$date2['d'];
+        if (strlen($date2['m']) == 1) $date2['m'] = '0'.$date2['m'];
+        if (strlen($date2['Y']) == 1) $date2['Y'] = '0'.$date2['Y'];
+        if ($date2['d'])
+            return "{$date2['d']}/{$date2['m']}/{$date2['Y']}";
+        else
+            return array();
+    }
 }
 
 

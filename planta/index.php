@@ -28,7 +28,7 @@
 	$frm = new HTML_QuickForm('frm','get',$_SERVER['REQUEST_URI'],'');
 	
 	//nombre 	
-	$frm ->addElement('text','planta_nombre','Nombre: ',array('id' => 'obra_nombre'));
+	$frm ->addElement('text','planta_nombre','Nombre: ',array('id' => 'planta_nombre'));
 
 	//localidad 	
 	$frm ->addElement('select','localidad','Localidad: ',$v_localidad,array('id' => 'localidad'));
@@ -107,7 +107,7 @@
 		$matriz[$i][11] = '<center><a href="#"><i title=" Ver empleados asigandos" class="fa fa-search text-bg text-danger"></i></a></center>';		
 		$matriz[$i][12] = '<center>
 								<a href="modificar_planta.php?contenido='.$do_planta -> planta_id.'"><i title="Modificar" class="fa fa-edit text-bg text-danger"></i>
-								<a href="eliminar_planta.php?contenido='.$do_planta -> planta_id.'"><i title="Eliminar" class="fa fa-trash-o text-bg text-danger"></i>
+								<a href="eliminar_planta.php?ver=true&contenido='.$do_planta -> planta_id.'"><i title="Eliminar" class="fa fa-trash-o text-bg text-danger"></i>
 							</center>';							
 	}
 

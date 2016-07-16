@@ -55,7 +55,7 @@ class HTML_QuickForm_date extends HTML_QuickForm_group
     var $_options = array(
         'language'         => 'en',
         'format'           => 'dMY',
-        'minYear'          => 2001,
+        'minYear'          => 1910,
         'maxYear'          => null, // set in the constructor
         'addEmptyOption'   => false,
         'emptyOptionValue' => '',
@@ -298,7 +298,7 @@ class HTML_QuickForm_date extends HTML_QuickForm_group
         $this->_type = 'date';
 
         // http://pear.php.net/bugs/bug.php?id=18171
-        $this->_options['maxYear'] = date('Y');
+        $this->_options['maxYear'] = date('Y')+200;
 
         // set the options, do not bother setting bogus ones
         if (is_array($options)) {
