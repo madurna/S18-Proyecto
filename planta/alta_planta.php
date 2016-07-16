@@ -71,6 +71,7 @@
 		$fecha_inicio =$post['planta_fecha_inicio']; //print_r($fecha_inicio);exit;
 		$do_planta-> planta_fecha_fin = setFecha($fecha_fin);
 		$do_planta-> planta_fecha_inicio = setFecha($fecha_inicio);
+        $do_planta-> planta_fecha_alta = setFecha(date('d/m/Y'));
 		$do_planta-> planta_contrato_id = $contrato_get;
         if($cliente_get == ''){
            $cliente_get = $post['cliente'];
