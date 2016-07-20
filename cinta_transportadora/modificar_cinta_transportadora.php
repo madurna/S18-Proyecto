@@ -23,10 +23,10 @@
 	//DB_DataObject::debugLevel(5); 
 	
 	//recupero el id del cliente a modificar
-	$planta_id = $_GET['contenido'];
+	$id_cinta_transportadora = $_GET['contenido'];
 	
 	$do_cinta_transportadora = DB_DataObject::factory('cinta_transportadora');
-	$do_cinta_transportadora -> id_planta = $planta_id;
+	$do_cinta_transportadora -> cinta_transportadora_id = $id_cinta_transportadora;
 
 	$do_cinta_transportadora -> fb_fieldsToRender = array (
     	'cinta_transportadora_motor',
@@ -57,8 +57,8 @@
 	
 	$botones = array();
 	$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.location.href='index.php';"));
-	$botones[] = $frm->createElement('reset','restaurar','Restaurar');
+	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.history.back();"));
+	//$botones[] = $frm->createElement('reset','restaurar','Restaurar');
 	$frm->addGroup($botones);
 	
 	

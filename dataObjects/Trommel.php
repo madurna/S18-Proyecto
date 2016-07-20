@@ -31,9 +31,9 @@ class DataObjects_Trommel extends DB_DataObject
     );
 
     public $fb_fieldLabels = array (
-        'trommel_diametro' => 'Di&aacute;metro: ',
-        'trommel_largo' => 'Largo: ',
-        'trommel_motor' => 'Motor: ',
+        'trommel_diametro' => 'Di&aacute;metro (mts): ',
+        'trommel_largo' => 'Largo (mts): ',
+        'trommel_motor' => 'Motor (HP): ',
         'trommel_relacion_engranaje' => 'Relaci&oacute;n Engranaje: ',
         'trommel_plano' => 'Plano: '
         

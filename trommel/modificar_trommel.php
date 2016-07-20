@@ -22,13 +22,10 @@
 	
 	//DB_DataObject::debugLevel(5); 
 	
-	//traido id del modulo pasado por GET
-	$planta_id = $_GET['contenido'];
-	//$cliente_get = $_GET['cliente'];
-		
-	//DB_DataObject::debugLevel(5); 
+	$id_trommel = $_GET['contenido'];
+
 	$do_trommel = DB_DataObject::factory('trommel');
-	$do_trommel -> id_planta = $planta_id;
+	$do_trommel -> trommel_id = $id_trommel;
 
 	$do_trommel -> fb_fieldsToRender = array (
     	'trommel_diametro',
@@ -58,9 +55,9 @@
 	$frm->updateAttributes(array('accept-charset'=>'UTF-8'));
 	
 	$botones = array();
-	$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.history.back();"));
-	$botones[] = $frm->createElement('reset','restaurar','Restaurar');
+	//$botones[] = $frm->createElement('submit','aceptar','Guardar');
+	$botones[] = $frm->createElement('button','cancelar','Volver',array('onClick'=> "javascript: window.history.back();"));
+	//$botones[] = $frm->createElement('reset','restaurar','Restaurar');
 	$frm->addGroup($botones);
 	
 	// Si el formulado fue enviado y validado realizo la modificacion

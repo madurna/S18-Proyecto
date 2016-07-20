@@ -17,13 +17,11 @@
 	$_SESSION['menu_principal'] = 2;
 
 	//traido id del modulo pasado por GET
-	$planta_id = $_GET['contenido'];
-	$id_prensa = $_GET['id'];
-	//$cliente_get = $_GET['cliente'];
+	$id_prensa = $_GET['contenido'];
 		
 	//DB_DataObject::debugLevel(5); 
 	$do_prensa = DB_DataObject::factory('prensa');
-	$do_prensa -> id_planta = $planta_id;
+	//$do_prensa -> id_planta = $planta_id;
 	$do_prensa -> prensa_id = $id_prensa;
 
 	$do_prensa -> fb_fieldsToRender = array (
@@ -57,9 +55,9 @@
 
 	//botones de aceptar , cancelar , limpiar
 	$botones = array();
-	$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.history.back();"));
-	$botones[] = $frm->createElement('reset','restaurar','Limpiar');
+	//$botones[] = $frm->createElement('submit','aceptar','Guardar');
+	$botones[] = $frm->createElement('button','cancelar','Volver',array('onClick'=> "javascript: window.history.back();"));
+	//$botones[] = $frm->createElement('reset','restaurar','Limpiar');
 	$frm->addGroup($botones);
 	
 	$frm->freeze();

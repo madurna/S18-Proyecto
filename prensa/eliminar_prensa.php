@@ -19,11 +19,11 @@
 	//DB_DataObject::debugLevel(5); 
 	
 	//recupero el id de la planta a dar de baja
-	$planta_id = $_GET['contenido'];
+	$id_prensa = $_GET['contenido'];
 	
 	//recupero el nombre que tiene originalmente en la base
 	$do_prensa = DB_DataObject::factory('prensa');
-	$do_prensa -> id_planta = $planta_id;
+	$do_prensa -> prensa_id = $id_prensa;
 
 	if($do_prensa->find(true)){
 		$fb =& DB_DataObject_FormBuilder::create($do_prensa);
@@ -49,7 +49,7 @@
 	
 	if($frm->validate()){
 		$do_prensa = DB_DataObject::factory('prensa');
-		$do_prensa -> id_planta = $planta_id;
+		$do_prensa -> prensa_id = $id_prensa;
 		$do_prensa -> prensa_estado_id = 0;
 		$update = $do_prensa -> update();
 		

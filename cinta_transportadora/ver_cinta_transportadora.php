@@ -17,13 +17,13 @@
 	$_SESSION['menu_principal'] = 2;
 
 	//traido id del modulo pasado por GET
-	$planta_id = $_GET['contenido'];
-	$id_cinta_transportadora = $_GET['id'];
+	//$planta_id = $_GET['contenido'];
+	$id_cinta_transportadora = $_GET['contenido'];
 	//$cliente_get = $_GET['cliente'];
 		
 	//DB_DataObject::debugLevel(5); 
 	$do_cinta_transportadora = DB_DataObject::factory('cinta_transportadora');
-	$do_cinta_transportadora -> id_planta = $planta_id;
+	//$do_cinta_transportadora -> id_planta = $planta_id;
 	$do_cinta_transportadora -> cinta_transportadora_id = $id_cinta_transportadora;
 
 	$do_cinta_transportadora -> fb_fieldsToRender = array (
@@ -53,9 +53,9 @@
 
 	//botones de aceptar , cancelar , limpiar
 	$botones = array();
-	$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.history.back();"));
-	$botones[] = $frm->createElement('reset','restaurar','Limpiar');
+	//$botones[] = $frm->createElement('submit','aceptar','Guardar');
+	$botones[] = $frm->createElement('button','cancelar','Volver',array('onClick'=> "javascript: window.history.back();"));
+	//$botones[] = $frm->createElement('reset','restaurar','Limpiar');
 	$frm->addGroup($botones);
 	
 	$frm->freeze();		

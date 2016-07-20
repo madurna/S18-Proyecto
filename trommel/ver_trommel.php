@@ -16,15 +16,13 @@
 	require_once(AUTHFILE);
 	$_SESSION['menu_principal'] = 2;
 
-	//traido id del modulo pasado por GET
-	$planta_id = $_GET['contenido'];
-	$id_trommel = $GET['id'];
-	//$cliente_get = $_GET['cliente'];
+	//traido id de la pieza pasado por GET
+	$id_trommel = $GET['contenido'];
 		
 	//DB_DataObject::debugLevel(5); 
 	$do_trommel = DB_DataObject::factory('trommel');
-	$do_trommel -> id_planta = $planta_id;
-	$do_trommel -> trommel_id = $id_trommel;
+	$do_trommel-> trommel_id = $id_trommel;
+	
 
 	$do_trommel -> fb_fieldsToRender = array (
     	'trommel_diametro',
@@ -33,32 +31,33 @@
         'trommel_plano',
         'trommel_relacion_engranaje'
     );
-
-    $do_trommel -> find(true);
 	
-	if (!$do_trommel->find(true)) {
+	if ($do_trommel->find(true)) {
+		
+		$fb =& DB_DataObject_FormBuilder::create($do_trommel);
+        $frm =& $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
+		$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
+		$frm->setRequiredNote(FRM_NOTA);
+		$frm->freeze();
+
+		//botones de aceptar , cancelar , limpiar
+		$botones = array();
+		//$botones[] = $frm->createElement('submit','aceptar','Guardar');
+		$botones[] = $frm->createElement('button','volver','Volver',array('onClick'=> "javascript: window.history.back();"));
+		//$botones[] = $frm->createElement('reset','restaurar','Limpiar');
+		$frm->addGroup($botones);
+	
+	}else{
+		$paginaOriginante = 'index.php';
 		$tpl->assign('include_file','error.tpl');
 		$tpl->assign('error_msg','Error: Registro Inexistente'); 
 		$tpl->assign('error_volver','Volver'); 	
 		$tpl->assign('error_volver_href',$paginaOriginante); 	
 		$tpl->display('index.htm');
-		exit;
+		ob_end_flush();
+		exit;	
 	}
-	
-	//Creo el formulario en base a la solicitud
-	$fb =& DB_DataObject_FormBuilder::create($do_trommel);
-	$frm =& $fb->getForm($_SERVER['REQUEST_URI'],null,'frm');
-	$frm->setJsWarnings(FRM_WARNING_TOP, FRM_WARNING_BUTTON);
-	$frm->setRequiredNote(FRM_NOTA);
 
-	//botones de aceptar , cancelar , limpiar
-	$botones = array();
-	$botones[] = $frm->createElement('submit','aceptar','Guardar');
-	$botones[] = $frm->createElement('button','cancelar','Cancelar',array('onClick'=> "javascript: window.history.back();"));
-	$botones[] = $frm->createElement('reset','restaurar','Limpiar');
-	$frm->addGroup($botones);
-	
-	$frm->freeze();	
 
 	$tpl = new tpl();
 	$titulo_grilla = 'Ver Trommel';
