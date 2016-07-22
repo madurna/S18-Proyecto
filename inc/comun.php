@@ -692,7 +692,7 @@ function get_plantas_cliente($vals,$args){
 	$do_planta -> planta_cliente_id = $record[$id];
 
 	if($do_planta->find()){
-		return "<a title='Ver' href=../planta/planta.php?contenido={$record[$id]}><i class='fa fa-industry text-bg'></i></a>";
+		return "<a title='Ver' href=../planta/plantas_cliente.php?contenido={$record[$id]}><i class='fa fa-industry text-bg'></i></a>";
 	}else{
 		return "<i title='Sin Planta' class='fa fa-industry text-bg text-danger'>";
 	}
@@ -706,11 +706,14 @@ function get_contrato_planta($vals,$args){
 	$do_planta -> planta_contrato_id = $record[contrato_id];
 
 	if($do_planta->find(true)){
-		return "<a title='Ver' href=../planta/ver_planta.php?ver=true&contenido=$do_planta->planta_id><i class='fa fa-industry text-bg'></i></a>";
+		return "<a title='Ver' href=../planta/plantas_contrato.php?ver=true&contenido=$record[contrato_id]><i class='fa fa-industry text-bg'></i></a>
+        &nbsp;<a title='Crear' href=../planta/alta_planta.php?contenido=&cliente={$record[$cliente]}><i class='fa fa-plus text-bg '></i></a>
+        &nbsp;<a title='Asignar' href=../planta/asignar_planta.php?contenido={$record[$id]}&cliente={$record[$cliente]}><i class='fa fa-external-link-square text-bg '></i></a>";
 	}else{
-		return "<a title='Crear' href=../planta/alta_planta.php?contenido={$record[$id]}&cliente={$record[$cliente]}><i class='fa fa-industry text-bg text-primary'></i></a>
-        &nbsp;<a title='Asignar' href=../planta/asignar_planta.php?contenido={$record[$id]}&cliente={$record[$cliente]}><i class='fa fa-external-link-square text-bg text-primary'></i></a>";
-	}
+		return "<a title='' href=#><i class='fa fa-industry text-bg text-muted'></i></a>
+        &nbsp;<a title='Crear' href=../planta/alta_planta.php?contenido=&cliente={$record[$cliente]}><i class='fa fa-plus text-bg '></i></a>
+        &nbsp;<a title='Asignar' href=../planta/asignar_planta.php?contenido={$record[$id]}&cliente={$record[$cliente]}><i class='fa fa-external-link-square text-bg '></i></a>";
+    }
 }
 /**
  * Retorna el estado del cliente con iconos, indicando si esta activo o no
