@@ -46,10 +46,10 @@
 		$frm->setRequiredNote(FRM_NOTA);
 		$frm->freeze();
         //boton de Desvincular (BUSCAR COMO SETEAR UN CAMPO EN NULL PARA LA BD)
-//        $botones = array();
-//        $botones[] = $frm->createElement('submit','aceptar','Desvincular');
-//
-//        $frm->addGroup($botones);
+        $botones = array();
+        $botones[] = $frm->createElement('submit','aceptar','Desvincular');
+
+        $frm->addGroup($botones);
 
 	}else{
 		$paginaOriginante = 'index.php';
@@ -62,30 +62,31 @@
 		exit;
 	}
     if($frm->validate()){
-        $do_planta = DB_DataObject::factory('planta');
+        $post = $frm->exportValues();
+        $do_planta->setFrom($post);
         $fecha_fin = $post['planta_fecha_fin']; //print_r($fecha_fin);exit;
         $fecha_inicio =$post['planta_fecha_inicio'];
         $do_planta-> planta_fecha_fin = setFecha($fecha_fin);
         $do_planta-> planta_fecha_inicio = setFecha($fecha_inicio);
-//        require_once("DB/DataObject/Cast.php");
-//        $do_planta -> planta_contrato_id = DB_DataObject::sql('NULL');;
+        $do_planta -> planta_contrato_id = 'NULL';
         $update = $do_planta -> update();
 
         if ($update){
             $do_planta->query('COMMIT;');
+            header('location:../contratos/contrato.php?contenido='.$cliente_id);
         }
         else {
             $do_planta->query('ROLLBACK');
             $error = 'Error en la eliminaci&oacute;n de la Planta</b></div>';
         }
-        header('location:../contratos/contrato.php?contenido='.$cliente_id);
+
         ob_end_flush();
         exit;
     }
 	
 	$tpl = new tpl();
 	$titulo_grilla = 'Ver Planta';
-	$volver = '<br><a href="../contratos/contrato.php?contenido='.$cliente_id.'">[ VOLVER ]</a>';
+	$volver = '<br><a href="javascript:window.history.back()">[ VOLVER ]</a>';
     $body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
            <div id="contenido"><b>'.$volver.'</b></div>

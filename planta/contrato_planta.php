@@ -24,7 +24,7 @@ $contrato_id = $_GET['contrato'];
 $do_planta = DB_DataObject::factory('planta');
 $do_planta -> planta_id = $planta_id;
 
-$do_planta -> find(true);
+$do_planta -> find();
 
 if (!$do_planta->find(true)) {
     $tpl->assign('include_file','error.tpl');
