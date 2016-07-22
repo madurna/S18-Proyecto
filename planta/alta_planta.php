@@ -83,7 +83,7 @@
 		// si se inserto se redirije a index.php, de lo contrario se muestra el error
 		if ($id){
 			$do_planta->query('COMMIT');
-			header('location:planta_pieza.php?contenido='.$contrato_get.'&cliente='.$cliente_get);
+			header('location:planta_pieza.php?contenido='.$id.'&cliente='.$cliente_get);
 			ob_end_flush();
 			exit;	
 		}
