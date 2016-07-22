@@ -85,7 +85,7 @@
 	
 	$tpl = new tpl();
 	$titulo_grilla = 'Ver Planta';
-	$volver = '<br><a href="javascript: window.history.back()">[ VOLVER ]</a>';
+	$volver = '<br><a href="../contratos/contrato.php?contenido='.$cliente_id.'">[ VOLVER ]</a>';
     $body =
            '<div id="contenido"><b>'.$titulo_grilla.'</b></div>
            <div id="contenido"><b>'.$volver.'</b></div>
