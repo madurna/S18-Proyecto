@@ -30,6 +30,7 @@ $do_contrato->find(true);
 $fecha = fechaAntiISODatepicker($do_contrato->contrato_fecha);
 $bibliorato = $do_contrato->contrato_bibliorato;
 
+
 //armo grilla
 $columnas = array();
 $columnas[0] = '<font size="1px" color="#FFFFFF">N&uacute;mero</font>';
