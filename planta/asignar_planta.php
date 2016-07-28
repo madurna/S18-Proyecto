@@ -19,7 +19,11 @@
     //traido id del modulo pasado por GET
     $contrato_id = $_GET['contenido'];
     $cliente_id = $_GET['cliente'];
-
+	
+	//arreglos
+	$do_localidad = DB_DataObject::factory('localidad');
+	$v_localidad = $do_localidad -> get_localidades_todas();
+	
     //armo consulta con el id del modulo
     $do_planta = DB_DataObject::factory('planta');
     $do_planta-> whereAdd("planta_cliente_id = '$cliente_id'");

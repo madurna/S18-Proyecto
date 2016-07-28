@@ -98,8 +98,13 @@
 		$matriz[$i][4] = '<center>'.fechaAntiISO($do_planta -> planta_fecha_inicio).'</center>';
 		$matriz[$i][5] = '<center>'.fechaAntiISO($do_planta -> planta_fecha_fin).'</center>';
 		$matriz[$i][6] = '<center>'.monedaConPesos($do_planta -> planta_precio_estimado).'</center>';
-		if ($do_planta -> planta_estado_id == 1)
-			$estado_mostrar='<img title="En proceso" src="../img/spirit20_icons/system-tick-alt-02.png">';
+		if ($do_planta -> planta_estado_id == 1){
+	$estado_mostrar='<img title="En proceso" src="../img/spirit20_icons/system-tick-alt-02.png">';
+		}elseif($do_planta -> planta_estado_id == 2){
+			$estado_mostrar='<img title="Ejecutado" src="../img/spirit20_icons/system-tick-alt-02.png">';
+		}else{
+			$estado_mostrar='<img title="Inactivo" src="../img/spirit20_icons/system-tick-alt-02.png">';
+		}
 		$matriz[$i][7] = '<center>'.$estado_mostrar.'</center>';
 		$matriz[$i][8] = '
 			<center><a href="planta_pieza.php?contenido='.$do_planta -> planta_id.'"><i title="Ver" class="fa fa-cogs text-bg text-danger"></i>
