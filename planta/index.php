@@ -124,7 +124,7 @@
     //armo template
 	
 	if ($dg->getRecordCount() > 0 ) {	
-		$excel = '<p>Exportar a: <a href="#"> EXCEL </a></p>';
+		$excel = '<a href="alta_planta.php"> [Alta Planta] </a>';
 		$salida_grilla=$dg->getOutput();
 		$dg->setRenderer('Pager');
 		$salida_grilla.=$dg->getOutput();
