@@ -24,7 +24,11 @@
     $do_planta-> whereAdd("planta_cliente_id = '$cliente_id'");
     $do_planta-> orderBy('planta_direccion');
     $do_planta-> find();
-
+	
+	//arreglos
+	$do_localidad = DB_DataObject::factory('localidad');
+	$v_localidad = $do_localidad -> get_localidades_todas();
+	
     $do_cliente = DB_DataObject::factory('clientes');
     $do_cliente-> whereAdd("cliente_id = '$cliente_id'");
     $do_cliente->find(true);

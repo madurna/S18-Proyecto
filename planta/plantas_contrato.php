@@ -24,6 +24,10 @@ $do_planta = DB_DataObject::factory('planta');
 $do_planta-> whereAdd("planta_contrato_id = '$contrato_id'");
 $do_planta-> find();
 
+//arreglos
+	$do_localidad = DB_DataObject::factory('localidad');
+	$v_localidad = $do_localidad -> get_localidades_todas();
+	
 $do_contrato = DB_DataObject::factory('contrato');
 $do_contrato-> whereAdd("contrato_id = '$contrato_id'");
 $do_contrato->find(true);
