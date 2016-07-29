@@ -27,6 +27,16 @@
 	//$do_tarea -> fb_fieldsToRender = array('tarea_descripcion');
 	//
 	//
+    $do_planta -> fb_fieldsToRender = array (
+        'planta_direccion',
+        'planta_fecha_inicio',
+        'planta_fecha_fin',
+        'planta_precio_estimado',
+        'planta_color',
+        'planta_estado_id',
+        'planta_localidad_id',
+        'planta_descripcion'
+    );
 
 	if($do_planta->find(true)){
 		$fb =& DB_DataObject_FormBuilder::create($do_planta);
