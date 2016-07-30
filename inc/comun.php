@@ -707,11 +707,11 @@ function get_contrato_planta($vals,$args){
 
 	if($do_planta->find(true)){
 		return "<a title='Ver' href=../planta/plantas_contrato.php?ver=true&contenido=$record[contrato_id]><i class='fa fa-industry text-bg'></i></a>
-        &nbsp;<a title='Crear' href=../planta/alta_planta.php?contenido=&cliente={$record[$cliente]}><i class='fa fa-plus text-bg '></i></a>
+        &nbsp;<a title='Crear' href=../planta/alta_planta.php?contenido=$record[contrato_id]&cliente={$record[$cliente]}><i class='fa fa-plus text-bg '></i></a>
         &nbsp;<a title='Asignar' href=../planta/asignar_planta.php?contenido={$record[$id]}&cliente={$record[$cliente]}><i class='fa fa-external-link-square text-bg '></i></a>";
 	}else{
-		return "<a title='' href=#><i class='fa fa-industry text-bg text-muted'></i></a>
-        &nbsp;<a title='Crear' href=../planta/alta_planta.php?contenido=&cliente={$record[$cliente]}><i class='fa fa-plus text-bg '></i></a>
+		return "<i class='fa fa-industry text-bg text-muted'></i>
+        &nbsp;<a title='Crear' href=../planta/alta_planta.php?contenido=$record[contrato_id]&cliente={$record[$cliente]}><i class='fa fa-plus text-bg '></i></a>
         &nbsp;<a title='Asignar' href=../planta/asignar_planta.php?contenido={$record[$id]}&cliente={$record[$cliente]}><i class='fa fa-external-link-square text-bg '></i></a>";
     }
 }
